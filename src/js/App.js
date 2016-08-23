@@ -19,7 +19,8 @@ class App extends React.Component {
    */
   render() {
     return (
-      <div>ああああ</div>
+      <div id="editor">
+      </div>
     );
   }
 }
