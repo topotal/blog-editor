@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Editor from './Editor';
+import Preview from './Preview';
 
 /**
  * メインクラスです。
@@ -19,7 +21,9 @@ class App extends React.Component {
    */
   render() {
     return (
-      <div id="editor">
+      <div className="app">
+        <Editor />
+        <Preview />
       </div>
     );
   }
@@ -28,5 +32,5 @@ class App extends React.Component {
 // メインクラスを描画
 ReactDOM.render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('main')
 );
