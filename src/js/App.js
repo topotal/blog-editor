@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Editor from './Editor';
-import Preview from './Preview';
+import Editor from './views/Editor';
+import Preview from './views/Preview';
+import Header from './views/Header';
 
 /**
  * メインクラスです。
@@ -28,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <Header />
         <Editor content={this.state.content} onChange={this._onChange} />
         <Preview content={this.state.content}/>
       </div>
