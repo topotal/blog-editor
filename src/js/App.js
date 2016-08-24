@@ -38,11 +38,9 @@ class App extends React.Component {
    * 記事内容変更時のハンドラーです。
    */
   _onChange(value) {
-    console.info(value);
     this.setState({
       content: value
     });
-    console.info(this.state);
   }
 }
 

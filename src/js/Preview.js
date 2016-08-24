@@ -17,6 +17,9 @@ export default class Preview extends React.Component {
     };
   }
 
+  /**
+   * propが変更された際のハンドラー
+   */
   componentWillReceiveProps(nextProps) {
     this.setState({
       content: nextProps.content

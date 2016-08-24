@@ -24,8 +24,10 @@ export default class Editor extends React.Component {
     this._editor = ace.edit("ace");
     this._editor.setTheme("ace/theme/monokai");
     this._onChangeEditor = this._onChangeEditor.bind(this);
-    this._editor.setValue(this.state.value);
+    this._editor.getSession().setMode("ace/mode/markdown");
+    this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
+    this._editor.setValue(this.state.value);
   }
 
   /**
