@@ -14,6 +14,12 @@ class App extends React.Component {
    */
   constructor(prop) {
     super(prop);
+
+    this.state = {
+      content: "初期値でーす"
+    };
+
+    this._onChange = this._onChange.bind(this);
   }
 
   /**
@@ -22,10 +28,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Editor />
-        <Preview />
+        <Editor content={this.state.content} onChange={this._onChange} />
+        <Preview content={this.state.content}/>
       </div>
     );
+  }
+
+  /**
+   * 記事内容変更時のハンドラーです。
+   */
+  _onChange(value) {
+    console.info(value);
+    this.setState({
+      content: value
+    });
+    console.info(this.state);
   }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import Panel from './Panel';
 
 /**
  * プレビュークラスです。
@@ -10,8 +9,18 @@ export default class Preview extends React.Component {
    * コンストラクター
    * @constructor
    */
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: this.props.content
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      content: nextProps.content
+    });
   }
 
   /**
@@ -19,7 +28,9 @@ export default class Preview extends React.Component {
    */
   render() {
     return (
-      <div className="preview">プレビュー</div>
+      <div className="preview">
+        {this.state.content}
+      </div>
     );
   }
 }

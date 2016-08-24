@@ -9,8 +9,12 @@ export default class Editor extends React.Component {
    * コンストラクター
    * @constructor
    */
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: this.props.content
+    };
   }
 
   /**
@@ -20,6 +24,7 @@ export default class Editor extends React.Component {
     this._editor = ace.edit("ace");
     this._editor.setTheme("ace/theme/monokai");
     this._onChangeEditor = this._onChangeEditor.bind(this);
+    this._editor.setValue(this.state.value);
     this._editor.getSession().on("change", this._onChangeEditor);
   }
 
@@ -38,6 +43,7 @@ export default class Editor extends React.Component {
    */
   _onChangeEditor() {
     let value = this._editor.getValue();
-    console.info(value);
+    this.setState({ value: value });
+    this.props.onChange(value);
   }
 }
