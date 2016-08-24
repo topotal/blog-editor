@@ -18,7 +18,7 @@ class App extends React.Component {
     super(prop);
 
     this.state = {
-      content: "初期値でーす"
+      content: ""
     };
 
     this._onChange = this._onChange.bind(this);
