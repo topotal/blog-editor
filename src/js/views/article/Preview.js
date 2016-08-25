@@ -1,4 +1,6 @@
 import React from 'react';
+import marked from 'marked';
+import ReactHtmlParser from 'react-html-parser';
 
 /**
  * プレビュークラスです。
@@ -12,8 +14,19 @@ export default class Preview extends React.Component {
   constructor(props) {
     super(props);
 
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false
+    });
+
     this.state = {
-      content: this.props.content
+      content: marked(this.props.content)
     };
   }
 
@@ -22,7 +35,7 @@ export default class Preview extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      content: nextProps.content
+      content: marked(nextProps.content)
     });
   }
 
@@ -32,7 +45,7 @@ export default class Preview extends React.Component {
   render() {
     return (
       <div className="preview">
-        {this.state.content}
+        {ReactHtmlParser(this.state.content)}
       </div>
     );
   }
