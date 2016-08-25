@@ -20,6 +20,7 @@ export default class Article extends React.Component {
     };
 
     this._onChange = this._onChange.bind(this);
+    this._onClickSave = this._onClickSave.bind(this);
   }
 
   /**
@@ -33,7 +34,7 @@ export default class Article extends React.Component {
           <Preview content={this.state.content}/>
         </div>
         <div className="footer">
-          <Button className="save" text="保存" />
+          <button className="button" onClick={this._onClickSave}>保存</button>
         </div>
       </div>
     );
@@ -46,5 +47,12 @@ export default class Article extends React.Component {
     this.setState({
       content: value
     });
+  }
+
+  /**
+   * 保存ボタンクリック時のハンドラーです。
+   */
+  _onClickSave() {
+    console.info("click");
   }
 }
