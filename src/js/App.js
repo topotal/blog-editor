@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Editor from './views/Editor';
-import Preview from './views/Preview';
 import Header from './views/Header';
-import Footer from './views/Footer';
+import Article from './views/article/Article';
 
 /**
  * メインクラスです。
@@ -20,8 +18,6 @@ class App extends React.Component {
     this.state = {
       content: ""
     };
-
-    this._onChange = this._onChange.bind(this);
   }
 
   /**
@@ -31,22 +27,9 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header />
-        <div className="middle">
-          <Editor content={this.state.content} onChange={this._onChange} />
-          <Preview content={this.state.content}/>
-        </div>
-        <Footer />
+        <Article />
       </div>
     );
-  }
-
-  /**
-   * 記事内容変更時のハンドラーです。
-   */
-  _onChange(value) {
-    this.setState({
-      content: value
-    });
   }
 }
 
