@@ -39,15 +39,14 @@ export default class Preview extends React.Component {
     });
   }
 
+  /**
+   * Domが更新された際のハンドラーです。
+   */
   componentDidUpdate() {
     $('pre').each(function(i, block) {
       hljs.highlightBlock(block);
     });
   }
-
-  /**
-   *
-   */
 
   /**
    * 描画します。
