@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './views/Header';
 import Article from './views/article/Article';
 
 /**
