@@ -1,7 +1,6 @@
 import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
-import Button from '../common/Button';
 
 /**
  * 記事クラス
@@ -21,6 +20,9 @@ export default class Article extends React.Component {
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
+    this._onPressCommandS = this._onPressCommandS.bind(this);
+
+    Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
 
   /**
@@ -54,5 +56,13 @@ export default class Article extends React.Component {
    */
   _onClickSave() {
     console.info("click");
+  }
+
+  /**
+   * command+sを押した際のハンドラーです。
+   */
+  _onPressCommandS(e) {
+    e.preventDefault();
+    console.info("command+s");
   }
 }
