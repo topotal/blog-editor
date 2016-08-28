@@ -28,6 +28,9 @@ export default class Editor extends React.Component {
     this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
     this._editor.setValue(this.state.value);
+
+    // クラスを追加
+    $('#ace textarea').addClass("mousetrap");
   }
 
   /**
