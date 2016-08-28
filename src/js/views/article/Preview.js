@@ -36,14 +36,16 @@ export default class Preview extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       content: marked(nextProps.content)
-    });
+    }, this._onChangeContent);
   }
 
   /**
-   * Domが更新された際のハンドラーです。
+   * 記事内容が書き換わった際のハンドラーです。
    */
-  componentDidUpdate() {
-    $('pre').each(function(i, block) {
+  _onChangeContent() {
+    let dom = document.getElementById('preview');
+    dom.innerHTML = this.state.content;
+    $('pre code').each(function(i, block) {
       hljs.highlightBlock(block);
     });
   }
@@ -53,8 +55,7 @@ export default class Preview extends React.Component {
    */
   render() {
     return (
-      <div className="preview">
-        {ReactHtmlParser(this.state.content)}
+      <div className="preview" id="preview">
       </div>
     );
   }
