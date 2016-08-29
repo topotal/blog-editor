@@ -36,7 +36,7 @@ export default class Article extends React.Component {
           <Preview content={this.state.content}/>
         </div>
         <div className="footer">
-          <button className="button" onClick={this._onClickSave}>保存</button>
+          <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
         </div>
       </div>
     );

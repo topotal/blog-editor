@@ -1,5 +1,5 @@
 .button {
-  padding: 7px 15px;
+  padding: 0 15px;
   background-color: #2ecc71;
   border: none;
   border-radius: 3px;
@@ -8,6 +8,7 @@
   cursor: pointer;
   box-shadow: none;
   outline: none;
+  line-height: 100%;
 
   &:active {
     background-color: #2ecc00;
