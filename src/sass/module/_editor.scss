@@ -1,4 +1,32 @@
 .editor {
   width: 50%;
   height: 100%;
+  position: relative;
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 10px;
+    background-color: #CCC;
+
+    input {
+      width: 100%;
+      line-height: 40px;
+      padding: 0;
+      border: 0;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+  }
+
+  #ace {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }

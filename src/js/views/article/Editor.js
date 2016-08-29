@@ -38,7 +38,12 @@ export default class Editor extends React.Component {
    */
   render() {
     return (
-      <div className="editor" id="ace">
+      <div className="editor">
+        <div className="title">
+          <input type="text" name="title" placeholder="タイトル"/>
+        </div>
+        <div id="ace">
+        </div>
       </div>
     );
   }
