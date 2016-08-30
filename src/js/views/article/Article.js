@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
+import SaveArticleService from '../../services/SaveArticleService';
 
 /**
  * 記事クラス
@@ -17,6 +18,8 @@ export default class Article extends React.Component {
     this.state = {
       content:  ""
     };
+
+    this._servise = new SaveArticleService();
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
@@ -56,6 +59,7 @@ export default class Article extends React.Component {
    */
   _onClickSave() {
     console.info("click");
+    this._save();
   }
 
   /**
@@ -64,5 +68,13 @@ export default class Article extends React.Component {
   _onPressCommandS(e) {
     e.preventDefault();
     console.info("command+s");
+    this._save();
+  }
+
+  /**
+   * 記事を保存します。
+   */
+  _save() {
+    this._servise.post({});
   }
 }
