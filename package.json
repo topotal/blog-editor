@@ -33,7 +33,6 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-html-parser": "^1.0.3",
-    "superagent": "^2.2.0",
     "watchify": "^3.7.0"
   }
 }

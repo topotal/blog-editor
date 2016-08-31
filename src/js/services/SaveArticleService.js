@@ -1,5 +1,4 @@
 import EventDispatcher from '../core/EventDispatcher';
-import request from 'superagent';
 import ApiParam from '../enum/ApiParam';
 
 /**
@@ -22,10 +21,18 @@ export default class SaveArticleService extends EventDispatcher {
    * ポストします。
    */
   post(data) {
-    request
-      .post(this._path)
-      .send({})
-      .end(this._onComplete)
+    $.ajax({
+      type: 'POST',
+      url: this._path,
+      data: {
+        title: "テスト",
+        content: "テスト",
+        eye_catching: "hoge.png"
+      },
+      success: this._onComplete,
+      dataType: 'json',
+      crossDomain: true
+    });
   }
 
   /**
