@@ -19,7 +19,9 @@ export default class Article extends React.Component {
       content:  ""
     };
 
-    this._servise = new SaveArticleService();
+    // 記事保存サービス
+    this._service = new SaveArticleService();
+    this._service.addEventListener('success', this._onSuccessSave);
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
@@ -67,7 +69,6 @@ export default class Article extends React.Component {
    */
   _onPressCommandS(e) {
     e.preventDefault();
-    console.info("command+s");
     this._save();
   }
 
@@ -75,6 +76,13 @@ export default class Article extends React.Component {
    * 記事を保存します。
    */
   _save() {
-    this._servise.post({});
+    this._service.post({});
+  }
+
+  /**
+   * 記事保存成功時のハンドラーです。
+   */
+  _onSuccessSave(event) {
+    console.info(event.data.article);
   }
 }

@@ -60,4 +60,11 @@ export default class EventDispatcher {
       }));
     }
   }
+
+  /**
+   * イベントを発火させます。
+   */
+  dispatchEvent(type, param = {}) {
+    this.fireEvent(type, param);
+  }
 }

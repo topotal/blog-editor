@@ -13,10 +13,18 @@ export default class SaveArticleResponse {
   }
 
   /**
+   * 記事データを返します。
+   */
+  get article() {
+    return this._article;
+  }
+
+  /**
    * コンストラクター
    * @constructor
    */
   constructor(response) {
     this._status = response.status;
+    this._article = response.article;
   }
 }
