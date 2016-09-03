@@ -13,7 +13,7 @@ export default class Editor extends React.Component {
     super(props);
 
     this.state = {
-      value: this.props.content
+      articleData: this.props.articleData
     };
   }
 
@@ -27,7 +27,10 @@ export default class Editor extends React.Component {
     this._editor.getSession().setMode("ace/mode/markdown");
     this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
-    this._editor.setValue(this.state.value);
+    if(this.state.articleData.content) {
+      console.info(this.state.articleData);
+      this._editor.setValue(this.state.articleData.content);
+    }
 
     // クラスを追加
     $('#ace textarea').addClass("mousetrap");
@@ -52,8 +55,12 @@ export default class Editor extends React.Component {
    * エディター編集時のハンドラーです。
    */
   _onChangeEditor() {
-    let value = this._editor.getValue();
-    this.setState({ value: value });
-    this.props.onChange(value);
+    let content = this._editor.getValue();
+    let articleData = this.state.articleData;
+    articleData.content = content;
+    this.setState({
+      articleData: articleData
+    });
+    this.props.onChange(articleData);
   }
 }

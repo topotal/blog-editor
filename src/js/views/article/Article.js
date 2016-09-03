@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
+import ArticleModel from '../../models/ArticleModel';
 import SaveArticleService from '../../services/SaveArticleService';
 
 /**
@@ -15,12 +16,17 @@ export default class Article extends React.Component {
   constructor(props) {
     super(props);
 
+    this.id = null;
+
+    let articleData = new ArticleModel();
+    articleData.content = "テスト・テスト";
     this.state = {
-      content:  ""
+      articleData: articleData
     };
 
     // 記事保存サービス
     this._service = new SaveArticleService();
+    this._onSuccessSave = this._onSuccessSave.bind(this);
     this._service.addEventListener('success', this._onSuccessSave);
 
     this._onChange = this._onChange.bind(this);
@@ -37,8 +43,8 @@ export default class Article extends React.Component {
     return (
       <div className="article">
         <div className="main">
-          <Editor content={this.state.content} onChange={this._onChange} />
-          <Preview content={this.state.content}/>
+          <Editor articleData={this.state.articleData} onChange={this._onChange} />
+          <Preview articleData={this.state.articleData}/>
         </div>
         <div className="footer">
           <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
@@ -50,10 +56,8 @@ export default class Article extends React.Component {
   /**
    * 記事内容変更時のハンドラーです。
    */
-  _onChange(value) {
-    this.setState({
-      content: value
-    });
+  _onChange(articleData) {
+    this.setState({ articleData: articleData });
   }
 
   /**
@@ -75,13 +79,16 @@ export default class Article extends React.Component {
    * 記事を保存します。
    */
   _save() {
-    this._service.post({});
+    this._service.post(this.state.articleData);
   }
 
   /**
    * 記事保存成功時のハンドラーです。
    */
   _onSuccessSave(event) {
-    console.info(event.data.article);
+    let data = event.data;
+    this.setState({
+      articleData: data.articleData
+    });
   }
 }

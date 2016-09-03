@@ -1,4 +1,5 @@
 import ApiParam from '../../enum/ApiParam';
+import ArticleModel from '../ArticleModel';
 
 /**
  * 記事保存時のレスポンスデータクラスです。
@@ -15,8 +16,8 @@ export default class SaveArticleResponse {
   /**
    * 記事データを返します。
    */
-  get article() {
-    return this._article;
+  get articleData() {
+    return this._articleData;
   }
 
   /**
@@ -25,6 +26,14 @@ export default class SaveArticleResponse {
    */
   constructor(response) {
     this._status = response.status;
-    this._article = response.article;
+
+    let article = response.article;
+    this._articleData = new ArticleModel(
+      article.id,
+      article.title,
+      article.content,
+      article.created_at,
+      article.updated_at
+    );
   }
 }

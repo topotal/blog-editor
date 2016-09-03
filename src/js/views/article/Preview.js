@@ -26,7 +26,7 @@ export default class Preview extends React.Component {
     });
 
     this.state = {
-      content: marked(this.props.content)
+      articleData: props.articleData
     };
   }
 
@@ -35,7 +35,7 @@ export default class Preview extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      content: marked(nextProps.content)
+      articleData: nextProps.articleData
     }, this._onChangeContent);
   }
 
@@ -44,7 +44,7 @@ export default class Preview extends React.Component {
    */
   _onChangeContent() {
     let dom = document.getElementById('preview');
-    dom.innerHTML = this.state.content;
+    dom.innerHTML = marked(this.state.articleData.content);
     $('pre code').each(function(i, block) {
       hljs.highlightBlock(block);
     });
