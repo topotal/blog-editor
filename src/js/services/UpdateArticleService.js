@@ -1,11 +1,11 @@
 import EventDispatcher from '../core/EventDispatcher';
 import ApiParam from '../enum/ApiParam';
-import CreateArticleResponse from '../models/vo/CreateArticleResponse';
+import UpdateArticleResponse from '../models/vo/UpdateArticleResponse';
 
 /**
- * 記事作成サービスクラスです。
+ * 記事更新サービスクラスです。
  */
-export default class CreateArticleService extends EventDispatcher {
+export default class UpdateArticleService extends EventDispatcher {
 
   /**
    * コンストラクター
@@ -23,11 +23,12 @@ export default class CreateArticleService extends EventDispatcher {
    */
   send(data) {
     $.ajax({
-      type: 'POST',
+      type: 'PUT',
       url: this._path,
       data: {
-        title: "テスト",
-        content: "テスト",
+        id: "3",
+        title: "テスト２",
+        content: "テスト２",
         eye_catching: "hoge.png"
       },
       success: this._onComplete,
@@ -40,7 +41,7 @@ export default class CreateArticleService extends EventDispatcher {
    * リクエストが完了した際のハンドラーです。
    */
   _onComplete(response, result) {
-    let data = new CreateArticleResponse(response);
+    let data = new UpdateArticleResponse(response);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }
