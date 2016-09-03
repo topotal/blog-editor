@@ -2,9 +2,9 @@ import ApiParam from '../../enum/ApiParam';
 import ArticleModel from '../ArticleModel';
 
 /**
- * 記事保存時のレスポンスデータクラスです。
+ * 記事作成時のレスポンスデータクラスです。
  */
-export default class SaveArticleResponse {
+export default class CreateArticleResponse {
 
   /**
    * ステータスを返します。

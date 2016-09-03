@@ -28,7 +28,6 @@ export default class Editor extends React.Component {
     this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
     if(this.state.articleData.content) {
-      console.info(this.state.articleData);
       this._editor.setValue(this.state.articleData.content);
     }
 

@@ -1,11 +1,11 @@
 import EventDispatcher from '../core/EventDispatcher';
 import ApiParam from '../enum/ApiParam';
-import SaveArticleResponse from '../models/vo/SaveArticleResponse';
+import CreateArticleResponse from '../models/vo/CreateArticleResponse';
 
 /**
  * 記事保存サービスクラスです。
  */
-export default class SaveArticleService extends EventDispatcher {
+export default class CreateArticleService extends EventDispatcher {
 
   /**
    * コンストラクター
@@ -40,7 +40,7 @@ export default class SaveArticleService extends EventDispatcher {
    * リクエストが完了した際のハンドラーです。
    */
   _onComplete(response, result) {
-    let data = new SaveArticleResponse(response);
+    let data = new CreateArticleResponse(response);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }

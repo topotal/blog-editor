@@ -2,7 +2,7 @@ import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
-import SaveArticleService from '../../services/SaveArticleService';
+import CreateArticleService from '../../services/CreateArticleService';
 
 /**
  * 記事クラス
@@ -16,23 +16,21 @@ export default class Article extends React.Component {
   constructor(props) {
     super(props);
 
-    this.id = null;
-
     let articleData = new ArticleModel();
     articleData.content = "テスト・テスト";
     this.state = {
       articleData: articleData
     };
 
-    // 記事保存サービス
-    this._service = new SaveArticleService();
-    this._onSuccessSave = this._onSuccessSave.bind(this);
-    this._service.addEventListener('success', this._onSuccessSave);
+    // 記事作成サービス
+    this._createService = new CreateArticleService();
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
+    this._onSuccessSave = this._onSuccessSave.bind(this);
 
+    this._createService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
 
@@ -79,7 +77,7 @@ export default class Article extends React.Component {
    * 記事を保存します。
    */
   _save() {
-    this._service.post(this.state.articleData);
+    this._createService.post(this.state.articleData);
   }
 
   /**
