@@ -60,7 +60,6 @@ export default class Article extends React.Component {
    * 保存ボタンクリック時のハンドラーです。
    */
   _onClickSave() {
-    console.info("click");
     this._save();
   }
 

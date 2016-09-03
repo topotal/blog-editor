@@ -41,7 +41,6 @@ export default class SaveArticleService extends EventDispatcher {
    */
   _onComplete(response, result) {
     let data = new SaveArticleResponse(response);
-    console.info(data.article);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }

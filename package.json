@@ -10,7 +10,7 @@
     "build:js": "browserify src/js/App.js -t babelify --outfile public/js/bundle.js",
     "build:sass": "node-sass src/sass --output public/css",
     "watch": "npm run watch:sass & npm run watch:js",
-    "watch:js": "watchify src/js/App.js -t babelify --outfile public/js/bundle.js",
+    "watch:js": "watchify src/js/App.js -t babelify --outfile public/js/bundle.js -d",
     "watch:sass": "node-sass src/sass --output public/css -w"
   },
   "repository": {
