@@ -12,6 +12,9 @@ export default class Editor extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onChangeTitle = this._onChangeTitle.bind(this);
+    this._onChangeEditor = this._onChangeEditor.bind(this);
+
     this.state = {
       articleData: this.props.articleData
     };
@@ -23,7 +26,6 @@ export default class Editor extends React.Component {
   componentDidMount() {
     this._editor = ace.edit("ace");
     this._editor.setTheme("ace/theme/monokai");
-    this._onChangeEditor = this._onChangeEditor.bind(this);
     this._editor.getSession().setMode("ace/mode/markdown");
     this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
@@ -51,12 +53,31 @@ export default class Editor extends React.Component {
     return (
       <div className="editor">
         <div className="title">
-          <input type="text" name="title" placeholder="タイトル"/>
+          <input
+            type="text"
+            placeholder="タイトル"
+            name="title"
+            className="mousetrap"
+            value={this.state.articleData.title || ""}
+            onChange={this._onChangeTitle}
+          />
         </div>
         <div id="ace">
         </div>
       </div>
     );
+  }
+
+  /**
+   * タイトル変更時のハンドラーです。
+   */
+  _onChangeTitle(event) {
+    console.info(event.target.value);
+    let articleData = this.state.articleData;
+    articleData.title = event.target.value;
+    this.setState({
+      articleData: articleData
+    });
   }
 
   /**

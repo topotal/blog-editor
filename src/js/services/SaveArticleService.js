@@ -26,9 +26,10 @@ export default class SaveArticleService extends EventDispatcher {
       type: 'POST',
       url: this._path,
       data: {
-        title: "テスト",
-        content: "テスト",
-        eye_catching: "hoge.png"
+        id: data.id,
+        title: data.title,
+        content: data.content,
+        eye_catching: "asdfas"
       },
       success: this._onComplete,
       dataType: 'json',

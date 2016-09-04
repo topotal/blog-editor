@@ -23,14 +23,14 @@ export default class Article extends React.Component {
     };
 
     // 記事作成サービス
-    this._createService = new SaveArticleService();
+    this._saveService = new SaveArticleService();
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
 
-    this._createService.addEventListener('success', this._onSuccessSave);
+    this._saveService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
 
@@ -78,7 +78,7 @@ export default class Article extends React.Component {
    */
   _save() {
     let articleData = this.state.articleData;
-    this._createService.send(this.state.articleData);
+    this._saveService.send(this.state.articleData);
   }
 
   /**
