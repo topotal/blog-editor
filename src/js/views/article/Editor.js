@@ -36,6 +36,15 @@ export default class Editor extends React.Component {
   }
 
   /**
+   * propが変更された際のハンドラー
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      articleData: nextProps.articleData
+    });
+  }
+
+  /**
    * 描画します。
    */
   render() {

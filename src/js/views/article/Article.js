@@ -2,8 +2,7 @@ import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
-import CreateArticleService from '../../services/CreateArticleService';
-import UpdateArticleService from '../../services/UpdateArticleService';
+import SaveArticleService from '../../services/SaveArticleService';
 
 /**
  * 記事クラス
@@ -24,18 +23,14 @@ export default class Article extends React.Component {
     };
 
     // 記事作成サービス
-    this._createService = new CreateArticleService();
-    // 記事更新サービス
-    this._updateService = new UpdateArticleService();
+    this._createService = new SaveArticleService();
 
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
-    this._onSuccessCreate = this._onSuccessCreate.bind(this);
-    this._onSuccessUpdate = this._onSuccessUpdate.bind(this);
+    this._onSuccessSave = this._onSuccessSave.bind(this);
 
-    this._createService.addEventListener('success', this._onSuccessCreate);
-    this._updateService.addEventListener('success', this._onSuccessUpdate);
+    this._createService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
 
@@ -83,17 +78,13 @@ export default class Article extends React.Component {
    */
   _save() {
     let articleData = this.state.articleData;
-    if(articleData.id) {
-      this._updateService.send(this.state.articleData);
-    } else {
-      this._createService.send(this.state.articleData);
-    }
+    this._createService.send(this.state.articleData);
   }
 
   /**
    * 記事作成成功時のハンドラーです。
    */
-  _onSuccessCreate(event) {
+  _onSuccessSave(event) {
     let data = event.data;
     this.setState({
       articleData: data.articleData

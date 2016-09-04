@@ -4,7 +4,7 @@ import ArticleModel from '../ArticleModel';
 /**
  * 記事作成時のレスポンスデータクラスです。
  */
-export default class CreateArticleResponse {
+export default class SaveArticleResponse {
 
   /**
    * ステータスを返します。
