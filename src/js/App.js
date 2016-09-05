@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Article from './views/article/Article';
+import ArticleList from './views/articleList/ArticleList';
 
 /**
  * メインクラスです。
@@ -15,7 +16,7 @@ class App extends React.Component {
     super(prop);
 
     this.state = {
-      content: ""
+      articleData: null
     };
   }
 
@@ -27,7 +28,9 @@ class App extends React.Component {
       <div className="app">
         <div className="header">
         </div>
-        <Article />
+        <div className="content">
+          { this.state.articleData ? <Article /> : <ArticleList /> }
+        </div>
       </div>
     );
   }
