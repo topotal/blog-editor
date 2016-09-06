@@ -10,6 +10,8 @@ export default class ArticleList extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onClickRow = this._onClickRow.bind(this);
+
     this.state = {
       articles: [{}, {}]
     };
@@ -19,9 +21,9 @@ export default class ArticleList extends React.Component {
    * 描画します。
    */
   render() {
-    var articleRows = this.state.articles.map(function (articleData) {
+    var articleRows = this.state.articles.map((articleData, index) => {
       return (
-        <ArticleRow articleData={articleData} />
+        <ArticleRow articleData={articleData} onClick={this._onClickRow} key={index}/>
       );
     });
 
@@ -30,5 +32,12 @@ export default class ArticleList extends React.Component {
         {articleRows}
       </ul>
     );
+  }
+
+  /**
+   * Rowクリック時のハンドラーです。
+   */
+  _onClickRow() {
+    console.info("click");
   }
 }
