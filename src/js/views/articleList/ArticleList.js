@@ -1,6 +1,10 @@
 import React from 'react';
 import ArticleRow from './ArticleRow';
+import GetArticlesService from '../../services/GetArticlesService';
 
+/**
+ * 記事一覧クラスです。
+ */
 export default class ArticleList extends React.Component {
 
   /**
@@ -11,10 +15,18 @@ export default class ArticleList extends React.Component {
     super(props);
 
     this._onClickRow = this._onClickRow.bind(this);
+    this._onSuccessGetList = this._onSuccessGetList.bind(this);
 
     this.state = {
-      articles: [{}, {}]
+      articles: []
     };
+
+    // 一覧取得サービス
+    this._service = new GetArticlesService();
+    this._service.addEventListener('success', this._onSuccessGetList);
+
+    // 最初の一覧を取得
+    this._service.send();
   }
 
   /**
@@ -39,5 +51,15 @@ export default class ArticleList extends React.Component {
    */
   _onClickRow() {
     console.info("click");
+  }
+
+  /**
+   * 記事一覧取得成功時のハンドラーです。
+   */
+  _onSuccessGetList(event) {
+    let data = event.data;
+    this.setState({
+      articles: data.articles
+    });
   }
 }
