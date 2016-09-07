@@ -16,10 +16,8 @@ export default class Article extends React.Component {
   constructor(props) {
     super(props);
 
-    let articleData = new ArticleModel();
-    articleData.content = "テスト・テスト";
     this.state = {
-      articleData: articleData
+      articleData: this.props.articleData || new ArticleModel()
     };
 
     // 記事作成サービス

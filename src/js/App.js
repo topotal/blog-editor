@@ -30,12 +30,17 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="header">
-          { this.state.articleData ?
-              <button className="button" onClick={this._onClickBackTop}>一覧に戻る</button> : null}
+          {
+            this.state.articleData ?
+              <button className="button" onClick={this._onClickBackTop}>一覧に戻る</button> : null
+          }
         </div>
         <div className="content">
-          { this.state.articleData ?
-              <Article /> : <ArticleList onSelectRow={this._onSelectRow} /> }
+          {
+            this.state.articleData ?
+              <Article articleData={this.state.articleData} /> :
+              <ArticleList onSelectRow={this._onSelectRow} />
+          }
         </div>
       </div>
     );
