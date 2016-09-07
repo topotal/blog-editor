@@ -25,6 +25,7 @@ export default class Editor extends React.Component {
    */
   componentDidMount() {
     this._editor = ace.edit("ace");
+    this._editor.$blockScrolling = Infinity;
     this._editor.setTheme("ace/theme/monokai");
     this._editor.getSession().setMode("ace/mode/markdown");
     this._editor.getSession().setUseWrapMode(true);
