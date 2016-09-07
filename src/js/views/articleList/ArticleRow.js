@@ -29,7 +29,7 @@ export default class ArticleRow extends React.Component {
   render() {
     return (
       <li className="articleRow" ref="row">
-        <div className="title">タイトル</div>
+        <div className="title">{this.props.articleData.title}</div>
       </li>
     );
   }
