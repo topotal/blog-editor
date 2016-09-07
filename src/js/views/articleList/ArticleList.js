@@ -49,8 +49,8 @@ export default class ArticleList extends React.Component {
   /**
    * Rowクリック時のハンドラーです。
    */
-  _onClickRow() {
-    console.info("click");
+  _onClickRow(articleData) {
+    this.props.onSelectRow(articleData);
   }
 
   /**

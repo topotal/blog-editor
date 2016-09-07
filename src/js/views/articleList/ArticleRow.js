@@ -11,6 +11,8 @@ export default class ArticleRow extends React.Component {
    */
   constructor(props) {
     super(props);
+
+    this._onClick = this._onClick.bind(this);
   }
 
   /**
@@ -18,7 +20,7 @@ export default class ArticleRow extends React.Component {
    */
   componentDidMount() {
     let li = this.refs.row;
-    li.addEventListener('click', this.props.onClick);
+    li.addEventListener('click', this._onClick);
   }
 
   /**
@@ -30,5 +32,12 @@ export default class ArticleRow extends React.Component {
         <div className="title">タイトル</div>
       </li>
     );
+  }
+
+  /**
+   * クリック時のハンドラーです。
+   */
+  _onClick() {
+    this.props.onClick(this.props.articleData);
   }
 }

@@ -15,6 +15,9 @@ class App extends React.Component {
   constructor(prop) {
     super(prop);
 
+    this._onSelectRow = this._onSelectRow.bind(this);
+    this._onClickBackTop = this._onClickBackTop.bind(this);
+
     this.state = {
       articleData: null
     };
@@ -27,12 +30,33 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="header">
+          { this.state.articleData ?
+              <button className="button" onClick={this._onClickBackTop}>一覧に戻る</button> : null}
         </div>
         <div className="content">
-          { this.state.articleData ? <Article /> : <ArticleList /> }
+          { this.state.articleData ?
+              <Article /> : <ArticleList onSelectRow={this._onSelectRow} /> }
         </div>
       </div>
     );
+  }
+
+  /**
+   * 記事を選択した際のハンドラーです。
+   */
+  _onSelectRow(articleData) {
+    this.setState({
+      articleData: articleData
+    });
+  }
+
+  /**
+   * 一覧へ戻るボタン押下時のハンドラーです。
+   */
+  _onClickBackTop() {
+    this.setState({
+      articleData: null
+    });
   }
 }
 
