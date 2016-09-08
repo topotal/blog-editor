@@ -13,6 +13,11 @@ html, body, #main {
   color: #FFF;
 }
 
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 .app {
   width: 100%;
   height: 100%;
