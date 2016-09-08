@@ -7,8 +7,47 @@
   list-style: none;
   border-bottom: 1px solid #444444;
   background-color: #535353;
+  position: relative;
 
   &:hover {
     background-color: #6b6b6b;
+  }
+
+  .id,
+  .title,
+  .updatedAt,
+  .status {
+    position: absolute;
+  }
+
+  .id {
+    left: 20px;
+    line-height: 80px;
+    color: #DDD;
+    font-size: 12px;
+  }
+
+  .title {
+    left: 70px;
+    line-height: 80px;
+  }
+
+  .updatedAt {
+    right: 200px;
+    line-height: 80px;
+    color: #DDD;
+    font-size: 12px;
+  }
+
+  .status {
+    top: 0px;
+    right: 20px;
+    bottom: 0px;
+    margin: auto;
+    width: 100px;
+    height: 40px;
+    border: 2px solid #00FFFF;
+    border-radius: 5px;
+    box-sizing: border-box;
   }
 }

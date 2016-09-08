@@ -30,9 +30,10 @@ export default class ArticleRow extends React.Component {
     let data = this.props.articleData;
     return (
       <li className="articleRow" ref="row">
-        <div className="title">{data.title}</div>
-        <div className="createdAt">作成日：{data.createdAt}</div>
-        <div className="updatedAt">更新日：{data.createdAt}</div>
+        <div className="id">{data.id}</div>
+        <div className="title">{data.title || "未タイトル"}</div>
+        <div className="updatedAt">{data.updatedAt}</div>
+        <div className="status"></div>
       </li>
     );
   }
