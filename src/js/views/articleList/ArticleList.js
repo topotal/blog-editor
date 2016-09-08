@@ -40,9 +40,14 @@ export default class ArticleList extends React.Component {
     });
 
     return (
-      <ul className="articleList">
-        {articleRows}
-      </ul>
+      <div className="articleList">
+        <ul className="list">
+          {articleRows}
+        </ul>
+        <div className="listFooter">
+
+        </div>
+      </div>
     );
   }
 
