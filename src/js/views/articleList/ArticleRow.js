@@ -27,9 +27,12 @@ export default class ArticleRow extends React.Component {
    * 描画します。
    */
   render() {
+    let data = this.props.articleData;
     return (
       <li className="articleRow" ref="row">
-        <div className="title">{this.props.articleData.title}</div>
+        <div className="title">{data.title}</div>
+        <div className="createdAt">作成日：{data.createdAt}</div>
+        <div className="updatedAt">更新日：{data.createdAt}</div>
       </li>
     );
   }
