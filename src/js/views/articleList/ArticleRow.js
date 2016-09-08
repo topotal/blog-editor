@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 /**
  * 記事リストのRowクラスです。
@@ -32,7 +33,7 @@ export default class ArticleRow extends React.Component {
       <li className="articleRow" ref="row">
         <div className="id">{data.id}</div>
         <div className="title">{data.title || "未タイトル"}</div>
-        <div className="updatedAt">{data.updatedAt}</div>
+        <div className="updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
         <div className="status"></div>
       </li>
     );
