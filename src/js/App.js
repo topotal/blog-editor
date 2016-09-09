@@ -32,7 +32,9 @@ class App extends React.Component {
         <div className="header">
           {
             this.state.articleData ?
-              <button className="button" onClick={this._onClickBackTop}>一覧に戻る</button> : null
+              <button className="button" onClick={this._onClickBackTop}>
+                一覧に戻る
+              </button> : null
           }
         </div>
         <div className="content">

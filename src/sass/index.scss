@@ -3,6 +3,7 @@
 @import "module/header";
 @import "module/articleList";
 @import "module/articleRow";
+@import "module/common";
 
 html, body, #main {
   width: 100%;
@@ -22,4 +23,14 @@ body {
   width: 100%;
   height: 100%;
   background-color: #4d4d4d;
+  position: relative;
+
+  .content {
+    position: absolute;
+    top: 65px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    box-sizing: border-box;
+  }
 }

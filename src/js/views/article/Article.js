@@ -38,11 +38,11 @@ export default class Article extends React.Component {
   render() {
     return (
       <div className="article">
-        <div className="main">
+        <div className="main panel">
           <Editor articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
-        <div className="footer">
+        <div className="footer panel">
           <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
         </div>
       </div>

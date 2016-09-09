@@ -41,10 +41,10 @@ export default class ArticleList extends React.Component {
 
     return (
       <div className="articleList">
-        <ul className="list">
+        <ul className="list panel">
           {articleRows}
         </ul>
-        <div className="listFooter">
+        <div className="listFooter panel">
 
         </div>
       </div>

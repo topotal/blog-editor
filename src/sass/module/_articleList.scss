@@ -1,20 +1,18 @@
 .articleList {
   position: absolute;
-  top: 65px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
   .list {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 45px;
+    bottom: 55px;
     margin: 0;
     padding: 0;
-    border: 1px solid #393939;
-    box-sizing: border-box;
     overflow-y: scroll;
   }
 
@@ -23,9 +21,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    height: 40px;
-    border: 1px solid #393939;
-    box-sizing: border-box;
+    height: 50px;
     background-color: #535353;
   }
 }
