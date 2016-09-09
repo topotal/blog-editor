@@ -38,6 +38,11 @@ export default class Article extends React.Component {
   render() {
     return (
       <div className="article">
+        <ul className="toolbar panel">
+          <li><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
+          <li><i className="fa fa-picture-o fa-fw"></i></li>
+          <li><i className="fa fa-picture-o fa-fw"></i></li>
+        </ul>
         <div className="main panel">
           <Editor articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
