@@ -16,6 +16,8 @@ export default class ImageModal extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onDragOver = this._onDragOver.bind(this);
+    this._onDropImage = this._onDropImage.bind(this);
     this._onClickCancel = this._onClickCancel.bind(this);
     this._onClickDecision = this._onClickDecision.bind(this);
     this._onSuccessGetImage = this._onSuccessGetImage.bind(this);
@@ -54,7 +56,7 @@ export default class ImageModal extends React.Component {
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={classes} ref="imageModal">
-        <ul className="panel">
+        <ul className="panel" onDragOver={this._onDragOver} onDrop={this._onDropImage}>
           {imageBoxes}
         </ul>
         <div className="imageListFooter">
@@ -91,5 +93,21 @@ export default class ImageModal extends React.Component {
     this.setState({
       images: event.data.images
     });
+  }
+
+  /**
+   * 画像をドラッグ時のハンドラーです。
+   */
+  _onDragOver(event) {
+    // ブラウザのドラッグ動作を制御
+    event.preventDefault();
+  }
+
+  /**
+   * 画像ドロップ時のハンドラーです。
+   */
+  _onDropImage(event) {
+    event.preventDefault();
+    console.info(event.dataTransfer);
   }
 }
