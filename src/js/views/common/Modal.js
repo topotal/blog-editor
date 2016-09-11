@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 /**
  * モーダルクラスです。
@@ -14,19 +15,12 @@ export default class Modal extends React.Component {
   }
 
   /**
-   * マウントされた際のハンドラーです。
-   */
-  componentDidMount() {
-    let main = this.refs.main;
-    main.classList.add(this.props.className);
-  }
-
-  /**
    * 描画します。
    */
   render() {
+    let classes = classNames('modal', this.props.className);
     return (
-      <div className="modal" ref="main">
+      <div className={classes} ref="main">
         <div className="modalWrapper">
           <div className="modalHeader">{this.props.title || モーダルウィンドウ}</div>
           <div className="modalContent">
