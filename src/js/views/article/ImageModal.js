@@ -16,6 +16,7 @@ export default class ImageModal extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onClickBox = this._onClickBox.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onDropImage = this._onDropImage.bind(this);
     this._onClickCancel = this._onClickCancel.bind(this);
@@ -38,7 +39,8 @@ export default class ImageModal extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      active: nextProps.active
+      active: nextProps.active,
+      selectedId: null
     });
   }
 
@@ -48,8 +50,9 @@ export default class ImageModal extends React.Component {
   render() {
     let classes = classNames('imageList', {'active': this.state.active});
     let imageBoxes = this.state.images.map((imageData, index) => {
+      let selected = this.state.selectedId == imageData.id;
       return (
-        <ImageBox data={imageData} key={index} />
+        <ImageBox data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
       );
     });
 
@@ -109,5 +112,14 @@ export default class ImageModal extends React.Component {
   _onDropImage(event) {
     event.preventDefault();
     console.info(event.dataTransfer);
+  }
+
+  /**
+   * 画像クリック時のハンドラーです。
+   */
+  _onClickBox(imageData) {
+    this.setState({
+      selectedId: imageData.id
+    });
   }
 }

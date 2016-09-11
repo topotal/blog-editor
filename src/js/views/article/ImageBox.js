@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import ApiParam from '../../enum/ApiParam';
 
 /**
@@ -12,17 +13,43 @@ export default class ImageBox extends React.Component {
    */
   constructor(props) {
     super(props);
+
+    this._onClick = this._onClick.bind(this);
+
+    this.state = {
+      selected: this.props.selected
+    };
+  }
+
+  /**
+   * propが変更された際のハンドラー
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selected: nextProps.selected
+    });
   }
 
   /**
    * 描画します。
    */
   render() {
+    let classes = classNames('imageBox', {
+      selected: this.state.selected
+    });
     return (
-      <li className="imageBox">
-        <img src={ApiParam.getImagePath() + this.props.data.path} alt="" />
+      <li className={classes} onClick={this._onClick}>
+        <img src={ApiParam.getImagePath() + this.props.data.path} alt=""/>
+        <i className="check fa fa-check-circle fa-fw"></i>
       </li>
     );
   }
 
+  /**
+   * クリック時のハンドラーです。
+   */
+  _onClick() {
+    console.info(this.props);
+    this.props.onClick(this.props.data);
+  }
 }
