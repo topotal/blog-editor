@@ -15,6 +15,8 @@ class App extends React.Component {
   constructor(prop) {
     super(prop);
 
+    this._onDrop = this._onDrop.bind(this);
+    this._onDragOver = this._onDragOver.bind(this);
     this._onSelectRow = this._onSelectRow.bind(this);
     this._onClickBackTop = this._onClickBackTop.bind(this);
 
@@ -28,7 +30,7 @@ class App extends React.Component {
    */
   render() {
     return (
-      <div className="app">
+      <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
         // ヘッダー
         <div className="header">
           {
@@ -67,6 +69,20 @@ class App extends React.Component {
     this.setState({
       articleData: null
     });
+  }
+
+  /**
+   * ドラッグオーバーされた際のハンドラーです。
+   */
+  _onDragOver(event) {
+    event.preventDefault();
+  }
+
+  /**
+   * ドロップされた際のハンドラーです。
+   */
+  _onDrop(event) {
+    event.preventDefault();
   }
 }
 

@@ -16,6 +16,7 @@ export default class ImageModal extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onDragOut = this._onDragOut.bind(this);
     this._onClickBox = this._onClickBox.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onDropImage = this._onDropImage.bind(this);
@@ -30,6 +31,7 @@ export default class ImageModal extends React.Component {
 
     this.state = {
       active: this.props.active,
+      dragOver: false,
       images: [],
       selectedData: null
     };
@@ -49,7 +51,10 @@ export default class ImageModal extends React.Component {
    * 描画します。
    */
   render() {
-    let classes = classNames('imageList', {'active': this.state.active});
+    let classes = classNames('imageList', {
+      active: this.state.active,
+      dragOver: this.state.dragOver
+    });
     let imageBoxes = this.state.images.map((imageData, index) => {
       let selected = this.state.selectedData == imageData;
       return (
@@ -60,9 +65,14 @@ export default class ImageModal extends React.Component {
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={classes} ref="imageModal">
-        <ul className="panel" onDragOver={this._onDragOver} onDrop={this._onDropImage}>
-          {imageBoxes}
-        </ul>
+        <div className="listWrapper panel" onDragOut={this._onDragOut} onDragOver={this._onDragOver} onDrop={this._onDropImage}>
+          <ul>
+            {imageBoxes}
+          </ul>
+          <div className="dropCover">
+            <p className="text">画像を追加</p>
+          </div>
+        </div>
         <div className="imageListFooter">
           <a className="roundButton cancel" onClick={this._onClickCancel}>
             キャンセル
@@ -104,6 +114,19 @@ export default class ImageModal extends React.Component {
   _onDragOver(event) {
     // ブラウザのドラッグ動作を制御
     event.preventDefault();
+    this.setState({
+      dragOver: true
+    });
+  }
+
+  /**
+   * 画像をドラッグし終えた際のハンドラーです。
+   */
+  _onDragOut(event) {
+    event.preventDefault();
+    this.setState({
+      dragOver: true
+    });
   }
 
   /**
@@ -111,6 +134,9 @@ export default class ImageModal extends React.Component {
    */
   _onDropImage(event) {
     event.preventDefault();
+    this.setState({
+      dragOver: false
+    });
   }
 
   /**
