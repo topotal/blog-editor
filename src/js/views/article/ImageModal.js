@@ -30,7 +30,8 @@ export default class ImageModal extends React.Component {
 
     this.state = {
       active: this.props.active,
-      images: []
+      images: [],
+      selectedData: null
     };
   }
 
@@ -40,7 +41,7 @@ export default class ImageModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       active: nextProps.active,
-      selectedId: null
+      selectedData: null
     });
   }
 
@@ -50,7 +51,7 @@ export default class ImageModal extends React.Component {
   render() {
     let classes = classNames('imageList', {'active': this.state.active});
     let imageBoxes = this.state.images.map((imageData, index) => {
-      let selected = this.state.selectedId == imageData.id;
+      let selected = this.state.selectedData == imageData;
       return (
         <ImageBox data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
       );
@@ -85,14 +86,13 @@ export default class ImageModal extends React.Component {
    * 決定ボタン押下時のハンドラーです。
    */
   _onClickDecision() {
-    this.props.onDecision();
+    this.props.onDecision(this.state.selectedData.path);
   }
 
   /**
    * 画像取得成功時のサービスクラスです。
    */
   _onSuccessGetImage(event) {
-    console.info(event.data.images)
     this.setState({
       images: event.data.images
     });
@@ -111,7 +111,6 @@ export default class ImageModal extends React.Component {
    */
   _onDropImage(event) {
     event.preventDefault();
-    console.info(event.dataTransfer);
   }
 
   /**
@@ -119,7 +118,7 @@ export default class ImageModal extends React.Component {
    */
   _onClickBox(imageData) {
     this.setState({
-      selectedId: imageData.id
+      selectedData: imageData
     });
   }
 }

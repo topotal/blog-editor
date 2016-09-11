@@ -57,7 +57,7 @@ export default class Article extends React.Component {
 
         // エディターメインパネル
         <div className="main panel">
-          <Editor articleData={this.state.articleData} onChange={this._onChange} />
+          <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
 
@@ -142,10 +142,11 @@ export default class Article extends React.Component {
    * 画像モーダルの決定ボタン押下時の
    * ハンドラーです。
    */
-  _onDecisionImage() {
+  _onDecisionImage(path) {
     this.setState({
       activeImageModal: false
     });
+    this.refs.editor.insertImage(path);
   }
  }
 

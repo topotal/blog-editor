@@ -1,4 +1,5 @@
 import React from 'react';
+import ApiPath from '../../enum/ApiParam';
 
 /**
  * エディタークラスです。
@@ -73,7 +74,6 @@ export default class Editor extends React.Component {
    * タイトル変更時のハンドラーです。
    */
   _onChangeTitle(event) {
-    console.info(event.target.value);
     let articleData = this.state.articleData;
     articleData.title = event.target.value;
     this.setState({
@@ -92,5 +92,14 @@ export default class Editor extends React.Component {
       articleData: articleData
     });
     this.props.onChange(articleData);
+  }
+
+  /**
+   * 画像を挿入
+   */
+  insertImage(path) {
+    let imagePath = ApiPath.getImagePath() + path;
+    let markDownText = "![](" + imagePath + ")";
+    this._editor.insert(markDownText);
   }
 }
