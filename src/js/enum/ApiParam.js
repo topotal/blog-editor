@@ -10,4 +10,11 @@ export default class ApiParam {
     return "http://dev.sawa-zen.com/v1/";
   }
 
+  /**
+   * 画像パス
+   */
+  static getImagePath() {
+    return "http://dev.sawa-zen.com/";
+  }
+
 }

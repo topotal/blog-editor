@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Modal from '../common/Modal';
+import ImageBox from './ImageBox';
+import GetImagesService from '../../services/GetImagesService';
 
 /**
  * 画像モーダルクラスです。
@@ -16,9 +18,16 @@ export default class ImageModal extends React.Component {
 
     this._onClickCancel = this._onClickCancel.bind(this);
     this._onClickDecision = this._onClickDecision.bind(this);
+    this._onSuccessGetImage = this._onSuccessGetImage.bind(this);
+
+    // 画像取得サービス
+    this._getImagesService = new GetImagesService();
+    this._getImagesService.addEventListener('success', this._onSuccessGetImage);
+    this._getImagesService.send();
 
     this.state = {
-      active: this.props.active
+      active: this.props.active,
+      images: []
     };
   }
 
@@ -36,12 +45,17 @@ export default class ImageModal extends React.Component {
    */
   render() {
     let classes = classNames('imageList', {'active': this.state.active});
+    let imageBoxes = this.state.images.map((imageData, index) => {
+      return (
+        <ImageBox data={imageData} key={index} />
+      );
+    });
 
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={classes} ref="imageModal">
         <ul className="panel">
-          <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+          {imageBoxes}
         </ul>
         <div className="imageListFooter">
           <a className="roundButton cancel" onClick={this._onClickCancel}>
@@ -67,5 +81,15 @@ export default class ImageModal extends React.Component {
    */
   _onClickDecision() {
     this.props.onDecision();
+  }
+
+  /**
+   * 画像取得成功時のサービスクラスです。
+   */
+  _onSuccessGetImage(event) {
+    console.info(event.data.images)
+    this.setState({
+      images: event.data.images
+    });
   }
 }
