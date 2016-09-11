@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Modal from '../common/Modal';
 import ImageBox from './ImageBox';
 import GetImagesService from '../../services/GetImagesService';
+import UploadImageService from '../../services/SaveArticleService';
 
 /**
  * 画像モーダルクラスです。
@@ -23,11 +24,16 @@ export default class ImageModal extends React.Component {
     this._onClickCancel = this._onClickCancel.bind(this);
     this._onClickDecision = this._onClickDecision.bind(this);
     this._onSuccessGetImage = this._onSuccessGetImage.bind(this);
+    this._onSuccessUploadImage = this._onSuccessUploadImage.bind(this);
 
     // 画像取得サービス
     this._getImagesService = new GetImagesService();
     this._getImagesService.addEventListener('success', this._onSuccessGetImage);
     this._getImagesService.send();
+
+    // 画像アップサービス
+    this._uploadImageService = new UploadImageService();
+    this._uploadImageService.addEventListener('success', this._onSuccessUploadImage);
 
     this.state = {
       active: this.props.active,
@@ -65,11 +71,11 @@ export default class ImageModal extends React.Component {
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={classes} ref="imageModal">
-        <div className="listWrapper panel" onDragOut={this._onDragOut} onDragOver={this._onDragOver} onDrop={this._onDropImage}>
+        <div className="listWrapper panel" onDragEnter={this._onDragOver} onDrop={this._onDropImage}>
           <ul>
             {imageBoxes}
           </ul>
-          <div className="dropCover">
+          <div className="dropCover" onDragLeave={this._onDragOut}>
             <p className="text">画像を追加</p>
           </div>
         </div>
@@ -100,7 +106,7 @@ export default class ImageModal extends React.Component {
   }
 
   /**
-   * 画像取得成功時のサービスクラスです。
+   * 画像取得成功時のハンドラーです。
    */
   _onSuccessGetImage(event) {
     this.setState({
@@ -109,11 +115,20 @@ export default class ImageModal extends React.Component {
   }
 
   /**
+   * 画像アップ成功時の
+   */
+  _onSuccessUploadImage(event) {
+    console.info(event);
+  }
+
+  /**
    * 画像をドラッグ時のハンドラーです。
    */
   _onDragOver(event) {
     // ブラウザのドラッグ動作を制御
     event.preventDefault();
+    event.stopPropagation();
+    console.info("enter")
     this.setState({
       dragOver: true
     });
@@ -124,8 +139,10 @@ export default class ImageModal extends React.Component {
    */
   _onDragOut(event) {
     event.preventDefault();
+    event.stopPropagation();
+    console.info("dragout");
     this.setState({
-      dragOver: true
+      dragOver: false
     });
   }
 
@@ -137,6 +154,7 @@ export default class ImageModal extends React.Component {
     this.setState({
       dragOver: false
     });
+    console.info(event);
   }
 
   /**
