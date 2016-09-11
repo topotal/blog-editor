@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
+import Modal from '../common/Modal';
 import ArticleModel from '../../models/ArticleModel';
 import SaveArticleService from '../../services/SaveArticleService';
 
@@ -38,15 +39,39 @@ export default class Article extends React.Component {
   render() {
     return (
       <div className="article">
+        // 画像選択ウィンドウ
+        <Modal title="画像選択" className="imageList">
+          <ul className="panel">
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+            <li><img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="" /></li>
+          </ul>
+          <div className="imageListFooter">
+            <a className="roundButton cancel">キャンセル</a>
+            <a className="roundButton">決定</a>
+          </div>
+        </Modal>
+
+        // ツールバー
         <ul className="toolbar panel">
           <li><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
-          <li><i className="fa fa-picture-o fa-fw"></i></li>
-          <li><i className="fa fa-picture-o fa-fw"></i></li>
         </ul>
+
+        // エディターメインパネル
         <div className="main panel">
           <Editor articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
+
+        // フッターパネル
         <div className="footer panel">
           <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
         </div>

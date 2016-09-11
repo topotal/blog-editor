@@ -1,0 +1,54 @@
+$LI_WIDTH: 143px;
+
+.imageList {
+  ul {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 65px;
+    margin: 0;
+    padding: 10px 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    box-sizing: border-box;
+    background-color: $DARK_BLACK;
+    overflow-y: scroll;
+
+    li {
+      display: block;
+      width: $LI_WIDTH;
+      height: $LI_WIDTH;
+      line-height: $LI_WIDTH;
+      background-color: #333;
+      border: 1px solid rgba(0, 0, 0, 0);
+      margin: 0 10px 10px 0;
+
+      img {
+        max-width: $LI_WIDTH;
+        max-height: $LI_WIDTH;
+      }
+
+      &:hover {
+        border: 1px solid #CCC;
+      }
+    }
+  }
+
+  .imageListFooter {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .roundButton {
+      margin-left: 10px;
+    }
+  }
+}

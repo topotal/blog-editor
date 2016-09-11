@@ -29,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        // ヘッダー
         <div className="header">
           {
             this.state.articleData ?
@@ -37,6 +38,8 @@ class App extends React.Component {
               </button> : null
           }
         </div>
+
+        // コンテンツ
         <div className="content">
           {
             this.state.articleData ?

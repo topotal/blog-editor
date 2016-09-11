@@ -1,0 +1,49 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modalWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 800px;
+    max-height: 500px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+    border: 1px solid $BORDER_BLACK;
+    background-color: $PANEL_BACK_BLACK;
+    overflow: hidden;
+
+    .modalHeader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      line-height: 20px;
+      font-size: 0.7em;
+      text-align: center;
+      border-bottom: 1px solid $BORDER_BLACK;
+      background-color: $PANEL_BACK_BLACK;
+      box-sizing: border-box;
+    }
+
+    .modalContent {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
