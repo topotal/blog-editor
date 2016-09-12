@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Modal from '../common/Modal';
 import ImageBox from './ImageBox';
 import GetImagesService from '../../services/GetImagesService';
-import UploadImageService from '../../services/SaveArticleService';
+import UploadImageService from '../../services/UploadImageService';
 
 /**
  * 画像モーダルクラスです。
@@ -118,7 +118,8 @@ export default class ImageModal extends React.Component {
    * 画像アップ成功時の
    */
   _onSuccessUploadImage(event) {
-    console.info(event);
+    // リストを更新
+    this._getImagesService.send();
   }
 
   /**
@@ -127,8 +128,6 @@ export default class ImageModal extends React.Component {
   _onDragOver(event) {
     // ブラウザのドラッグ動作を制御
     event.preventDefault();
-    event.stopPropagation();
-    console.info("enter")
     this.setState({
       dragOver: true
     });
@@ -139,8 +138,6 @@ export default class ImageModal extends React.Component {
    */
   _onDragOut(event) {
     event.preventDefault();
-    event.stopPropagation();
-    console.info("dragout");
     this.setState({
       dragOver: false
     });
@@ -154,7 +151,10 @@ export default class ImageModal extends React.Component {
     this.setState({
       dragOver: false
     });
-    console.info(event);
+    let file = event.dataTransfer.files[0];
+    let formData = new FormData();
+    formData.append('file', file);
+    this._uploadImageService.send(formData);
   }
 
   /**

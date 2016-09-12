@@ -1,4 +1,5 @@
 import EventDispatcher from '../core/EventDispatcher';
+import ApiParam from '../enum/ApiParam';
 
 /**
  * 画像アップロードサービスクラスです。
@@ -27,9 +28,12 @@ export default class UploadImageService extends EventDispatcher {
       contentType: false,
       url: this._path,
       data: data,
-      success: this._onComplete,
-      dataType: 'json',
+      dataType: 'text',
       crossDomain: true
+    })
+    .done(this._onComplete)
+    .fail(function( jqXHR, textStatus, errorThrown ) {
+      console.log( 'ERROR', jqXHR, textStatus, errorThrown );
     });
   }
 
@@ -37,9 +41,7 @@ export default class UploadImageService extends EventDispatcher {
    * リクエストが完了した際のハンドラーです。
    */
   _onComplete(response, result) {
-    console.info(response);
-    // let data = new GetImagesResponse(response);
-    // // 成功イベントを発火
-    // this.dispatchEvent('success', {data: data});
+    // 成功イベントを発火
+    this.dispatchEvent('success', {});
   }
 }
