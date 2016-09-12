@@ -29,7 +29,6 @@ export default class ImageModal extends React.Component {
     // 画像取得サービス
     this._getImagesService = new GetImagesService();
     this._getImagesService.addEventListener('success', this._onSuccessGetImage);
-    this._getImagesService.send();
 
     // 画像アップサービス
     this._uploadImageService = new UploadImageService();
@@ -51,6 +50,16 @@ export default class ImageModal extends React.Component {
       active: nextProps.active,
       selectedData: null
     });
+
+    if(nextProps.active) {
+      // アクティブになったら画像リストを取得する
+      this._getImagesService.send();
+    } else {
+      // 非アクティブになったら一覧をクリア
+      this.setState({
+        images: []
+      });
+    }
   }
 
   /**
