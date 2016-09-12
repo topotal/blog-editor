@@ -57,10 +57,13 @@ export default class ImageModal extends React.Component {
    * 描画します。
    */
   render() {
-    let classes = classNames('imageList', {
+    // モーダルのクラス郡
+    let modalClasses = classNames('imageList', {
       active: this.state.active,
       dragOver: this.state.dragOver
     });
+
+    // 画像ボックスリスト
     let imageBoxes = this.state.images.map((imageData, index) => {
       let selected = this.state.selectedData == imageData;
       return (
@@ -68,9 +71,14 @@ export default class ImageModal extends React.Component {
       );
     });
 
+    // 決定ボタンクラス郡
+    let devisionClasses = classNames('roundButton', {
+      clickDisable: !this.state.selectedData
+    });
+
     return (
       // 画像選択ウィンドウ
-      <Modal title="画像選択" className={classes} ref="imageModal">
+      <Modal title="画像選択" className={modalClasses} ref="imageModal">
         <div className="listWrapper panel" onDragEnter={this._onDragOver} onDrop={this._onDropImage}>
           <ul>
             {imageBoxes}
@@ -83,7 +91,7 @@ export default class ImageModal extends React.Component {
           <a className="roundButton cancel" onClick={this._onClickCancel}>
             キャンセル
           </a>
-          <a className="roundButton" onClick={this._onClickDecision}>
+          <a className={devisionClasses} onClick={this._onClickDecision}>
             決定
           </a>
         </div>

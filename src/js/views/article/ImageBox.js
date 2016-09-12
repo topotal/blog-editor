@@ -49,7 +49,6 @@ export default class ImageBox extends React.Component {
    * クリック時のハンドラーです。
    */
   _onClick() {
-    console.info(this.props);
     this.props.onClick(this.props.data);
   }
 }

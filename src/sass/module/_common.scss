@@ -53,4 +53,9 @@ body {
     border: 1px solid #CCC;
     color: #CCC;
   }
+
+  &.clickDisable {
+    opacity: 0.2;
+    pointer-events: none;
+  }
 }
