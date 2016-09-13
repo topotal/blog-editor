@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Article from './views/article/Article';
 import ArticleList from './views/articleList/ArticleList';
+import Aside from './views/aside/Aside';
 
 /**
  * メインクラスです。
@@ -31,7 +32,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
-        // ヘッダー
         <div className="header">
           {
             this.state.articleData ?
@@ -40,8 +40,7 @@ class App extends React.Component {
               </button> : null
           }
         </div>
-
-        // コンテンツ
+        <Aside onClick={this._onClickAside} />
         <div className="content">
           {
             this.state.articleData ?
