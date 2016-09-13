@@ -4,6 +4,11 @@
   left: 5px;
   bottom: 5px;
   margin: 0;
-  padding: 0;
+  padding: 1px 0 0 0;
   width: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
 }

@@ -52,7 +52,7 @@ export default class Article extends React.Component {
 
         // ツールバー
         <ul className="toolbar panel">
-          <li><i title="画像を追加" className="fa fa-picture-o fa-fw" onClick={this._onClickAddImage}></i></li>
+          <li className="toolButton"><i title="画像を追加" className="fa fa-picture-o fa-fw" onClick={this._onClickAddImage}></i></li>
         </ul>
 
         // エディターメインパネル
