@@ -33,12 +33,6 @@ class App extends React.Component {
     return (
       <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
         <div className="header">
-          {
-            this.state.articleData ?
-              <button className="button" onClick={this._onClickBackTop}>
-                一覧に戻る
-              </button> : null
-          }
         </div>
         <Aside onClick={this._onClickAside} />
         <div className="content">

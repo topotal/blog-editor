@@ -37,7 +37,7 @@ $ROW_HEIGHT: 40px;
   }
 
   .updatedAt {
-    right: 200px;
+    right: 150px;
     line-height: $ROW_HEIGHT;
     color: #DDD;
     font-size: 0.7em;
@@ -48,9 +48,9 @@ $ROW_HEIGHT: 40px;
     right: 20px;
     bottom: 0px;
     margin: auto;
-    width: 100px;
-    height: 40px;
-    border: 1px solid #00FFFF;
+    width: 60px;
+    height: 20px;
+    border: 1px solid #2ecc71;
     border-radius: 5px;
     box-sizing: border-box;
   }
