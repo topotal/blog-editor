@@ -1,4 +1,5 @@
 import React from 'react';
+import AsideItemData from '../../models/vo/AsideItemData';
 
 /**
  * サイドバークラスです。
@@ -12,17 +13,24 @@ export default class Aside extends React.Component {
   constructor(props) {
     super(props);
 
-    this._onClick = this._onClick.bind(this);
+    this._onClickItem = this._onClickItem.bind(this);
   }
 
   /**
    * 描画します。
    */
   render() {
+    let items = AsideItemData.LIST.map((itemData, index) => {
+      return (
+        <li className="toolButton" onClick={this._onClickItem} key={index} data-type={itemData.type}>
+          <i title={itemData.title} className={"fa " + itemData.icon + " fa-fw"} ></i>
+        </li>
+      );
+    });
+
     return (
-      <ul className="aside panel" onClick={this._onClick}>
-        <li className="toolButton"><i title="新規作成" className="fa fa-pencil-square-o fa-fw" ></i></li>
-        <li className="toolButton"><i title="記事一覧" className="fa fa-list fa-fw" ></i></li>
+      <ul className="aside panel">
+        {items}
       </ul>
     );
   }
@@ -30,7 +38,7 @@ export default class Aside extends React.Component {
   /**
    * クリック時のハンドラーです。
    */
-  _onClick(event) {
-    console.info(event);
+  _onClickItem(event) {
+    console.info(event.currentTarget.dataset.type);
   }
 }
