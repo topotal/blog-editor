@@ -50,18 +50,15 @@ export default class Article extends React.Component {
           onDecision={this._onDecisionImage}
         />
 
-        // ツールバー
         <ul className="toolbar panel">
           <li className="toolButton" onClick={this._onClickAddImage}><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
         </ul>
 
-        // エディターメインパネル
         <div className="main panel">
           <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
 
-        // フッターパネル
         <div className="footer panel">
           <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
         </div>
