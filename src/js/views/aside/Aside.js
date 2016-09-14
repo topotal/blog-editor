@@ -39,6 +39,8 @@ export default class Aside extends React.Component {
    * クリック時のハンドラーです。
    */
   _onClickItem(event) {
-    console.info(event.currentTarget.dataset.type);
+    let target = event.currentTarget;
+    // 変更イベントを発火
+    this.props.onClick(target.dataset.type)
   }
 }

@@ -19,10 +19,12 @@ class App extends React.Component {
     this._onDrop = this._onDrop.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onSelectRow = this._onSelectRow.bind(this);
+    this._onClickAside = this._onClickAside.bind(this);
     this._onClickBackTop = this._onClickBackTop.bind(this);
 
     this.state = {
-      articleData: null
+      articleData: null,
+      currentPage: 'articles'
     };
   }
 
@@ -30,6 +32,13 @@ class App extends React.Component {
    * 描画します。
    */
   render() {
+    let getContent = () => {
+      switch (this.state.currentPage) {
+        case 'new': return ( <Article articleData={this.state.articleData} /> );
+        case 'articles': return ( <ArticleList onSelectRow={this._onSelectRow} /> );
+      }
+    };
+
     return (
       <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
         <div className="header">
@@ -37,11 +46,7 @@ class App extends React.Component {
         </div>
         <Aside onClick={this._onClickAside} />
         <div className="content">
-          {
-            this.state.articleData ?
-              <Article articleData={this.state.articleData} /> :
-              <ArticleList onSelectRow={this._onSelectRow} />
-          }
+          {getContent()}
         </div>
       </div>
     );
@@ -52,7 +57,8 @@ class App extends React.Component {
    */
   _onSelectRow(articleData) {
     this.setState({
-      articleData: articleData
+      articleData: articleData,
+      currentPage: 'new'
     });
   }
 
@@ -77,6 +83,15 @@ class App extends React.Component {
    */
   _onDrop(event) {
     event.preventDefault();
+  }
+
+  /**
+   * サイドバーのアイテムクリック時のハンドラーです。
+   */
+  _onClickAside(type) {
+    this.setState({
+      currentPage: type
+    });
   }
 }
 
