@@ -27,7 +27,6 @@ export default class Article extends React.Component {
     this._saveService = new SaveArticleService();
 
     this._onChange = this._onChange.bind(this);
-    this._onClickSave = this._onClickSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
     this._onClickAddImage = this._onClickAddImage.bind(this);
@@ -58,10 +57,6 @@ export default class Article extends React.Component {
           <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
-
-        <div className="footer panel">
-          <button className="button" onClick={this._onClickSave}>保存（⌘+S）</button>
-        </div>
       </div>
     );
   }
@@ -71,13 +66,6 @@ export default class Article extends React.Component {
    */
   _onChange(articleData) {
     this.setState({ articleData: articleData });
-  }
-
-  /**
-   * 保存ボタンクリック時のハンドラーです。
-   */
-  _onClickSave() {
-    this._save();
   }
 
   /**

@@ -4,13 +4,11 @@
 export default class AsideItemData {
 
   /** 各アイテム */
-  static get NEW()      {  return new AsideItemData('new',       'fa-pencil-square-o', '新規作成') }
   static get ARTICLES() {  return new AsideItemData('articles',  'fa-list',            '記事一覧') }
 
   /** アイテムリスト */
   static get LIST() {
     return [
-      AsideItemData.NEW,
       AsideItemData.ARTICLES
     ];
   }
