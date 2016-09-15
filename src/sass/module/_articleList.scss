@@ -5,12 +5,33 @@
   right: 0;
   bottom: 0;
 
-  .list {
+  .listToolbar {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 55px;
+    height: 50px;
+    border-bottom: 1px solid $BORDER_BLACK;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    .roundButton {
+      width: auto;
+      padding: 0 30px;
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .list {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 30px;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
@@ -22,6 +43,8 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    height: 50px;
+    height: 30px;
+    border-top: 1px solid $BORDER_BLACK;
+    box-sizing: border-box;
   }
 }

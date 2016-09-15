@@ -15,6 +15,7 @@ export default class ArticleList extends React.Component {
     super(props);
 
     this._onClickRow = this._onClickRow.bind(this);
+    this._onClickNew = this._onClickNew.bind(this);
     this._onSuccessGetList = this._onSuccessGetList.bind(this);
 
     this.state = {
@@ -40,12 +41,16 @@ export default class ArticleList extends React.Component {
     });
 
     return (
-      <div className="articleList">
-        <ul className="list panel">
+      <div className="articleList panel">
+        <div className="listToolbar">
+          <div className="roundButton" onClick={this._onClickNew}><i className="fa fa-file-text"/>新規作成</div>
+        </div>
+        <div className="listHeader">
+        </div>
+        <ul className="list">
           {articleRows}
         </ul>
-        <div className="listFooter panel">
-
+        <div className="listFooter">
         </div>
       </div>
     );
@@ -56,6 +61,12 @@ export default class ArticleList extends React.Component {
    */
   _onClickRow(articleData) {
     this.props.onSelectRow(articleData);
+  }
+
+  /**
+   * 新規作成ボタン押下時のハンドラーです。
+   */
+  _onClickNew() {
   }
 
   /**
