@@ -37,8 +37,17 @@ export default class Article extends React.Component {
    */
   render() {
     return (
-      <div className="article">
-        <div className="main panel">
+      <div className="article panel">
+        <div className="articleFooter">
+          <lebel className="public">
+            公開設定：
+            <select onChange={this._onChangePublic}>
+              <option value="draft">下書き</option>
+              <option value="publish">公開</option>
+            </select>
+          </lebel>
+        </div>
+        <div className="main">
           <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
         </div>
