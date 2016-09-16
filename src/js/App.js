@@ -17,6 +17,7 @@ class App extends React.Component {
     super(prop);
 
     this._onDrop = this._onDrop.bind(this);
+    this._onClickNew = this._onClickNew.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onSelectRow = this._onSelectRow.bind(this);
     this._onClickAside = this._onClickAside.bind(this);
@@ -34,8 +35,8 @@ class App extends React.Component {
   render() {
     let getContent = () => {
       switch (this.state.currentPage) {
-        case 'new': return ( <Article articleData={this.state.articleData} /> );
-        case 'articles': return ( <ArticleList onSelectRow={this._onSelectRow} /> );
+        case 'editor': return ( <Article articleData={this.state.articleData} /> );
+        case 'articles': return ( <ArticleList onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
       }
     };
 
@@ -58,7 +59,17 @@ class App extends React.Component {
   _onSelectRow(articleData) {
     this.setState({
       articleData: articleData,
-      currentPage: 'new'
+      currentPage: 'editor'
+    });
+  }
+
+  /**
+   * 新規作成ボタン押下時のハンドラーです。
+   */
+  _onClickNew() {
+    this.setState({
+      articleData: null,
+      currentPage: 'editor'
     });
   }
 

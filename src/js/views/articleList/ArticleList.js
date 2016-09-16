@@ -67,6 +67,7 @@ export default class ArticleList extends React.Component {
    * 新規作成ボタン押下時のハンドラーです。
    */
   _onClickNew() {
+    this.props.onClickNew();
   }
 
   /**
