@@ -1,8 +1,8 @@
 .aside {
   position: absolute;
-  top: 50px;
-  left: 5px;
-  bottom: 5px;
+  top: 45px + $PANEL_MARGIN;
+  left: $PANEL_MARGIN;
+  bottom: $PANEL_MARGIN;
   margin: 0;
   padding: 1px 0 0 0;
   width: 40px;

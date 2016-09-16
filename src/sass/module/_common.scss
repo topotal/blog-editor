@@ -2,6 +2,8 @@ $BORDER_BLACK: #393939;
 $PANEL_BACK_BLACK: #535353;
 $DARK_BLACK: #4d4d4d;
 
+$PANEL_MARGIN: 2px;
+
 html, body, #main {
   width: 100%;
   height: 100%;
@@ -24,10 +26,10 @@ body {
 
   .content {
     position: absolute;
-    top: 50px;
-    left: 50px;
-    right: 5px;
-    bottom: 5px;
+    top: 45px + $PANEL_MARGIN;
+    left: 40px + ($PANEL_MARGIN * 2);
+    right: $PANEL_MARGIN;
+    bottom: $PANEL_MARGIN;
     box-sizing: border-box;
   }
 }
