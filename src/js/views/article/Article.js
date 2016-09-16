@@ -4,7 +4,6 @@ import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
 import SaveArticleService from '../../services/SaveArticleService';
-import ImageModal from './ImageModal';
 
 /**
  * 記事クラス
@@ -19,8 +18,7 @@ export default class Article extends React.Component {
     super(props);
 
     this.state = {
-      articleData: this.props.articleData || new ArticleModel(),
-      activeImageModal: false
+      articleData: this.props.articleData || new ArticleModel()
     };
 
     // 記事作成サービス
@@ -29,9 +27,6 @@ export default class Article extends React.Component {
     this._onChange = this._onChange.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
-    this._onClickAddImage = this._onClickAddImage.bind(this);
-    this._onCancelImage = this._onCancelImage.bind(this);
-    this._onDecisionImage = this._onDecisionImage.bind(this);
 
     this._saveService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
@@ -43,16 +38,6 @@ export default class Article extends React.Component {
   render() {
     return (
       <div className="article">
-        <ImageModal
-          active={this.state.activeImageModal}
-          onCancel={this._onCancelImage}
-          onDecision={this._onDecisionImage}
-        />
-
-        <ul className="toolbar panel">
-          <li className="toolButton" onClick={this._onClickAddImage}><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
-        </ul>
-
         <div className="main panel">
           <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
           <Preview articleData={this.state.articleData}/>
@@ -103,35 +88,4 @@ export default class Article extends React.Component {
       articleData: data.articleData
     });
   }
-
-  /**
-   * 画像追加ボタン押下時のハンドラーです。
-   */
-  _onClickAddImage() {
-    this.setState({
-      activeImageModal: true
-    });
-  }
-
-  /**
-   * 画像モーダルのキャンセルボタン押下時の
-   * ハンドラーです。
-   */
-  _onCancelImage() {
-    this.setState({
-      activeImageModal: false
-    });
-  }
-
-  /**
-   * 画像モーダルの決定ボタン押下時の
-   * ハンドラーです。
-   */
-  _onDecisionImage(path) {
-    this.setState({
-      activeImageModal: false
-    });
-    this.refs.editor.insertImage(path);
-  }
  }
-

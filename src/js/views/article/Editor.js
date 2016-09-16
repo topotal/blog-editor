@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiPath from '../../enum/ApiParam';
+import ImageModal from './ImageModal';
 
 /**
  * エディタークラスです。
@@ -15,9 +16,13 @@ export default class Editor extends React.Component {
 
     this._onChangeTitle = this._onChangeTitle.bind(this);
     this._onChangeEditor = this._onChangeEditor.bind(this);
+    this._onClickAddImage = this._onClickAddImage.bind(this);
+    this._onCancelImage = this._onCancelImage.bind(this);
+    this._onDecisionImage = this._onDecisionImage.bind(this);
 
     this.state = {
-      articleData: this.props.articleData
+      articleData: this.props.articleData,
+      activeImageModal: false
     };
   }
 
@@ -54,6 +59,13 @@ export default class Editor extends React.Component {
   render() {
     return (
       <div className="editor">
+
+        <ImageModal
+          active={this.state.activeImageModal}
+          onCancel={this._onCancelImage}
+          onDecision={this._onDecisionImage}
+        />
+
         <div className="title">
           <input
             type="text"
@@ -64,8 +76,12 @@ export default class Editor extends React.Component {
             onChange={this._onChangeTitle}
           />
         </div>
-        <div id="ace">
-        </div>
+
+        <ul className="toolbar">
+          <li className="toolButton" onClick={this._onClickAddImage}><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
+        </ul>
+
+        <div id="ace"></div>
       </div>
     );
   }
@@ -95,9 +111,32 @@ export default class Editor extends React.Component {
   }
 
   /**
-   * 画像を挿入
+   * 画像追加ボタン押下時のハンドラーです。
    */
-  insertImage(path) {
+  _onClickAddImage() {
+    this.setState({
+      activeImageModal: true
+    });
+  }
+
+  /**
+   * 画像モーダルのキャンセルボタン押下時の
+   * ハンドラーです。
+   */
+  _onCancelImage() {
+    this.setState({
+      activeImageModal: false
+    });
+  }
+
+  /**
+   * 画像モーダルの決定ボタン押下時の
+   * ハンドラーです。
+   */
+  _onDecisionImage(path) {
+    this.setState({
+      activeImageModal: false
+    });
     let imagePath = ApiPath.getImagePath() + path;
     let markDownText = "![](" + imagePath + ")";
     this._editor.insert(markDownText);
