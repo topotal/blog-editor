@@ -12,16 +12,22 @@
     right: 0;
     height: 60px;
     padding: 10px;
-    background-color: #CCC;
+    background-color: $PANEL_BACK_BLACK;
     color: #000;
 
     input {
       width: 100%;
       line-height: 40px;
-      padding: 0;
+      padding: 0 10px;
       border: 0;
-      border-radius: 3px;
       box-sizing: border-box;
+      background: transparent;
+      border-bottom: 1px solid #CCC;
+      color: #FFF;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
