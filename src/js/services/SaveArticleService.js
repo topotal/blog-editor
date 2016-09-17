@@ -29,7 +29,7 @@ export default class SaveArticleService extends EventDispatcher {
         id: data.id,
         title: data.title,
         content: data.content,
-        eye_catching: "asdfas"
+        publish_status: data.publishStatus
       },
       success: this._onComplete,
       dataType: 'json',

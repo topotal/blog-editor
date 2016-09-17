@@ -25,8 +25,9 @@ export default class Article extends React.Component {
     this._saveService = new SaveArticleService();
 
     this._onChange = this._onChange.bind(this);
-    this._onPressCommandS = this._onPressCommandS.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
+    this._onChangePublic = this._onChangePublic.bind(this);
+    this._onPressCommandS = this._onPressCommandS.bind(this);
 
     this._saveService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
@@ -43,6 +44,7 @@ export default class Article extends React.Component {
             公開設定：
             <select onChange={this._onChangePublic}>
               <option value="draft">下書き</option>
+              <option value="private">非公開</option>
               <option value="publish">公開</option>
             </select>
           </lebel>
@@ -95,6 +97,19 @@ export default class Article extends React.Component {
     let data = event.data;
     this.setState({
       articleData: data.articleData
+    });
+  }
+
+  /**
+   * 公開設定を変更した際のハンドラーです。
+   */
+  _onChangePublic(event) {
+    console.info(event.target.value);
+    let publishStatus = event.target.value;
+    let articleData = this.state.articleData;
+    articleData.publishStatus = publishStatus;
+    this.setState({
+      articleData: articleData
     });
   }
  }

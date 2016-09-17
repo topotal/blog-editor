@@ -12,6 +12,9 @@ export default class ArticleModel {
   /** 内容 */
   get content() { return this._content; }
   set content(content) { this._content = content; }
+  /** 公開設定 */
+  get publishStatus() { return this._publishStatus; }
+  set publishStatus(status) { this._publishStatus = status; }
   /** 作成日 */
   get createdAt() { return this._createdAt; }
   set createdAt(date) { this._createdAt = date; }
@@ -23,10 +26,11 @@ export default class ArticleModel {
    * コンストラクター
    * @constructor
    */
-  constructor(id, title, content, createdAt, updatedAt) {
+  constructor(id, title, content, publishStatus, createdAt, updatedAt) {
     this._id = id;
     this._title = title;
     this._content = content;
+    this._publishStatus = publishStatus || 'draft';
     this._createdAt = createdAt;
     this._updatedAt = updatedAt;
   }
