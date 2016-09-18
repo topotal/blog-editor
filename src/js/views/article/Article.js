@@ -4,6 +4,7 @@ import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
 import SaveArticleService from '../../services/SaveArticleService';
+import PublishStatusData from '../../models/vo/PublishStatusData';
 
 /**
  * 記事クラス
@@ -37,15 +38,19 @@ export default class Article extends React.Component {
    * 描画します。
    */
   render() {
+    let options = PublishStatusData.LIST.map((data, index) => {
+      return (
+        <option value={data.type} key={index}>{data.text}</option>
+      );
+    });
+
     return (
       <div className="article panel">
         <div className="articleFooter">
           <lebel className="public">
             公開設定：
             <select onChange={this._onChangePublic}>
-              <option value="draft">下書き</option>
-              <option value="private">非公開</option>
-              <option value="publish">公開</option>
+              {options}
             </select>
           </lebel>
         </div>

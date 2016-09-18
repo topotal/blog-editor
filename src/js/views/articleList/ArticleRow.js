@@ -34,7 +34,7 @@ export default class ArticleRow extends React.Component {
         <div className="id">{data.id}</div>
         <div className="title">{data.title || "未タイトル"}</div>
         <div className="updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
-        <div className="status"></div>
+        <div className="status">{data.publishStatus}</div>
       </li>
     );
   }
