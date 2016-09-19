@@ -49,7 +49,7 @@ export default class Article extends React.Component {
         <div className="articleFooter">
           <lebel className="public">
             公開設定：
-            <select onChange={this._onChangePublic}>
+            <select className="mousetrap" onChange={this._onChangePublic}>
               {options}
             </select>
           </lebel>
