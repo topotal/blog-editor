@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import PublishStatusData from '../../models/vo/PublishStatusData';
 
 /**
  * 記事リストのRowクラスです。
@@ -29,12 +30,13 @@ export default class ArticleRow extends React.Component {
    */
   render() {
     let data = this.props.articleData;
+    let publishData = PublishStatusData.getDataByType(data.publishStatus);
     return (
       <li className="articleRow" ref="row">
         <div className="id">{data.id}</div>
         <div className="title">{data.title || "未タイトル"}</div>
         <div className="updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
-        <div className="status">{data.publishStatus}</div>
+        <div className={"status " + publishData.color}>{publishData.text}</div>
       </li>
     );
   }

@@ -109,7 +109,6 @@ export default class Article extends React.Component {
    * 公開設定を変更した際のハンドラーです。
    */
   _onChangePublic(event) {
-    console.info(event.target.value);
     let publishStatus = event.target.value;
     let articleData = this.state.articleData;
     articleData.publishStatus = publishStatus;

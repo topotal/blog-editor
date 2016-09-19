@@ -34,7 +34,7 @@ export default class GetArticlesResponse {
         article.id,
         article.title,
         article.content,
-        article.publishStatus,
+        article.publish_status,
         article.created_at,
         article.updated_at
       ));

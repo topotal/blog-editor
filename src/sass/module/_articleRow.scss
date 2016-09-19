@@ -50,8 +50,25 @@ $ROW_HEIGHT: 50px;
     margin: auto;
     width: 60px;
     height: 20px;
-    border: 1px solid #2ecc71;
+    line-height: 20px;
+    text-align: center;
+    font-size: 0.6em;
     border-radius: 5px;
     box-sizing: border-box;
+
+    &.green {
+      border: 1px solid $GREEN;
+      color: $GREEN;
+    }
+
+    &.yellow {
+      border: 1px solid $YELLOW;
+      color: $YELLOW;
+    }
+
+    &.red {
+      border: 1px solid $RED;
+      color: $RED;
+    }
   }
 }
