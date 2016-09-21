@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
         <div className="header">
-          <img className="logo" src="images/logo.png" alt="topotal" width="95" height="28" />
+          <img className="logo" src="images/logo.png" alt="topotal" width="104" height="28" />
         </div>
         <Aside onClick={this._onClickAside} />
         <div className="content">
