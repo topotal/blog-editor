@@ -25,9 +25,6 @@ export default class ArticleList extends React.Component {
     // 一覧取得サービス
     this._service = new GetArticlesService();
     this._service.addEventListener('success', this._onSuccessGetList);
-
-    // 最初の一覧を取得
-    this._service.send();
   }
 
   /**
