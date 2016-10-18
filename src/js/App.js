@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Article from './views/article/Article';
-import ArticleList from './views/articleList/ArticleList';
-import Aside from './views/aside/Aside';
+import Top from './views/top/Top';
+import Login from './views/login/Login';
 
 /**
  * メインクラスです。
@@ -17,15 +16,11 @@ class App extends React.Component {
     super(prop);
 
     this._onDrop = this._onDrop.bind(this);
-    this._onClickNew = this._onClickNew.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
-    this._onSelectRow = this._onSelectRow.bind(this);
-    this._onClickAside = this._onClickAside.bind(this);
-    this._onClickBackTop = this._onClickBackTop.bind(this);
+    this._onLogged = this._onLogged.bind(this);
 
     this.state = {
-      articleData: null,
-      currentPage: 'articles'
+      alredyLogged: false
     };
   }
 
@@ -33,52 +28,28 @@ class App extends React.Component {
    * 描画します。
    */
   render() {
+    // ステートに応じた中身を取得します。
     let getContent = () => {
-      switch (this.state.currentPage) {
-        case 'editor': return ( <Article articleData={this.state.articleData} /> );
-        case 'articles': return ( <ArticleList onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
+      if(this.state.alredyLogged) {
+        return <Top />
+      } else {
+        return <Login active={true} onLogged={this._onLogged}/>
       }
     };
 
     return (
       <div className="app" onDragOver={this._onDragOver} onDrop={this._onDrop}>
-        <div className="header">
-          <img className="logo" src="images/logo.png" alt="topotal" width="104" height="28" />
-        </div>
-        <Aside onClick={this._onClickAside} />
-        <div className="content">
-          {getContent()}
-        </div>
+        {getContent()}
       </div>
     );
   }
 
   /**
-   * 記事を選択した際のハンドラーです。
+   * ログイン時のハンドラーです。
    */
-  _onSelectRow(articleData) {
+  _onLogged() {
     this.setState({
-      articleData: articleData,
-      currentPage: 'editor'
-    });
-  }
-
-  /**
-   * 新規作成ボタン押下時のハンドラーです。
-   */
-  _onClickNew() {
-    this.setState({
-      articleData: null,
-      currentPage: 'editor'
-    });
-  }
-
-  /**
-   * 一覧へ戻るボタン押下時のハンドラーです。
-   */
-  _onClickBackTop() {
-    this.setState({
-      articleData: null
+      alredyLogged: true
     });
   }
 
@@ -94,15 +65,6 @@ class App extends React.Component {
    */
   _onDrop(event) {
     event.preventDefault();
-  }
-
-  /**
-   * サイドバーのアイテムクリック時のハンドラーです。
-   */
-  _onClickAside(type) {
-    this.setState({
-      currentPage: type
-    });
   }
 }
 
