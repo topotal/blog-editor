@@ -40,15 +40,20 @@ export default class Login extends React.Component {
 
     return (
       <Modal title="ログイン" className={modalClasses} ref="imageModal">
-          <input
-            type="text"
-            placeholder="タイトル"
-            name="title"
-            className="mousetrap"
-          />
-          <a className="roundButton submit" onClick={this._onClickSubmit}>
-            ログイン
-          </a>
+        <img className="logo" src="/images/logo_l.png" alt="topotal" width="100" height="100" />
+        <input
+          type="text"
+          placeholder="username"
+          className="textField username mousetrap"
+        />
+        <input
+          type="password"
+          placeholder="password"
+          className="textField password mousetrap"
+        />
+        <a className="roundButton submit" onClick={this._onClickSubmit}>
+          ログイン
+        </a>
       </Modal>
     );
   }

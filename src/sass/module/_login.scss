@@ -1,2 +1,44 @@
 .login {
+  text-align: center;
+  position: relative;
+
+  .modalWrapper {
+    width: 600px;
+    height: 400px;
+  }
+
+  .logo {
+    position: absolute;
+    display: block;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .username,
+  .password{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+  }
+
+  .username {
+    top: 180px;
+  }
+
+  .password {
+    top: 230px;
+  }
+
+  .submit {
+    width: 200px;
+    position: absolute;
+    top: 310px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }

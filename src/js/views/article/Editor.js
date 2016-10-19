@@ -71,7 +71,8 @@ export default class Editor extends React.Component {
             type="text"
             placeholder="タイトル"
             name="title"
-            className="mousetrap"
+            className="textField mousetrap"
+            autocomplete="on"
             value={this.state.articleData.title || ""}
             onChange={this._onChangeTitle}
           />

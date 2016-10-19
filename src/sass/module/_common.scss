@@ -87,3 +87,18 @@ body {
     pointer-events: none;
   }
 }
+
+.textField {
+  width: 100%;
+  line-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border-bottom: 1px solid #CCC;
+  color: #FFF;
+
+  &:focus {
+    outline: none;
+  }
+}
