@@ -1,4 +1,3 @@
-import ApiParam from '../../enum/ApiParam';
 import ArticleModel from '../ArticleModel';
 
 /**
