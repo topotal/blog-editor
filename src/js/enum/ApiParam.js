@@ -7,14 +7,14 @@ export default class ApiParam {
    * APIのパスを取得します。
    */
   static getPath() {
-    return "http://dev.sawa-zen.com/v1/";
+    return "http://dev.blog.topotal.com/api/v1/";
   }
 
   /**
    * 画像パス
    */
   static getImagePath() {
-    return "http://dev.sawa-zen.com/";
+    return "http://dev.blog.topotal.com/";
   }
 
 }
