@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../common/Modal';
 import classNames from 'classnames';
+import LoginService from '../../services/LoginService';
 
 /**
  * ログイン画面クラス
@@ -14,6 +15,8 @@ export default class Login extends React.Component {
     super(props);
 
     this._onClickSubmit = this._onClickSubmit.bind(this);
+
+    this._loginService = new LoginService();
 
     this.state = {
       active: this.props.active
@@ -63,6 +66,10 @@ export default class Login extends React.Component {
    */
   _onClickSubmit() {
     // ログイン済みイベント発火
-    this.props.onLogged();
+    //this.props.onLogged();
+    this._loginService.send({
+      username: 'topotan',
+      password: 'naripika'
+    });
   }
 }

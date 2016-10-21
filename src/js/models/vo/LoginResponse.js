@@ -10,7 +10,7 @@ export default class LoginResponse {
    * コンストラクター
    * @constructor
    */
-  constructor(token) {
-    this._token = token;
+  constructor(response) {
+    this._token = response.token;
   }
 }
