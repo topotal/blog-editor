@@ -20,7 +20,7 @@ class App extends React.Component {
     this._onLogged = this._onLogged.bind(this);
 
     this.state = {
-      alredyLogged: true
+      alredyLogged: false
     };
   }
 

@@ -1,11 +1,11 @@
-import EventDispatcher from '../core/EventDispatcher';
+import BaseService from './BaseService';
 import ApiParam from '../enum/ApiParam';
 import LoginResponse from '../models/vo/LoginResponse';
 
 /**
  * ログインのためのサービスクラスです。
  */
-export default class LoginService extends EventDispatcher {
+export default class LoginService extends BaseService {
 
   /**
    * コンストラクター
@@ -14,33 +14,15 @@ export default class LoginService extends EventDispatcher {
   constructor() {
     super();
 
-    this._path = ApiParam.getPath() + "users/login";
-    this._onComplete = this._onComplete.bind(this);
-  }
-
-  /**
-   * 送信します。
-   */
-  send(data) {
-    data = data || {};
-    $.ajax({
-      type: 'POST',
-      url: this._path,
-      data: JSON.stringify({
-        name: data.username,
-        password: data.password
-      }),
-      success: this._onComplete,
-      dataType: 'json',
-      crossDomain: true
-    });
+    this._method = ApiParam.POST;
+    this._path = ApiParam.getPath("users/login");
   }
 
   /**
    * リクエストが完了した際のハンドラーです。
    */
-  _onComplete(response, result) {
-    let data = new LoginResponse(response);
+  _onComplete(err, res) {
+    let data = new LoginResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }

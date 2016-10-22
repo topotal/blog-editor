@@ -11,6 +11,7 @@ export default class LoginResponse {
    * @constructor
    */
   constructor(response) {
+    console.info(response);
     this._token = response.token;
   }
 }

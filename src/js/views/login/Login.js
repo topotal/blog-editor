@@ -68,7 +68,7 @@ export default class Login extends React.Component {
     // ログイン済みイベント発火
     //this.props.onLogged();
     this._loginService.send({
-      username: 'topotan',
+      name: 'topotan',
       password: 'naripika'
     });
   }

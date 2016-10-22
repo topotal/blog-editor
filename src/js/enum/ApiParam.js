@@ -3,11 +3,16 @@
  */
 export default class ApiParam {
 
+  /** メソッド */
+  static get GET() { return 'GET'; }
+  static get POST() { return 'POST'; }
+  static get DELETE() { return 'DELETE'; }
+
   /**
    * APIのパスを取得します。
    */
-  static getPath() {
-    return "http://dev.blog.topotal.com/api/v1/";
+  static getPath(type) {
+    return "http://dev.blog.topotal.com/api/v1/" + type;
   }
 
   /**
@@ -16,5 +21,4 @@ export default class ApiParam {
   static getImagePath() {
     return "http://dev.blog.topotal.com/";
   }
-
 }
