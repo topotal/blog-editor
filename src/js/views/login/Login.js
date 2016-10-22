@@ -15,8 +15,11 @@ export default class Login extends React.Component {
     super(props);
 
     this._onClickSubmit = this._onClickSubmit.bind(this);
+    this._onSuccessLogin = this._onSuccessLogin.bind(this);
 
+    // ログインサービス
     this._loginService = new LoginService();
+    this._loginService.addEventListener('success', this._onSuccessLogin);
 
     this.state = {
       active: this.props.active
@@ -71,5 +74,12 @@ export default class Login extends React.Component {
       name: 'topotan',
       password: 'naripika'
     });
+  }
+
+  /**
+   * ログイン成功時のハンドラーです。
+   */
+  _onSuccessLogin(event) {
+    console.info(event.data);
   }
 }

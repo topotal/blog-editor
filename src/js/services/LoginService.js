@@ -21,7 +21,7 @@ export default class LoginService extends BaseService {
   /**
    * リクエストが完了した際のハンドラーです。
    */
-  _onComplete(err, res) {
+  _onSuccess(res) {
     let data = new LoginResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});

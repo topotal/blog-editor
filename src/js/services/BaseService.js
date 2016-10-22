@@ -32,6 +32,9 @@ export default class BaseService extends EventDispatcher {
     }
   }
 
+  /**
+   * GET通信
+   */
   _get(data) {
     request
       .get(this._path)
@@ -50,8 +53,32 @@ export default class BaseService extends EventDispatcher {
   }
 
   /**
+   * DELETE通信
+   */
+  _delete(data) {
+  }
+
+  /**
    * レスポンス取得時のハンドラーです。
    */
   _onComplete(err, res) {
+    // エラーの場合
+    if(err) {
+      this._onError(err, res);
+      return;
+    }
+
+    // 成功時
+    this._onSuccess(res);
   }
+
+  /**
+   * 正常なレスポンスを受け取った際のハンドラーです。
+   */
+  _onSuccess(res) {};
+
+  /**
+   * エラーを受け取った際のハンドラーです。
+   */
+  _onError(err, res) {};
 }
