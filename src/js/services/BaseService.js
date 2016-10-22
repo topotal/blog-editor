@@ -24,12 +24,19 @@ export default class BaseService extends EventDispatcher {
    * リクエストを送信します。
    */
   send(data) {
-    console.info(request);
-    console.info(this._method);
-
+    // メソッド
     switch(this._method) {
-      case ApiParam.POST: this._post(data); break;
+      case ApiParam.GET:    this._get(data); break;
+      case ApiParam.POST:   this._post(data); break;
+      case ApiParam.DELETE: this._delete(data); break;
     }
+  }
+
+  _get(data) {
+    request
+      .get(this._path)
+      .query(data)
+      .end(this._onComplete);
   }
 
   /**
@@ -42,11 +49,9 @@ export default class BaseService extends EventDispatcher {
       .end(this._onComplete);
   }
 
-
   /**
    * レスポンス取得時のハンドラーです。
    */
   _onComplete(err, res) {
-
   }
 }
