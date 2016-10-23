@@ -38,7 +38,6 @@ export default class BaseService extends EventDispatcher {
    * GET通信
    */
   _get(data) {
-    console.info('^^^^^^^^^^|||||||||||', this._userModel.token);
     request
       .get(this._path)
       .set('Authorization', 'Bearer ' + this._userModel.token)
@@ -52,6 +51,7 @@ export default class BaseService extends EventDispatcher {
   _post(data) {
     request
       .post(this._path)
+      .set('Content-Type', 'application/json')
       .send(JSON.stringify(data))
       .end(this._onComplete);
   }

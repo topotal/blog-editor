@@ -20,7 +20,7 @@ export default class GetArticlesResponse {
   constructor(response) {
     this._articles = [];
 
-    let articles = response.body.articles || [];
+    let articles = response.body || [];
     articles.forEach((article) => {
       this._articles.push(new ArticleModel(
         article.id,
