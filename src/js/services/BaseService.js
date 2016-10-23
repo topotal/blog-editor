@@ -1,6 +1,7 @@
 import EventDispatcher from '../core/EventDispatcher';
 import request from 'superagent';
 import ApiParam from '../enum/ApiParam';
+import UserModel from '../models/UserModel';
 
 /**
  * サービスのベースクラスです。
@@ -16,6 +17,7 @@ export default class BaseService extends EventDispatcher {
 
     this._method = ApiParam.GET;
     this._path = '';
+    this._userModel = UserModel.instance;
 
     this._onComplete = this._onComplete.bind(this);
   }
@@ -36,8 +38,10 @@ export default class BaseService extends EventDispatcher {
    * GET通信
    */
   _get(data) {
+    console.info('^^^^^^^^^^|||||||||||', this._userModel.token);
     request
       .get(this._path)
+      .set('Authorization', 'Bearer ' + this._userModel.token)
       .query(data)
       .end(this._onComplete);
   }

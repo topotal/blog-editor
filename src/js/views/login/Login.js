@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../common/Modal';
 import classNames from 'classnames';
 import LoginService from '../../services/LoginService';
+import UserModel from '../../models/UserModel';
 
 /**
  * ログイン画面クラス
@@ -20,6 +21,9 @@ export default class Login extends React.Component {
     // ログインサービス
     this._loginService = new LoginService();
     this._loginService.addEventListener('success', this._onSuccessLogin);
+
+    // ユーザーモデル
+    this._userModel = UserModel.instance;
 
     this.state = {
       active: this.props.active
@@ -69,7 +73,6 @@ export default class Login extends React.Component {
    */
   _onClickSubmit() {
     // ログイン済みイベント発火
-    //this.props.onLogged();
     this._loginService.send({
       name: 'topotan',
       password: 'naripika'
@@ -81,5 +84,7 @@ export default class Login extends React.Component {
    */
   _onSuccessLogin(event) {
     console.info(event.data);
+    this._userModel.token = event.data.token;
+    this.props.onLogged();
   }
 }

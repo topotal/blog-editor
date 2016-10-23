@@ -7,13 +7,6 @@ import ArticleModel from '../ArticleModel';
 export default class GetArticlesResponse {
 
   /**
-   * ステータスを返します。
-   */
-  get status() {
-    return this._status;
-  }
-
-  /**
    * 記事一覧データを返します。
    */
   get articles() {
@@ -25,10 +18,9 @@ export default class GetArticlesResponse {
    * @constructor
    */
   constructor(response) {
-    this._status = response.status;
     this._articles = [];
 
-    let articles = response.articles || [];
+    let articles = response.body.articles || [];
     articles.forEach((article) => {
       this._articles.push(new ArticleModel(
         article.id,
