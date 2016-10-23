@@ -6,13 +6,6 @@ import ArticleModel from '../ArticleModel';
 export default class SaveArticleResponse {
 
   /**
-   * ステータスを返します。
-   */
-  get status() {
-    return this._status;
-  }
-
-  /**
    * 記事データを返します。
    */
   get articleData() {
@@ -24,8 +17,6 @@ export default class SaveArticleResponse {
    * @constructor
    */
   constructor(response) {
-    this._status = response.status;
-
     let article = response.article;
     this._articleData = new ArticleModel(
       article.id,

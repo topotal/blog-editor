@@ -19,7 +19,7 @@ export default class LoginService extends BaseService {
   }
 
   /**
-   * リクエストが完了した際のハンドラーです。
+   * 正常なレスポンスを受け取った際のハンドラーです。
    */
   _onSuccess(res) {
     let data = new LoginResponse(res);

@@ -26,9 +26,8 @@ export default class GetArticlesResponse {
         article.id,
         article.title,
         article.content,
-        article.publish_status,
-        article.created_at,
-        article.updated_at
+        article.eye_catch_image_url,
+        article.publish_status
       ));
     });
   }

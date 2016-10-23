@@ -23,7 +23,7 @@ export default class Article extends React.Component {
     };
 
     // 記事作成サービス
-    this._saveService = new SaveArticleService();
+    this._saveService = new SaveArticleService(this.state.articleData.id);
 
     this._onChange = this._onChange.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);

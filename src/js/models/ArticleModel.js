@@ -12,26 +12,22 @@ export default class ArticleModel {
   /** 内容 */
   get content() { return this._content; }
   set content(content) { this._content = content; }
+  /** アイキャッチ画像URL */
+  get eyeCatchImageUrl() { return this._eyeCatchImageUrl; }
+  set eyeCatchImageUrl(url) { this._eyeCatchImageUrl = url; }
   /** 公開設定 */
   get publishStatus() { return this._publishStatus; }
   set publishStatus(status) { this._publishStatus = status; }
-  /** 作成日 */
-  get createdAt() { return this._createdAt; }
-  set createdAt(date) { this._createdAt = date; }
-  /** 更新日 */
-  get updatedAt() { return this._updatedAt; }
-  set updatedAt(date) { this._updatedAt = date; }
 
   /**
    * コンストラクター
    * @constructor
    */
-  constructor(id, title, content, publishStatus, createdAt, updatedAt) {
+  constructor(id, title, content, eyeCatchImageUrl, publishStatus) {
     this._id = id;
     this._title = title;
     this._content = content;
+    this._eyeCatchImageUrl = eyeCatchImageUrl;
     this._publishStatus = publishStatus || 'draft';
-    this._createdAt = createdAt;
-    this._updatedAt = updatedAt;
   }
 }

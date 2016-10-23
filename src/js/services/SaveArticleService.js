@@ -1,47 +1,28 @@
-import EventDispatcher from '../core/EventDispatcher';
+import BaseService from './BaseService';
 import ApiParam from '../enum/ApiParam';
 import SaveArticleResponse from '../models/vo/SaveArticleResponse';
 
 /**
  * 記事保存サービスクラスです。
  */
-export default class SaveArticleService extends EventDispatcher {
+export default class SaveArticleService extends BaseService {
 
   /**
    * コンストラクター
    * @constructor
    */
-  constructor(response) {
+  constructor(id) {
     super();
 
-    this._path = ApiParam.getPath() + "article";
-    this._onComplete = this._onComplete.bind(this);
+    this._method = ApiParam.POST;
+    this._path = ApiParam.getPath('entries/' + id);
   }
 
   /**
-   * 送信します。
+   * 正常なレスポンスを受け取った際のハンドラーです。
    */
-  send(data) {
-    $.ajax({
-      type: 'POST',
-      url: this._path,
-      data: {
-        id: data.id,
-        title: data.title,
-        content: data.content,
-        publish_status: data.publishStatus
-      },
-      success: this._onComplete,
-      dataType: 'json',
-      crossDomain: true
-    });
-  }
-
-  /**
-   * リクエストが完了した際のハンドラーです。
-   */
-  _onComplete(response, result) {
-    let data = new SaveArticleResponse(response);
+  _onSuccess(res) {
+    let data = new SaveArticleResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }
