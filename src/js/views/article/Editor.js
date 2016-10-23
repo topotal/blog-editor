@@ -40,8 +40,9 @@ export default class Editor extends React.Component {
       this._editor.setValue(this.state.articleData.content);
     }
 
-    // クラスを追加
-    $('#ace textarea').addClass("mousetrap");
+    // ⌘+sを押せるようにクラスを追加
+    let textarea = document.getElementsByClassName('ace_text-input')[0];
+    textarea.classList.add('mousetrap');
   }
 
   /**
