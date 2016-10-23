@@ -1,4 +1,5 @@
 import React from 'react';
+import {_} from 'lodash';
 import marked from 'marked';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -45,8 +46,10 @@ export default class Preview extends React.Component {
   _onChangeContent() {
     let dom = document.getElementById('preview');
     dom.innerHTML = marked(this.state.articleData.content);
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
+    let preview = document.getElementById('preview');
+    let codeItems = preview.getElementsByTagName('code');
+    _.each(codeItems, (item) => {
+      hljs.highlightBlock(item);
     });
   }
 
