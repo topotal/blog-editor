@@ -26,13 +26,19 @@ export default class BaseService extends EventDispatcher {
    * リクエストを送信します。
    */
   send(data) {
+    let formattedData = this._formatData(data);
     // メソッド
     switch(this._method) {
-      case ApiParam.GET:    this._get(data); break;
-      case ApiParam.POST:   this._post(data); break;
-      case ApiParam.DELETE: this._delete(data); break;
+      case ApiParam.GET:    this._get(formattedData); break;
+      case ApiParam.POST:   this._post(formattedData); break;
+      case ApiParam.DELETE: this._delete(formattedData); break;
     }
   }
+
+  /**
+   * データを通信用に整形する。
+   */
+  _formatData(data) { return data; }
 
   /**
    * GET通信
@@ -52,6 +58,7 @@ export default class BaseService extends EventDispatcher {
     request
       .post(this._path)
       .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer ' + this._userModel.token)
       .send(JSON.stringify(data))
       .end(this._onComplete);
   }

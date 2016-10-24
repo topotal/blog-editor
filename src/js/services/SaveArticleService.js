@@ -19,6 +19,19 @@ export default class SaveArticleService extends BaseService {
   }
 
   /**
+   * 通信用にデータを整形します。
+   * @override
+   */
+  _formatData(data) {
+    return {
+      title: data.title,
+      eye_catch_image_url: data.eyeCatchImageUrl,
+      content: data.content,
+      publish_date: "2012-07-26T01:00:00+09:00"
+    };
+  }
+
+  /**
    * 正常なレスポンスを受け取った際のハンドラーです。
    */
   _onSuccess(res) {
