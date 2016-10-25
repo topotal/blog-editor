@@ -8,7 +8,7 @@ export default class UpdateEntryResponse {
   /**
    * 記事データを返します。
    */
-  get entryDataData() {
+  get entryData() {
     return this._entryData;
   }
 

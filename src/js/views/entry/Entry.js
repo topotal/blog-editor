@@ -100,7 +100,6 @@ export default class Entry extends React.Component {
    */
   _onSuccessUpdate(event) {
     let data = event.data;
-    console.info("------", data);
     this.setState({
       entryData: data.entryData
     });
