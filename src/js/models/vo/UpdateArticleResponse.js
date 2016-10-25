@@ -1,9 +1,9 @@
 import ArticleModel from '../ArticleModel';
 
 /**
- * 記事作成時のレスポンスデータクラスです。
+ * 記事更新時のレスポンスデータクラスです。
  */
-export default class SaveArticleResponse {
+export default class UpdateArticleResponse {
 
   /**
    * 記事データを返します。
@@ -17,7 +17,8 @@ export default class SaveArticleResponse {
    * @constructor
    */
   constructor(response) {
-    let article = response.article;
+    console.info(response);
+    let article = response.body;
     this._articleData = new ArticleModel(
       article.id,
       article.title,
