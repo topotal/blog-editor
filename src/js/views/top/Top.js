@@ -21,8 +21,8 @@ export default class Top extends React.Component {
     this._onClickBackTop = this._onClickBackTop.bind(this);
 
     this.state = {
-      articleData: null,
-      currentPage: 'articles'
+      entryData: null,
+      currentPage: 'entries'
     };
   }
 
@@ -33,8 +33,8 @@ export default class Top extends React.Component {
     // ステートに応じた中身を取得します。
     let getContent = () => {
       switch (this.state.currentPage) {
-        case 'editor': return ( <Entry articleData={this.state.articleData} /> );
-        case 'articles': return ( <Entries refs="articles" onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
+        case 'editor': return ( <Entry entryData={this.state.entryData} /> );
+        case 'entries': return ( <Entries refs="entries" onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
       }
     };
 
@@ -54,9 +54,9 @@ export default class Top extends React.Component {
   /**
    * 記事を選択した際のハンドラーです。
    */
-  _onSelectRow(articleData) {
+  _onSelectRow(entryData) {
     this.setState({
-      articleData: articleData,
+      entryData: entryData,
       currentPage: 'editor'
     });
   }
@@ -66,7 +66,7 @@ export default class Top extends React.Component {
    */
   _onClickNew() {
     this.setState({
-      articleData: null,
+      entryData: null,
       currentPage: 'editor'
     });
   }
@@ -76,7 +76,7 @@ export default class Top extends React.Component {
    */
   _onClickBackTop() {
     this.setState({
-      articleData: null
+      entryData: null
     });
   }
 
