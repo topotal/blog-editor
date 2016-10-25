@@ -1,11 +1,11 @@
 import React from 'react';
-import ArticleRow from './ArticleRow';
-import GetArticlesService from '../../services/GetArticlesService';
+import EntriesRow from './EntriesRow';
+import GetEntriesService from '../../services/GetEntriesService';
 
 /**
  * 記事一覧クラスです。
  */
-export default class ArticleList extends React.Component {
+export default class Entries extends React.Component {
 
   /**
    * コンストラクター
@@ -23,7 +23,7 @@ export default class ArticleList extends React.Component {
     };
 
     // 一覧取得サービス
-    this._service = new GetArticlesService();
+    this._service = new GetEntriesService();
     this._service.addEventListener('success', this._onSuccessGetList);
 
     // 初回の一覧取得
@@ -36,7 +36,7 @@ export default class ArticleList extends React.Component {
   render() {
     var articleRows = this.state.articles.map((articleData, index) => {
       return (
-        <ArticleRow articleData={articleData} onClick={this._onClickRow} key={index}/>
+        <EntriesRow articleData={articleData} onClick={this._onClickRow} key={index}/>
       );
     });
 
@@ -76,7 +76,7 @@ export default class ArticleList extends React.Component {
   _onSuccessGetList(event) {
     let data = event.data;
     this.setState({
-      articles: data.articles
+      articles: data.entries
     });
   }
 }

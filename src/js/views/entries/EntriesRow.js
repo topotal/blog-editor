@@ -5,7 +5,7 @@ import PublishStatusData from '../../models/vo/PublishStatusData';
 /**
  * 記事リストのRowクラスです。
  */
-export default class ArticleRow extends React.Component {
+export default class EntriesRow extends React.Component {
 
   /**
    * コンストラクター

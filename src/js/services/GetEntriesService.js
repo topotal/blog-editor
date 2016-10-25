@@ -1,11 +1,11 @@
 import ApiParam from '../enum/ApiParam';
 import BaseService from './BaseService';
-import GetArticlesResponse from '../models/vo/GetArticlesResponse';
+import GetEntriesResponse from '../models/vo/GetEntriesResponse';
 
 /**
  * 記事一覧取得サービスクラスです。
  */
-export default class GetArticlesService extends BaseService {
+export default class GetEntriesService extends BaseService {
 
   /**
    * コンストラクター
@@ -22,7 +22,7 @@ export default class GetArticlesService extends BaseService {
    * 正常なレスポンスを受け取った際のハンドラーです。
    */
   _onSuccess(res) {
-    let data = new GetArticlesResponse(res);
+    let data = new GetEntriesResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   };

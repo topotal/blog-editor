@@ -9,7 +9,7 @@ import PublishStatusData from '../../models/vo/PublishStatusData';
 /**
  * 記事クラス
  */
-export default class Article extends React.Component {
+export default class Entry extends React.Component {
 
   /**
    * コンストラクター

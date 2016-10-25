@@ -1,6 +1,6 @@
 import React from 'react';
-import Article from '../article/Article';
-import ArticleList from '../articleList/ArticleList';
+import Entry from '../entry/Entry';
+import Entries from '../entries/Entries';
 import Aside from '../aside/Aside';
 
 /**
@@ -33,8 +33,8 @@ export default class Top extends React.Component {
     // ステートに応じた中身を取得します。
     let getContent = () => {
       switch (this.state.currentPage) {
-        case 'editor': return ( <Article articleData={this.state.articleData} /> );
-        case 'articles': return ( <ArticleList refs="articles" onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
+        case 'editor': return ( <Entry articleData={this.state.articleData} /> );
+        case 'articles': return ( <Entries refs="articles" onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
       }
     };
 
