@@ -19,7 +19,7 @@ export default class Entries extends React.Component {
     this._onSuccessGetList = this._onSuccessGetList.bind(this);
 
     this.state = {
-      articles: []
+      entries: []
     };
 
     // 一覧取得サービス
@@ -34,9 +34,9 @@ export default class Entries extends React.Component {
    * 描画します。
    */
   render() {
-    var articleRows = this.state.articles.map((articleData, index) => {
+    var entryRows = this.state.entries.map((entryData, index) => {
       return (
-        <EntriesRow articleData={articleData} onClick={this._onClickRow} key={index}/>
+        <EntriesRow entryData={entryData} onClick={this._onClickRow} key={index}/>
       );
     });
 
@@ -48,7 +48,7 @@ export default class Entries extends React.Component {
         <div className="listHeader">
         </div>
         <ul className="list">
-          {articleRows}
+          {entryRows}
         </ul>
         <div className="listFooter">
         </div>
@@ -59,8 +59,8 @@ export default class Entries extends React.Component {
   /**
    * Rowクリック時のハンドラーです。
    */
-  _onClickRow(articleData) {
-    this.props.onSelectRow(articleData);
+  _onClickRow(entryData) {
+    this.props.onSelectRow(entryData);
   }
 
   /**
@@ -76,7 +76,7 @@ export default class Entries extends React.Component {
   _onSuccessGetList(event) {
     let data = event.data;
     this.setState({
-      articles: data.entries
+      entries: data.entries
     });
   }
 }

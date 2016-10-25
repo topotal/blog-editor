@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
-import UpdateArticleService from '../../services/UpdateArticleService';
+import UpdateEntryService from '../../services/UpdateEntryService';
 import PublishStatusData from '../../models/vo/PublishStatusData';
 
 /**
@@ -19,11 +19,11 @@ export default class Entry extends React.Component {
     super(props);
 
     this.state = {
-      articleData: this.props.articleData || new ArticleModel()
+      entryData: this.props.entryData || new ArticleModel()
     };
 
     // 記事保存サービス
-    this._updateService = new UpdateArticleService(this.state.articleData.id);
+    this._updateService = new UpdateEntryService(this.state.entryData.id);
 
     this._onChange = this._onChange.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
@@ -55,8 +55,8 @@ export default class Entry extends React.Component {
           </lebel>
         </div>
         <div className="main">
-          <Editor ref="editor" articleData={this.state.articleData} onChange={this._onChange} />
-          <Preview articleData={this.state.articleData}/>
+          <Editor ref="editor" entryData={this.state.entryData} onChange={this._onChange} />
+          <Preview entryData={this.state.entryData}/>
         </div>
       </div>
     );
@@ -65,8 +65,8 @@ export default class Entry extends React.Component {
   /**
    * 記事内容変更時のハンドラーです。
    */
-  _onChange(articleData) {
-    this.setState({ articleData: articleData });
+  _onChange(entryData) {
+    this.setState({ entryData: entryData });
   }
 
   /**
@@ -81,8 +81,8 @@ export default class Entry extends React.Component {
    * 記事を保存します。
    */
   _save() {
-    let articleData = this.state.articleData;
-    this._updateService.send(this.state.articleData);
+    let entryData = this.state.entryData;
+    this._updateService.send(this.state.entryData);
   }
 
   /**
@@ -91,7 +91,7 @@ export default class Entry extends React.Component {
   _onSuccessSave(event) {
     let data = event.data;
     this.setState({
-      articleData: data.articleData
+      entryData: data.entryData
     });
   }
 
@@ -100,8 +100,9 @@ export default class Entry extends React.Component {
    */
   _onSuccessUpdate(event) {
     let data = event.data;
+    console.info("------", data);
     this.setState({
-      articleData: data.articleData
+      entryData: data.entryData
     });
   }
 
@@ -110,10 +111,10 @@ export default class Entry extends React.Component {
    */
   _onChangePublic(event) {
     let publishStatus = event.target.value;
-    let articleData = this.state.articleData;
-    articleData.publishStatus = publishStatus;
+    let entryData = this.state.entryData;
+    entryData.publishStatus = publishStatus;
     this.setState({
-      articleData: articleData
+      entryData: entryData
     });
   }
  }

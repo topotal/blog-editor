@@ -27,7 +27,7 @@ export default class Preview extends React.Component {
     });
 
     this.state = {
-      articleData: props.articleData
+      entryData: props.entryData
     };
   }
 
@@ -36,7 +36,7 @@ export default class Preview extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      articleData: nextProps.articleData
+      entryData: nextProps.entryData
     }, this._onChangeContent);
   }
 
@@ -45,7 +45,7 @@ export default class Preview extends React.Component {
    */
   _onChangeContent() {
     let dom = document.getElementById('preview');
-    dom.innerHTML = marked(this.state.articleData.content);
+    dom.innerHTML = marked(this.state.entryData.content);
     let preview = document.getElementById('preview');
     let codeItems = preview.getElementsByTagName('code');
     _.each(codeItems, (item) => {

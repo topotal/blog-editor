@@ -29,7 +29,7 @@ export default class EntriesRow extends React.Component {
    * 描画します。
    */
   render() {
-    let data = this.props.articleData;
+    let data = this.props.entryData;
     let publishData = PublishStatusData.getDataByType(data.publishStatus);
     return (
       <li className="articleRow" ref="row">
@@ -45,6 +45,6 @@ export default class EntriesRow extends React.Component {
    * クリック時のハンドラーです。
    */
   _onClick() {
-    this.props.onClick(this.props.articleData);
+    this.props.onClick(this.props.entryData);
   }
 }

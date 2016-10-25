@@ -21,7 +21,7 @@ export default class Editor extends React.Component {
     this._onDecisionImage = this._onDecisionImage.bind(this);
 
     this.state = {
-      articleData: this.props.articleData,
+      entryData: this.props.entryData,
       activeImageModal: false
     };
   }
@@ -36,8 +36,8 @@ export default class Editor extends React.Component {
     this._editor.getSession().setMode("ace/mode/markdown");
     this._editor.getSession().setUseWrapMode(true);
     this._editor.getSession().on("change", this._onChangeEditor);
-    if(this.state.articleData.content) {
-      this._editor.setValue(this.state.articleData.content);
+    if(this.state.entryData.content) {
+      this._editor.setValue(this.state.entryData.content);
     }
 
     // ⌘+sを押せるようにクラスを追加
@@ -50,7 +50,7 @@ export default class Editor extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      articleData: nextProps.articleData
+      entryData: nextProps.entryData
     });
   }
 
@@ -72,7 +72,7 @@ export default class Editor extends React.Component {
             type="text"
             placeholder="タイトル"
             className="textField mousetrap"
-            value={this.state.articleData.title || ""}
+            value={this.state.entryData.title || ""}
             onChange={this._onChangeTitle}
           />
         </div>
@@ -90,10 +90,10 @@ export default class Editor extends React.Component {
    * タイトル変更時のハンドラーです。
    */
   _onChangeTitle(event) {
-    let articleData = this.state.articleData;
-    articleData.title = event.target.value;
+    let entryData = this.state.entryData;
+    entryData.title = event.target.value;
     this.setState({
-      articleData: articleData
+      entryData: entryData
     });
   }
 
@@ -102,12 +102,12 @@ export default class Editor extends React.Component {
    */
   _onChangeEditor() {
     let content = this._editor.getValue();
-    let articleData = this.state.articleData;
-    articleData.content = content;
+    let entryData = this.state.entryData;
+    entryData.content = content;
     this.setState({
-      articleData: articleData
+      entryData: entryData
     });
-    this.props.onChange(articleData);
+    this.props.onChange(entryData);
   }
 
   /**

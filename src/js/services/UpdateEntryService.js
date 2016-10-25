@@ -1,11 +1,11 @@
 import BaseService from './BaseService';
 import ApiParam from '../enum/ApiParam';
-import UpdateArticleResponse from '../models/vo/UpdateArticleResponse';
+import UpdateEntryResponse from '../models/vo/UpdateEntryResponse';
 
 /**
  * 記事更新サービスクラスです。
  */
-export default class UpdateArticleService extends BaseService {
+export default class UpdateEntryService extends BaseService {
 
   /**
    * コンストラクター
@@ -35,7 +35,7 @@ export default class UpdateArticleService extends BaseService {
    * 正常なレスポンスを受け取った際のハンドラーです。
    */
   _onSuccess(res) {
-    let data = new UpdateArticleResponse(res);
+    let data = new UpdateEntryResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }
