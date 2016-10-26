@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Top from './views/top/Top';
 import Login from './views/login/Login';
+import UserModel from './models/UserModel';
 
 /**
  * メインクラスです。
@@ -20,7 +21,7 @@ class App extends React.Component {
     this._onLogged = this._onLogged.bind(this);
 
     this.state = {
-      alredyLogged: false
+      alredyLogged: !!UserModel.instance.token
     };
   }
 
