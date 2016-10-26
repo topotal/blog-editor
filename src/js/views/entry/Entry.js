@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
+import CreateEntryService from '../../services/CreateEntryService';
 import UpdateEntryService from '../../services/UpdateEntryService';
 import PublishStatusData from '../../models/vo/PublishStatusData';
 
@@ -22,6 +23,8 @@ export default class Entry extends React.Component {
       entryData: this.props.entryData || new ArticleModel()
     };
 
+    // 記事作成サービス
+    this._createService = new CreateEntryService();
     // 記事保存サービス
     this._updateService = new UpdateEntryService(this.state.entryData.id);
 
@@ -30,6 +33,7 @@ export default class Entry extends React.Component {
     this._onChangePublic = this._onChangePublic.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
 
+    this._createService.addEventListener('success', this._onSuccessSave);
     this._updateService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
@@ -82,7 +86,13 @@ export default class Entry extends React.Component {
    */
   _save() {
     let entryData = this.state.entryData;
-    this._updateService.send(this.state.entryData);
+    // 記事IDを持っていればアップデート
+    // 無ければ新規作成
+    if(entryData.id) {
+      this._updateService.send(entryData);
+    } else {
+      this._createService.send(entryData);
+    }
   }
 
   /**
