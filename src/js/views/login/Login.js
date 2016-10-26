@@ -22,6 +22,9 @@ export default class Login extends React.Component {
     this._loginService = new LoginService();
     this._loginService.addEventListener('success', this._onSuccessLogin);
 
+    // エンターを押したらサブミット
+    Mousetrap.bind(['enter'], this._onClickSubmit);
+
     // ユーザーモデル
     this._userModel = UserModel.instance;
 
@@ -31,7 +34,15 @@ export default class Login extends React.Component {
   }
 
   /**
-   * propが変更された際のハンドラー
+   * マウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    // nameのフォームにフォーカスを当てる
+    this.refs.name.focus();
+  }
+
+  /**
+   * propが変更された際のハンドラーです。
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
