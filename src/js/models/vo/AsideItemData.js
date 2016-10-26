@@ -4,7 +4,7 @@
 export default class AsideItemData {
 
   /** 各アイテム */
-  static get ARTICLES() {  return new AsideItemData('articles', 'fa-list', '記事一覧') }
+  static get ARTICLES() {  return new AsideItemData('entries', 'fa-list', '記事一覧') }
 
   /** アイテムリスト */
   static get LIST() {
