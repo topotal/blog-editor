@@ -45,8 +45,8 @@ export default class Entry extends React.Component {
     });
 
     return (
-      <div className="article panel">
-        <div className="articleFooter">
+      <div className="entry panel">
+        <div className="entryFooter">
           <lebel className="public">
             公開設定：
             <select className="mousetrap" onChange={this._onChangePublic}>

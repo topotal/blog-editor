@@ -41,7 +41,7 @@ export default class Entries extends React.Component {
     });
 
     return (
-      <div className="articleList panel">
+      <div className="entries panel">
         <div className="listToolbar">
           <div className="roundButton" onClick={this._onClickNew}><i className="fa fa-file-text"/>新規作成</div>
         </div>

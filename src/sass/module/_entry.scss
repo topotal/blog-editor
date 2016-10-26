@@ -1,7 +1,7 @@
 @import "./editor";
 @import "./preview";
 
-.article {
+.entry {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@
     background-color: #DDD;
   }
 
-  .articleFooter {
+  .entryFooter {
     position: absolute;
     left: 0;
     right: 0;
