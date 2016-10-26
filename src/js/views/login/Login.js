@@ -53,11 +53,13 @@ export default class Login extends React.Component {
         <img className="logo" src="/images/logo_l.png" alt="topotal" width="100" height="100" />
         <input
           type="text"
-          placeholder="username"
+          ref="name"
+          placeholder="name"
           className="textField username mousetrap"
         />
         <input
           type="password"
+          ref="password"
           placeholder="password"
           className="textField password mousetrap"
         />
@@ -72,10 +74,12 @@ export default class Login extends React.Component {
    * 送信ボタン押下時のハンドラーです。
    */
   _onClickSubmit() {
+    console.info('name: ', this.refs.name.value);
+    console.info('pass: ', this.refs.password.value);
     // ログイン済みイベント発火
     this._loginService.send({
-      name: 'topotan',
-      password: 'naripika'
+      name: this.refs.name.value,
+      password: this.refs.password.value
     });
   }
 
