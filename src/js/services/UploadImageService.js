@@ -1,5 +1,6 @@
 import EventDispatcher from '../core/EventDispatcher';
 import ApiParam from '../enum/ApiParam';
+import UploadImageResponse from '../models/vo/UploadImageResponse';
 
 /**
  * 画像アップロードサービスクラスです。
@@ -13,35 +14,26 @@ export default class UploadImageService extends EventDispatcher {
   constructor() {
     super();
 
-    this._path = ApiParam.getPath() + "image";
-    this._onComplete = this._onComplete.bind(this);
+    this._method = ApiParam.POST;
+    this._path = ApiParam.getPath('images');
   }
 
   /**
-   * 送信します。
+   * 通信用にデータを整形します。
+   * @override
    */
-  send(data) {
-    data = data || {};
-    $.ajax({
-      type: 'POST',
-      processData: false,
-      contentType: false,
-      url: this._path,
-      data: data,
-      dataType: 'text',
-      crossDomain: true
-    })
-    .done(this._onComplete)
-    .fail(function( jqXHR, textStatus, errorThrown ) {
-      console.log( 'ERROR', jqXHR, textStatus, errorThrown );
-    });
+  _formatData(data) {
+    return {
+      content: ''
+    };
   }
 
   /**
-   * リクエストが完了した際のハンドラーです。
+   * 正常なレスポンスを受け取った際のハンドラーです。
    */
-  _onComplete(response, result) {
+  _onSuccess(res) {
+    let data = new UploadImageResponse(res);
     // 成功イベントを発火
-    this.dispatchEvent('success', {});
+    this.dispatchEvent('success', {data: data});
   }
 }
