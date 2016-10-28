@@ -61,7 +61,7 @@ export default class Login extends React.Component {
 
     return (
       <Modal title="ログイン" className={modalClasses} ref="imageModal">
-        <img className="logo" src="/images/logo_l.png" alt="topotal" width="100" height="100" />
+        <img className="logo" src="images/logo_l.png" alt="topotal" width="100" height="100" />
         <input
           type="text"
           ref="name"
