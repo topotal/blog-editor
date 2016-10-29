@@ -119,7 +119,7 @@ export default class ImageModal extends React.Component {
    * 決定ボタン押下時のハンドラーです。
    */
   _onClickDecision() {
-    this.props.onDecision(this.state.selectedData.path);
+    this.props.onDecision(this.state.selectedData.url);
   }
 
   /**

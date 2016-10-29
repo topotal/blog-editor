@@ -39,7 +39,7 @@ export default class ImageBox extends React.Component {
     });
     return (
       <li className={classes} onClick={this._onClick}>
-        <img src={ApiParam.getImagePath() + this.props.data.path} alt=""/>
+        <img src={ApiParam.getImagePath() + this.props.data.url} alt=""/>
         <i className="check fa fa-check-circle fa-fw"></i>
       </li>
     );
