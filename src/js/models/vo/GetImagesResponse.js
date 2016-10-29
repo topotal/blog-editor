@@ -6,13 +6,6 @@ import ImageData from './ImageData';
 export default class GetImagesResponse {
 
   /**
-   * ステータスを返します。
-   */
-  get status() {
-    return this._status;
-  }
-
-  /**
    * 画像一覧データを返します。
    */
   get images() {
@@ -24,10 +17,9 @@ export default class GetImagesResponse {
    * @constructor
    */
   constructor(response) {
-    this._status = response.status;
     this._images = [];
 
-    let images = response.images || [];
+    let images = response.body || [];
     images.forEach((image) => {
       this._images.push(new ImageData(image.id, image.url));
     });

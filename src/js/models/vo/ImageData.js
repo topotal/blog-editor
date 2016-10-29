@@ -6,14 +6,14 @@ export default class ImageData {
   /** ID */
   get id() { return this._id; }
   /** 画像パス */
-  get path() { return this._path; }
+  get url() { return this._url; }
 
   /**
    * コンストラクター
    * @constructor
    */
-  constructor(id, path) {
+  constructor(id, url) {
     this._id = id;
-    this._path = path;
+    this._url = url;
   }
 }

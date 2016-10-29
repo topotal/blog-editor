@@ -1,11 +1,11 @@
-import EventDispatcher from '../core/EventDispatcher';
+import BaseService from './BaseService';
 import ApiParam from '../enum/ApiParam';
 import GetImagesResponse from '../models/vo/GetImagesResponse';
 
 /**
  * 画像一覧を取得するサービスクラスです。
  */
-export default class GetImagesService extends EventDispatcher {
+export default class GetImagesService extends BaseService {
 
   /**
    * コンストラクター
@@ -14,32 +14,15 @@ export default class GetImagesService extends EventDispatcher {
   constructor() {
     super();
 
-    this._path = ApiParam.getPath() + "images";
-    this._onComplete = this._onComplete.bind(this);
+    this._method = ApiParam.GET;
+    this._path = ApiParam.getPath('images');
   }
 
   /**
-   * 送信します。
+   * 正常なレスポンスを受け取った際のハンドラーです。
    */
-  send(data) {
-    data = data || {};
-    $.ajax({
-      type: 'GET',
-      url: this._path,
-      data: {
-        page: data.id
-      },
-      success: this._onComplete,
-      dataType: 'json',
-      crossDomain: true
-    });
-  }
-
-  /**
-   * リクエストが完了した際のハンドラーです。
-   */
-  _onComplete(response, result) {
-    let data = new GetImagesResponse(response);
+  _onSuccess(res) {
+    let data = new GetImagesResponse(res);
     // 成功イベントを発火
     this.dispatchEvent('success', {data: data});
   }
