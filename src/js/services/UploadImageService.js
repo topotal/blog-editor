@@ -1,11 +1,12 @@
-import EventDispatcher from '../core/EventDispatcher';
+import BaseService from './BaseService';
 import ApiParam from '../enum/ApiParam';
 import UploadImageResponse from '../models/vo/UploadImageResponse';
+import ImageUtil from '../core/ImageUtil';
 
 /**
  * 画像アップロードサービスクラスです。
  */
-export default class UploadImageService extends EventDispatcher {
+export default class UploadImageService extends BaseService {
 
   /**
    * コンストラクター
@@ -14,18 +15,32 @@ export default class UploadImageService extends EventDispatcher {
   constructor() {
     super();
 
+    this._onLoadImage = this._onLoadImage.bind(this);
+
+    // ファイルリーダー
+    this._reader = new FileReader();
+    this._reader.onload = this._onLoadImage;
+
     this._method = ApiParam.POST;
     this._path = ApiParam.getPath('images');
   }
 
   /**
-   * 通信用にデータを整形します。
+   * リクエストを送信します。
    * @override
    */
-  _formatData(data) {
-    return {
-      content: ''
-    };
+  send(data) {
+    this._reader.readAsDataURL(data.file);
+  }
+
+  /**
+   * 画像読み込み完了時のハンドラーです。
+   */
+  _onLoadImage() {
+    let file = this._reader.result;
+    super.send({
+      content: file
+    });
   }
 
   /**
