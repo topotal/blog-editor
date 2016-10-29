@@ -169,9 +169,7 @@ export default class ImageModal extends React.Component {
       dragOver: false
     });
     let file = event.dataTransfer.files[0];
-    let formData = new FormData();
-    formData.append('file', file);
-    this._uploadImageService.send(formData);
+    this._uploadImageService.send({file: file});
   }
 
   /**
