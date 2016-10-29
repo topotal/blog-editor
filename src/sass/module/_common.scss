@@ -30,10 +30,10 @@ body {
 
   .content {
     position: absolute;
-    top: 45px + $PANEL_MARGIN;
-    left: 40px + ($PANEL_MARGIN * 2);
-    right: $PANEL_MARGIN;
-    bottom: $PANEL_MARGIN;
+    top: 45px;
+    left: 40px + $PANEL_MARGIN;
+    right: 0;
+    bottom: 0;
     box-sizing: border-box;
   }
 }
