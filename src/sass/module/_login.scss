@@ -22,7 +22,16 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 400px;
+    width: 300px;
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
+      -webkit-text-fill-color: #FFF;
+    }
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
+      -webkit-text-fill-color: #FFF;
+    }
   }
 
   .username {
