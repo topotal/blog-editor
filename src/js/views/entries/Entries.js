@@ -1,6 +1,7 @@
 import React from 'react';
 import EntriesRow from './EntriesRow';
 import GetEntriesService from '../../services/GetEntriesService';
+import UserModel from '../../models/UserModel';
 
 /**
  * 記事一覧クラスです。
@@ -16,7 +17,8 @@ export default class Entries extends React.Component {
 
     this._onClickRow = this._onClickRow.bind(this);
     this._onClickNew = this._onClickNew.bind(this);
-    this._onSuccessGetList = this._onSuccessGetList.bind(this);
+    this._onSuccessGetList =  this._onSuccessGetList.bind(this);
+    this._onErrorGetList   =  this._onErrorGetList.bind(this);
 
     this.state = {
       entries: []
@@ -25,6 +27,7 @@ export default class Entries extends React.Component {
     // 一覧取得サービス
     this._service = new GetEntriesService();
     this._service.addEventListener('success', this._onSuccessGetList);
+    this._service.addEventListener('error',   this._onErrorGetList);
 
     // 初回の一覧取得
     this._service.send();
@@ -78,5 +81,16 @@ export default class Entries extends React.Component {
     this.setState({
       entries: data.entries
     });
+  }
+
+  /**
+   * 記事一覧取得失敗時のハンドラーです。
+   */
+  _onErrorGetList(event) {
+    let res = event.res;
+    // トークン切れエラーの場合はtokenを削除する。
+    if(res.status == 403 || res.status == 401) {
+      UserModel.instance.expireToken();
+    }
   }
 }

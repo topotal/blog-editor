@@ -19,9 +19,14 @@ class App extends React.Component {
     this._onDrop = this._onDrop.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onLogged = this._onLogged.bind(this);
+    this._onExpiredToken = this._onExpiredToken.bind(this);
+
+    // ユーザーモデル
+    this._userModel = UserModel.instance;
+    this._userModel.addEventListener('expiredToken', this._onExpiredToken);
 
     this.state = {
-      alredyLogged: !!UserModel.instance.token
+      alredyLogged: !!this._userModel.token
     };
   }
 
@@ -66,6 +71,15 @@ class App extends React.Component {
    */
   _onDrop(event) {
     event.preventDefault();
+  }
+
+  /**
+   * トークンが無効化された際のハンドラーです。
+   */
+  _onExpiredToken() {
+    this.setState({
+      alredyLogged: false
+    });
   }
 }
 
