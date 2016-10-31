@@ -42,6 +42,9 @@ export default class Top extends React.Component {
       <div className="top">
         <div className="header">
           <img className="logo" src="images/logo.png" alt="topotal" width="104" height="28" />
+          <div className="userIcon">
+            <img src="https://avatars2.githubusercontent.com/u/3971271?v=3&s=466" alt="icon" width="32" height="32" />
+          </div>
         </div>
         <Aside onClick={this._onClickAside} />
         <div className="content">
