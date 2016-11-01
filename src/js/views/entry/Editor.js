@@ -17,12 +17,16 @@ export default class Editor extends React.Component {
     this._onChangeTitle = this._onChangeTitle.bind(this);
     this._onChangeEditor = this._onChangeEditor.bind(this);
     this._onClickAddImage = this._onClickAddImage.bind(this);
+    this._onClickAddEyeCatch = this._onClickAddEyeCatch.bind(this);
     this._onCancelImage = this._onCancelImage.bind(this);
     this._onDecisionImage = this._onDecisionImage.bind(this);
+    this._onCancelEyeCatch = this._onCancelEyeCatch.bind(this);
+    this._onDecisionEyeCatch = this._onDecisionEyeCatch.bind(this);
 
     this.state = {
       entryData: this.props.entryData,
-      activeImageModal: false
+      activeImageModal: false,
+      activeEyeCatchModal: false
     };
   }
 
@@ -67,8 +71,14 @@ export default class Editor extends React.Component {
           onDecision={this._onDecisionImage}
         />
 
+        <ImageModal
+          active={this.state.activeEyeCatchModal}
+          onCancel={this._onCancelEyeCatch}
+          onDecision={this._onDecisionEyeCatch}
+        />
+
         <div className="titleBar">
-          <div className="eyeCatch">
+          <div className="eyeCatch" onClick={this._onClickAddEyeCatch}>
             <i title="アイキャッチを追加" className="fa fa-eye fa-fw"></i>
           </div>
           <div className="title">
@@ -145,5 +155,39 @@ export default class Editor extends React.Component {
     let imagePath = ApiPath.getImagePath() + path;
     let markDownText = "![](" + imagePath + ")";
     this._editor.insert(markDownText);
+  }
+
+  /**
+   * アイキャッチ追加ボタン押下時のハンドラーです。
+   */
+  _onClickAddEyeCatch() {
+    this.setState({
+      activeEyeCatchModal: true
+    });
+  }
+
+  /**
+   * アイキャッチモーダルのキャンセルボタン押下時の
+   * ハンドラーです。
+   */
+  _onCancelEyeCatch() {
+    console.info('キャンセル');
+    this.setState({
+      activeEyeCatchModal: false
+    });
+  }
+
+  /**
+   * アイキャッチモーダルの決定ボタン押下時の
+   * ハンドラーです。
+   */
+  _onDecisionEyeCatch(path) {
+    console.info('決定');
+    this.setState({
+      activeEyeCatchModal: false
+    });
+    // let imagePath = ApiPath.getImagePath() + path;
+    // let markDownText = "![](" + imagePath + ")";
+    // this._editor.insert(markDownText);
   }
 }
