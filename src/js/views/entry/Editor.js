@@ -67,14 +67,19 @@ export default class Editor extends React.Component {
           onDecision={this._onDecisionImage}
         />
 
-        <div className="title">
-          <input
-            type="text"
-            placeholder="タイトル"
-            className="textField mousetrap"
-            value={this.state.entryData.title || ""}
-            onChange={this._onChangeTitle}
-          />
+        <div className="titleBar">
+          <div className="eyeCatch">
+            <i title="アイキャッチを追加" className="fa fa-eye fa-fw"></i>
+          </div>
+          <div className="title">
+            <input
+              type="text"
+              placeholder="タイトル"
+              className="textField mousetrap"
+              value={this.state.entryData.title || ""}
+              onChange={this._onChangeTitle}
+            />
+          </div>
         </div>
 
         <ul className="toolbar">
