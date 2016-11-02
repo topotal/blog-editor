@@ -110,7 +110,7 @@ export default class Preview extends React.Component {
     entryData.eyeCatchImageUrl = path;
 
     // アイキャッチエリアに画像をセット
-    this._setEyeCatch(imagePath);
+    this._setEyeCatch(path);
 
     this.setState({
       activeEyeCatchModal: false,
