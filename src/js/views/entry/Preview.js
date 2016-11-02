@@ -106,9 +106,8 @@ export default class Preview extends React.Component {
    */
   _onDecisionEyeCatch(path) {
     // 記事データを更新
-    let imagePath = ApiPath.getImagePath() + path;
     let entryData = this.state.entryData;
-    entryData.eyeCatch = imagePath;
+    entryData.eyeCatchImageUrl = path;
 
     // アイキャッチエリアに画像をセット
     this._setEyeCatch(imagePath);
@@ -123,7 +122,8 @@ export default class Preview extends React.Component {
    * アイキャッチエリアに画像を設定します。
    */
   _setEyeCatch(path) {
-    this.refs.eyeCatchImage.setAttribute('src', path);
+    let imagePath = ApiPath.getImagePath() + path;
+    this.refs.eyeCatchImage.setAttribute('src', imagePath);
     this.refs.eyeCatchImage.style.display = 'block';
     this.refs.addText.style.display = 'none';
   }
