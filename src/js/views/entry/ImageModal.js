@@ -67,7 +67,7 @@ export default class ImageModal extends React.Component {
    */
   render() {
     // モーダルのクラス郡
-    let modalClasses = classNames('imageList', {
+    let modalClasses = classNames('imageList', this.props.className, {
       active: this.state.active,
       dragOver: this.state.dragOver
     });
