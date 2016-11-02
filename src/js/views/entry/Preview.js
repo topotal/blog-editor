@@ -44,10 +44,9 @@ export default class Preview extends React.Component {
    * 記事内容が書き換わった際のハンドラーです。
    */
   _onChangeContent() {
-    let dom = document.getElementById('preview');
+    let dom = this.refs.preview;
     dom.innerHTML = marked(this.state.entryData.content);
-    let preview = document.getElementById('preview');
-    let codeItems = preview.getElementsByTagName('code');
+    let codeItems = dom.getElementsByTagName('code');
     _.each(codeItems, (item) => {
       hljs.highlightBlock(item);
     });
@@ -58,7 +57,7 @@ export default class Preview extends React.Component {
    */
   render() {
     return (
-      <div className="preview" id="preview">
+      <div className="preview" ref="preview">
       </div>
     );
   }
