@@ -91,5 +91,8 @@ export default class BaseService extends EventDispatcher {
   /**
    * エラーを受け取った際のハンドラーです。
    */
-  _onError(err, res) {};
+  _onError(err, res) {
+    // エラーイベントを発火
+    this.dispatchEvent('error', {res: res});
+  };
 }

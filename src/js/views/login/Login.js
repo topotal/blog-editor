@@ -61,7 +61,7 @@ export default class Login extends React.Component {
 
     return (
       <Modal title="ログイン" className={modalClasses} ref="imageModal">
-        <img className="logo" src="/images/logo_l.png" alt="topotal" width="100" height="100" />
+        <img className="logo" src="images/logo_l.png" alt="topotal" width="100" height="100" />
         <input
           type="text"
           ref="name"
@@ -85,8 +85,6 @@ export default class Login extends React.Component {
    * 送信ボタン押下時のハンドラーです。
    */
   _onClickSubmit() {
-    console.info('name: ', this.refs.name.value);
-    console.info('pass: ', this.refs.password.value);
     // ログイン済みイベント発火
     this._loginService.send({
       name: this.refs.name.value,
@@ -98,7 +96,6 @@ export default class Login extends React.Component {
    * ログイン成功時のハンドラーです。
    */
   _onSuccessLogin(event) {
-    console.info(event.data);
     this._userModel.token = event.data.token;
     this.props.onLogged();
   }

@@ -119,7 +119,7 @@ export default class ImageModal extends React.Component {
    * 決定ボタン押下時のハンドラーです。
    */
   _onClickDecision() {
-    this.props.onDecision(this.state.selectedData.path);
+    this.props.onDecision(this.state.selectedData.url);
   }
 
   /**
@@ -169,9 +169,7 @@ export default class ImageModal extends React.Component {
       dragOver: false
     });
     let file = event.dataTransfer.files[0];
-    let formData = new FormData();
-    formData.append('file', file);
-    this._uploadImageService.send(formData);
+    this._uploadImageService.send({file: file});
   }
 
   /**
