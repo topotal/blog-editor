@@ -20,6 +20,7 @@ export default class Preview extends React.Component {
     this._onClickAddEyeCatch = this._onClickAddEyeCatch.bind(this);
     this._onCancelEyeCatch = this._onCancelEyeCatch.bind(this);
     this._onDecisionEyeCatch = this._onDecisionEyeCatch.bind(this);
+
     marked.setOptions({
       renderer: new marked.Renderer(),
       gfm: true,
@@ -35,6 +36,16 @@ export default class Preview extends React.Component {
       activeEyeCatchModal: false,
       entryData: props.entryData
     };
+  }
+
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    // アイキャッチが設定されていれば反映
+    if(this.props.entryData.eyeCatchImageUrl) {
+      this._setEyeCatch(this.props.entryData.eyeCatchImageUrl);
+    }
   }
 
   /**
