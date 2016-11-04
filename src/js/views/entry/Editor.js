@@ -4,7 +4,8 @@ import ApiPath from '../../enum/ApiParam';
 import ImageModal from './ImageModal';
 import AceEditor from 'react-ace';
 import 'brace/mode/markdown';
-import 'brace/theme/monokai';
+import 'brace/theme/Terminal';
+import 'brace/keybinding/vim';
 
 /**
  * エディタークラスです。
@@ -72,11 +73,12 @@ export default class Editor extends React.Component {
 
         <AceEditor
           mode="markdown"
-          theme="monokai"
+          theme="terminal"
           onChange={this._onChangeEditor}
           name="ace"
           width="auto"
           height="auto"
+          keyboardHandler="vim"
           value={this.state.entryData.content}
           showPrintMargin={false}
           userWrapMode={true}
