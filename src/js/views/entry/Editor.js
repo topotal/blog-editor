@@ -23,31 +23,13 @@ export default class Editor extends React.Component {
     this._onClickAddImage = this._onClickAddImage.bind(this);
     this._onCancelImage = this._onCancelImage.bind(this);
     this._onDecisionImage = this._onDecisionImage.bind(this);
+    this._onLoadAceEditor = this._onLoadAceEditor.bind(this);
 
     this.state = {
       entryData: this.props.entryData,
       activeImageModal: false,
       activeEyeCatchModal: false
     };
-  }
-
-  /**
-   * コンポーネントがマウントされた際のハンドラーです。
-   */
-  componentDidMount() {
-    // this._editor = ace.edit("ace");
-    // this._editor.$blockScrolling = Infinity;
-    // this._editor.setTheme("ace/theme/monokai");
-    // this._editor.getSession().setMode("ace/mode/markdown");
-    // this._editor.getSession().setUseWrapMode(true);
-    // this._editor.getSession().on("change", this._onChangeEditor);
-    // if(this.state.entryData.content) {
-    //   this._editor.setValue(this.state.entryData.content);
-    // }
-
-    // ⌘+sを押せるようにクラスを追加
-    let textarea = document.getElementsByClassName('ace_text-input')[0];
-    textarea.classList.add('mousetrap');
   }
 
   /**
@@ -99,10 +81,7 @@ export default class Editor extends React.Component {
           showPrintMargin={false}
           userWrapMode={true}
           editorProps={{$blockScrolling: true}}
-          onLoad={(editor) => {
-            editor.focus();
-            editor.getSession().setUseWrapMode(true);
-          }}
+          onLoad={this._onLoadAceEditor}
         />
       </div>
     );
@@ -161,5 +140,17 @@ export default class Editor extends React.Component {
     let imagePath = ApiPath.getImagePath() + path;
     let markDownText = "![](" + imagePath + ")";
     this._editor.insert(markDownText);
+  }
+
+  /**
+   * AceEditorが読み込み終わった際のハンドラーです。
+   */
+  _onLoadAceEditor(editor) {
+    this._editor = editor;
+    this._editor.focus();
+    this._editor.getSession().setUseWrapMode(true);
+    // ⌘+sを押せるようにクラスを追加
+    let textarea = document.getElementsByClassName('ace_text-input')[0];
+    textarea.classList.add('mousetrap');
   }
 }
