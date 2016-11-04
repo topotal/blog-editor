@@ -123,7 +123,6 @@ export default class Editor extends React.Component {
    * エディター編集時のハンドラーです。
    */
   _onChangeEditor(newValue) {
-    console.info('asdfas');
     let entryData = this.state.entryData;
     entryData.content = newValue;
     this.setState({
