@@ -1,6 +1,7 @@
 import React from 'react';
 import MessageBox from '../common/MessageBox';
 import classNames from 'classnames';
+import UserModel from '../../models/UserModel';
 
 /**
  * ユーザーアイコンクラス
@@ -19,7 +20,7 @@ export default class UserIcon extends React.Component {
     this.onClickSignOut = this.onClickSignOut.bind(this);
 
     this.state = {
-      activeMessageBox: true//false
+      activeMessageBox: false
     };
   }
 
@@ -71,6 +72,7 @@ export default class UserIcon extends React.Component {
    * サインアウトクリック時のハンドラーです。
    */
   onClickSignOut() {
-    console.info('sign out');
+    // トークンを破棄してログイン画面へ戻る
+    UserModel.instance.expireToken();
   }
 }
