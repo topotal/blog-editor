@@ -1,6 +1,10 @@
 import React from 'react';
+import brace from 'brace';
 import ApiPath from '../../enum/ApiParam';
 import ImageModal from './ImageModal';
+import AceEditor from 'react-ace';
+import 'brace/mode/markdown';
+import 'brace/theme/monokai';
 
 /**
  * エディタークラスです。
@@ -31,15 +35,15 @@ export default class Editor extends React.Component {
    * コンポーネントがマウントされた際のハンドラーです。
    */
   componentDidMount() {
-    this._editor = ace.edit("ace");
-    this._editor.$blockScrolling = Infinity;
-    this._editor.setTheme("ace/theme/monokai");
-    this._editor.getSession().setMode("ace/mode/markdown");
-    this._editor.getSession().setUseWrapMode(true);
-    this._editor.getSession().on("change", this._onChangeEditor);
-    if(this.state.entryData.content) {
-      this._editor.setValue(this.state.entryData.content);
-    }
+    // this._editor = ace.edit("ace");
+    // this._editor.$blockScrolling = Infinity;
+    // this._editor.setTheme("ace/theme/monokai");
+    // this._editor.getSession().setMode("ace/mode/markdown");
+    // this._editor.getSession().setUseWrapMode(true);
+    // this._editor.getSession().on("change", this._onChangeEditor);
+    // if(this.state.entryData.content) {
+    //   this._editor.setValue(this.state.entryData.content);
+    // }
 
     // ⌘+sを押せるようにクラスを追加
     let textarea = document.getElementsByClassName('ace_text-input')[0];
@@ -84,7 +88,22 @@ export default class Editor extends React.Component {
           <li className="toolButton" onClick={this._onClickAddImage}><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
         </ul>
 
-        <div id="ace"></div>
+        <AceEditor
+          mode="markdown"
+          theme="monokai"
+          onChange={this._onChangeEditor}
+          name="ace"
+          width="auto"
+          height="auto"
+          value={this.state.entryData.content}
+          showPrintMargin={false}
+          userWrapMode={true}
+          editorProps={{$blockScrolling: true}}
+          onLoad={(editor) => {
+            editor.focus();
+            editor.getSession().setUseWrapMode(true);
+          }}
+        />
       </div>
     );
   }
@@ -103,10 +122,10 @@ export default class Editor extends React.Component {
   /**
    * エディター編集時のハンドラーです。
    */
-  _onChangeEditor() {
-    let content = this._editor.getValue();
+  _onChangeEditor(newValue) {
+    console.info('asdfas');
     let entryData = this.state.entryData;
-    entryData.content = content;
+    entryData.content = newValue;
     this.setState({
       entryData: entryData
     });
