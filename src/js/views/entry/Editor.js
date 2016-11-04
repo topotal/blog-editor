@@ -1,6 +1,11 @@
 import React from 'react';
+import brace from 'brace';
 import ApiPath from '../../enum/ApiParam';
 import ImageModal from './ImageModal';
+import AceEditor from 'react-ace';
+import 'brace/mode/markdown';
+import 'brace/theme/Terminal';
+import 'brace/keybinding/vim';
 
 /**
  * エディタークラスです。
@@ -19,31 +24,13 @@ export default class Editor extends React.Component {
     this._onClickAddImage = this._onClickAddImage.bind(this);
     this._onCancelImage = this._onCancelImage.bind(this);
     this._onDecisionImage = this._onDecisionImage.bind(this);
+    this._onLoadAceEditor = this._onLoadAceEditor.bind(this);
 
     this.state = {
       entryData: this.props.entryData,
       activeImageModal: false,
       activeEyeCatchModal: false
     };
-  }
-
-  /**
-   * コンポーネントがマウントされた際のハンドラーです。
-   */
-  componentDidMount() {
-    this._editor = ace.edit("ace");
-    this._editor.$blockScrolling = Infinity;
-    this._editor.setTheme("ace/theme/monokai");
-    this._editor.getSession().setMode("ace/mode/markdown");
-    this._editor.getSession().setUseWrapMode(true);
-    this._editor.getSession().on("change", this._onChangeEditor);
-    if(this.state.entryData.content) {
-      this._editor.setValue(this.state.entryData.content);
-    }
-
-    // ⌘+sを押せるようにクラスを追加
-    let textarea = document.getElementsByClassName('ace_text-input')[0];
-    textarea.classList.add('mousetrap');
   }
 
   /**
@@ -84,7 +71,20 @@ export default class Editor extends React.Component {
           <li className="toolButton" onClick={this._onClickAddImage}><i title="画像を追加" className="fa fa-picture-o fa-fw"></i></li>
         </ul>
 
-        <div id="ace"></div>
+        <AceEditor
+          mode="markdown"
+          theme="terminal"
+          onChange={this._onChangeEditor}
+          name="ace"
+          width="auto"
+          height="auto"
+          keyboardHandler="vim"
+          value={this.state.entryData.content}
+          showPrintMargin={false}
+          userWrapMode={true}
+          editorProps={{$blockScrolling: true}}
+          onLoad={this._onLoadAceEditor}
+        />
       </div>
     );
   }
@@ -103,10 +103,9 @@ export default class Editor extends React.Component {
   /**
    * エディター編集時のハンドラーです。
    */
-  _onChangeEditor() {
-    let content = this._editor.getValue();
+  _onChangeEditor(newValue) {
     let entryData = this.state.entryData;
-    entryData.content = content;
+    entryData.content = newValue;
     this.setState({
       entryData: entryData
     });
@@ -143,5 +142,17 @@ export default class Editor extends React.Component {
     let imagePath = ApiPath.getImagePath() + path;
     let markDownText = "![](" + imagePath + ")";
     this._editor.insert(markDownText);
+  }
+
+  /**
+   * AceEditorが読み込み終わった際のハンドラーです。
+   */
+  _onLoadAceEditor(editor) {
+    this._editor = editor;
+    this._editor.focus();
+    this._editor.getSession().setUseWrapMode(true);
+    // ⌘+sを押せるようにクラスを追加
+    let textarea = document.getElementsByClassName('ace_text-input')[0];
+    textarea.classList.add('mousetrap');
   }
 }

@@ -46,6 +46,9 @@ export default class Preview extends React.Component {
     if(this.props.entryData.eyeCatchImageUrl) {
       this._setEyeCatch(this.props.entryData.eyeCatchImageUrl);
     }
+
+    // 記事内容の初回セット
+    this._onChangeContent();
   }
 
   /**
