@@ -1,4 +1,5 @@
 import React from 'react';
+import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
 import Editor from './Editor';
 import Preview from './Preview';
