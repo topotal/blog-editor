@@ -1,6 +1,7 @@
 import React from 'react';
 import {_} from 'lodash';
 import marked from 'marked';
+import hljs from 'highlight.js';
 import ReactHtmlParser from 'react-html-parser';
 import ImageModal from './ImageModal';
 import ApiPath from '../../enum/ApiParam';
