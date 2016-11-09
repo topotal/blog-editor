@@ -17,6 +17,7 @@ export default class EditorToolBar extends React.Component {
     this._onClickAddImage = this._onClickAddImage.bind(this);
     this._onCancelImage = this._onCancelImage.bind(this);
     this._onDecisionImage = this._onDecisionImage.bind(this);
+    this._onClickTable = this._onClickTable.bind(this);
 
     this.state = {
       activeImageModal: false
@@ -38,6 +39,9 @@ export default class EditorToolBar extends React.Component {
         <ul className="toolbar">
           <li className="toolButton" onClick={this._onClickAddImage}>
             <i title="画像を追加" className="fa fa-picture-o fa-fw"></i>
+          </li>
+          <li className="toolButton" onClick={this._onClickTable}>
+            <i title="表を追加" className="fa fa-table fa-fw"></i>
           </li>
         </ul>
       </div>
@@ -75,5 +79,16 @@ export default class EditorToolBar extends React.Component {
     let markDownText = "![](" + imagePath + ")";
     // アウトプットイベント発火
     this.props.onOutput(markDownText);
+  }
+
+  /**
+   * テーブル追加ボタン押下時のハンドラーです。
+   */
+  _onClickTable() {
+    this.props.onOutput(`
+|th1|th2|th3|
+|---|---|---|
+|td1|td2|td3|
+    `);
   }
 }
