@@ -47,7 +47,7 @@ export default class Editor extends React.Component {
    */
   render() {
     return (
-      <div className="editor">
+      <div id="editor" className="editor">
 
         <ImageModal
           active={this.state.activeImageModal}

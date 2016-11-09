@@ -78,7 +78,7 @@ export default class Preview extends React.Component {
    */
   render() {
     return (
-      <div className="preview" ref="preview">
+      <div id="preview" className="preview" ref="preview">
         <ImageModal
           active={this.state.activeEyeCatchModal}
           onCancel={this._onCancelEyeCatch}
