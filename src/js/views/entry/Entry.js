@@ -47,7 +47,7 @@ export default class Entry extends React.Component {
     Split(['#editor', '#preview'], {
       sizes: [45, 55],
       minSize: 200,
-      onDragEnd: () => {
+      onDrag: () => {
         // aceエディタの為にresizeイベントを発火
         window.dispatchEvent(new Event('resize'));
       }
