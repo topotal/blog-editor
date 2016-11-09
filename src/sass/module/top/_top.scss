@@ -1,0 +1,13 @@
+@import "./header";
+@import "./aside";
+
+.top {
+  .content {
+    position: absolute;
+    top: 45px;
+    left: 40px + $PANEL_MARGIN;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+  }
+}
