@@ -1,8 +1,8 @@
 import React from 'react';
 import Entry from '../entry/Entry';
 import Entries from '../entries/Entries';
-import Aside from '../aside/Aside';
-import UserIcon from '../top/UserIcon';
+import Aside from './Aside';
+import UserIcon from './UserIcon';
 
 /**
  * トップページクラスです。
