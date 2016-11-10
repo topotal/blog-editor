@@ -1,6 +1,7 @@
 import React from 'react';
 import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
+import Split from 'split.js';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../models/ArticleModel';
@@ -37,6 +38,20 @@ export default class Entry extends React.Component {
     this._createService.addEventListener('success', this._onSuccessSave);
     this._updateService.addEventListener('success', this._onSuccessSave);
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
+  }
+
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    Split(['#editor', '#preview'], {
+      sizes: [45, 55],
+      minSize: 200,
+      onDrag: () => {
+        // aceエディタの為にresizeイベントを発火
+        window.dispatchEvent(new Event('resize'));
+      }
+    });
   }
 
   /**

@@ -25,8 +25,8 @@ export default class ArticleModel {
    */
   constructor(id, title, content, eyeCatchImageUrl, publishStatus) {
     this._id = id;
-    this._title = title;
-    this._content = content;
+    this._title = title || '';
+    this._content = content || '';
     this._eyeCatchImageUrl = eyeCatchImageUrl;
     this._publishStatus = publishStatus || 'draft';
   }

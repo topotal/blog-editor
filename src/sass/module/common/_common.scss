@@ -1,42 +1,7 @@
-$BORDER_BLACK: #393939;
-$PANEL_BACK_BLACK: #535353;
-$DARK_BLACK: #4d4d4d;
-
-$GREEN: #2ecc71;
-$YELLOW: #f1c40f;
-$RED: #e74c3c;
-
-$PANEL_MARGIN: 2px;
-
-html, body, #main {
-  width: 100%;
-  height: 100%;
-  line-height: 1.5;
-  font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
-  font-size: 1em;
-  color: #FFF;
-}
-
-body {
-  height: 100%;
-  overflow: hidden;
-}
-
-.app {
-  width: 100%;
-  height: 100%;
-  background-color: $DARK_BLACK;
-  position: relative;
-
-  .content {
-    position: absolute;
-    top: 45px;
-    left: 40px + $PANEL_MARGIN;
-    right: 0;
-    bottom: 0;
-    box-sizing: border-box;
-  }
-}
+@import "./const";
+@import "./modal";
+@import "./button";
+@import "./messageBox";
 
 .panel {
   box-sizing: border-box;
