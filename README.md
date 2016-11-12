@@ -12,7 +12,7 @@ npm install
 npm run build
 ```
 
-## Run Watch and Server
+## Run watch and server
 
 ```
 npm run start
