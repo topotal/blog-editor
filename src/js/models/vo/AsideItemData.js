@@ -4,12 +4,14 @@
 export default class AsideItemData {
 
   /** 各アイテム */
-  static get ARTICLES() {  return new AsideItemData('entries', 'fa-list', '記事一覧') }
+  static get ENTRIES() {  return new AsideItemData('entries', 'fa-list', '記事一覧') }
+  static get ACCOUNT() {  return new AsideItemData('account', 'fa-user-circle', 'アカウント') }
 
   /** アイテムリスト */
   static get LIST() {
     return [
-      AsideItemData.ARTICLES
+      AsideItemData.ENTRIES,
+      AsideItemData.ACCOUNT
     ];
   }
 
