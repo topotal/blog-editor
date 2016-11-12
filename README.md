@@ -1,2 +1,19 @@
 # blog-editor
-sawa-zen.comの記事投稿ページ
+
+## Setup
+
+```
+npm install
+```
+
+## Generate assets
+
+```
+npm run build
+```
+
+## Run Watch and Server
+
+```
+npm run start
+```
