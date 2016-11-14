@@ -14,16 +14,11 @@
   padding: 0 40px;
   display: inline-block;
   line-height: 30px;
-  border: 1px solid #FFF;
-  color: #FFF;
+  border: 1px solid $WHITE;
+  color: $WHITE;
   border-radius: 15px;
   font-size: 0.8em;
   cursor: pointer;
-
-  &.cancel {
-    border: 1px solid #CCC;
-    color: #CCC;
-  }
 
   &.clickDisable {
     opacity: 0.2;
@@ -61,7 +56,7 @@
   box-sizing: border-box;
   background: transparent;
   border-bottom: 1px solid #CCC;
-  color: #FFF;
+  color: $WHITE;
 
   &:focus {
     outline: none;
