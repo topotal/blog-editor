@@ -17,7 +17,16 @@ export default class Account extends React.Component {
    */
   render() {
     return (
-      <div>アカウント</div>
+      <div className="account panel">
+        <div className="fieldGroup">
+          <div className="fieldGroupBorder"/>
+          <span className="fieldGroupLabel">Profile</span>
+          <div className="field">
+            <span className="fieldLabel">Name：</span>
+            <input type="text" className="textField fieldInput" />
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -1,0 +1,49 @@
+.account {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .fieldGroup {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 600px;
+    height: 60px;
+
+    .fieldGroupBorder {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: $BORDER_BLACK 1px solid;
+    }
+
+    .fieldGroupLabel {
+      position: absolute;
+      left: 20px;
+      font-size: 0.8em;
+      color: $WHITE;
+    }
+
+    .field {
+      position: absolute;
+      width: 300px;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      margin: auto;
+      box-sizing: border-box;
+      font-size: 0.8em;
+      color: $WHITE;
+
+      .fieldInput {
+        width: auto;
+
+        &.textField {
+          height: 20px;
+        }
+      }
+    }
+  }
+}
