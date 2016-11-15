@@ -1,0 +1,11 @@
+.fieldset {
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  border: 1px solid $BORDER_BLACK;
+
+  legend {
+    font-size: 0.8em;
+  }
+}

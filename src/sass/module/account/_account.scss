@@ -3,20 +3,8 @@
   padding: 20px;
   box-sizing: border-box;
 
-  .fieldset {
-    position: relative;
-    box-sizing: border-box;
-    padding-bottom: 0;
-    margin-bottom: 10px;
-    max-width: 600px;
-    border: 1px solid $BORDER_BLACK;
-
-    legend {
-      font-size: 0.8em;
-    }
-  }
-
   .accountGroup {
+    max-width: 600px;
     height: 100%;
   }
 
