@@ -3,7 +3,7 @@ import Entry from '../entry/Entry';
 import Entries from '../entries/Entries';
 import Aside from './Aside';
 import UserIcon from './UserIcon';
-import Account from '../account/Account';
+import Setting from '../setting/Setting';
 
 /**
  * トップページクラスです。
@@ -37,7 +37,7 @@ export default class Top extends React.Component {
       switch (this.state.currentPage) {
         case 'editor': return ( <Entry entryData={this.state.entryData} /> );
         case 'entries': return ( <Entries refs="entries" onSelectRow={this._onSelectRow} onClickNew={this._onClickNew}/> );
-        case 'account': return ( <Account /> );
+        case 'account': return ( <Setting /> );
       }
     };
 
