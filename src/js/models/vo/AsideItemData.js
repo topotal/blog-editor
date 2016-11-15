@@ -5,7 +5,7 @@ export default class AsideItemData {
 
   /** 各アイテム */
   static get ENTRIES() {  return new AsideItemData('entries', 'fa-list', '記事一覧') }
-  static get ACCOUNT() {  return new AsideItemData('account', 'fa-user-circle', 'アカウント') }
+  static get ACCOUNT() {  return new AsideItemData('setting', 'fa-cog', '設定') }
 
   /** アイテムリスト */
   static get LIST() {
@@ -31,5 +31,4 @@ export default class AsideItemData {
     this._icon = icon;
     this._title = title;
   }
-
 }

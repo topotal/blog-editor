@@ -21,12 +21,14 @@ export default class Setting extends React.Component {
   render() {
     return (
       <div className="setting panel">
-        <FieldSet legend="Acount" className="account">
-          <FieldSet legend="Profile">
-            <TextField label="Icon" />
-            <TextField label="Name" />
-            <TextArea label="Profile" />
-          </FieldSet>
+        <FieldSet legend="Profile" className="profile">
+          <TextField label="Icon" />
+          <TextField label="Name" />
+          <TextArea label="Profile" />
+        </FieldSet>
+        <FieldSet legend="Editor" className="editor">
+          <TextField label="Style" />
+          <TextField label="Theme" />
         </FieldSet>
       </div>
     );
