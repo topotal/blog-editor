@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 /**
  * フィールドセットクラス
@@ -17,8 +18,9 @@ export default class FieldSet extends React.Component {
    * 描画します。
    */
   render() {
+    let classes = classNames('fieldset', this.props.className);
     return (
-      <fieldset className="fieldset">
+      <fieldset className={classes}>
         <legend>{this.props.legend}</legend>
         {this.props.children}
       </fieldset>

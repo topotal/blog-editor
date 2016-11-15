@@ -3,46 +3,53 @@
   padding: 20px;
   box-sizing: border-box;
 
-  .fieldGroup {
+  .fieldset {
     position: relative;
     box-sizing: border-box;
+    padding-bottom: 0;
+    margin-bottom: 10px;
     max-width: 600px;
-    height: 60px;
+    border: 1px solid $BORDER_BLACK;
 
-    .fieldGroupBorder {
-      position: absolute;
-      top: 10px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: $BORDER_BLACK 1px solid;
-    }
-
-    .fieldGroupLabel {
-      position: absolute;
-      left: 20px;
+    legend {
       font-size: 0.8em;
-      color: $WHITE;
+    }
+  }
+
+  .accountGroup {
+    height: 100%;
+  }
+
+  .field {
+    margin: 0 auto 10px;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    color: $WHITE;
+    display: flex;
+
+    .fieldLabel {
+      margin-right: 5px;
+      text-align: right;
+      width: 100px;
     }
 
-    .field {
-      position: absolute;
+    .fieldInput {
       width: 300px;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      margin: auto;
-      box-sizing: border-box;
-      font-size: 0.8em;
-      color: $WHITE;
 
-      .fieldInput {
-        width: auto;
+      &.textfield {
+        height: 20px;
+        border: 1px solid $INPUT_BORDER_BLACK;
+        background-color: $DARK_BLACK;
+        color: $WHITE;
+        box-sizing: border-box;
+      }
 
-        &.textField {
-          height: 20px;
-        }
+      &.textarea {
+        border: 1px solid $INPUT_BORDER_BLACK;
+        background-color: $DARK_BLACK;
+        color: $WHITE;
+        box-sizing: border-box;
+        resize: none;
       }
     }
   }

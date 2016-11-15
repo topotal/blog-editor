@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * テキストエディタークラス
+ * テキストエリアクラス
  */
 export default class TextField extends React.Component {
 
@@ -20,7 +20,7 @@ export default class TextField extends React.Component {
     return (
       <div className="field">
         <span className="fieldLabel">{this.props.label}：</span>
-        <input type="text" className="textfield fieldInput" />
+        <textarea className="fieldInput textarea" rows="7"></textarea>
       </div>
     );
   }

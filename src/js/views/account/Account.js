@@ -1,4 +1,7 @@
 import React from 'react';
+import FieldSet from '../common/form/FieldSet';
+import TextField from '../common/form/TextField';
+import TextArea from '../common/form/TextArea';
 
 /**
  * アカウント編集画面クラス
@@ -18,14 +21,13 @@ export default class Account extends React.Component {
   render() {
     return (
       <div className="account panel">
-        <div className="fieldGroup">
-          <div className="fieldGroupBorder"/>
-          <span className="fieldGroupLabel">Profile</span>
-          <div className="field">
-            <span className="fieldLabel">Name：</span>
-            <input type="text" className="textField fieldInput" />
-          </div>
-        </div>
+        <FieldSet legend="Acount" className="accountGroup">
+          <FieldSet legend="Profile">
+            <TextField label="Icon" />
+            <TextField label="Name" />
+            <TextArea label="Profile" />
+          </FieldSet>
+        </FieldSet>
       </div>
     );
   }
