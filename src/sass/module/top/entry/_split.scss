@@ -1,23 +1,25 @@
-.gutter {
-  background-repeat: no-repeat;
-  background-position: 50%;
-  border-left: 1px solid $BORDER_BLACK;
-  border-right: 1px solid $BORDER_BLACK;
+@mixin split {
+  .gutter {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-left: 1px solid $BORDER_BLACK;
+    border-right: 1px solid $BORDER_BLACK;
 
-  &.gutter-horizontal {
+    &.gutter-horizontal {
+      float: left;
+      height: 100%;
+      cursor: ew-resize;
+    }
+
+    &.gutter-vertical {
+      cursor: ns-resize;
+    }
+  }
+
+  .split {
     float: left;
-    height: 100%;
-    cursor: ew-resize;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-
-  &.gutter-vertical {
-    cursor: ns-resize;
-  }
-}
-
-.split {
-  float: left;
-  height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }

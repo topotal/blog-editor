@@ -24,6 +24,7 @@
       background-color: $DARK_BLACK;
 
       @include editor;
+      @include split;
       @include preview;
     }
 
