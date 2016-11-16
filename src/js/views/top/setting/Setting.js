@@ -2,6 +2,7 @@ import React from 'react';
 import FieldSet from '../../common/form/FieldSet';
 import TextField from '../../common/form/TextField';
 import TextArea from '../../common/form/TextArea';
+import ComboBox from '../../common/form/ComboBox';
 
 /**
  * アカウント編集画面クラス
@@ -27,8 +28,8 @@ export default class Setting extends React.Component {
           <TextArea label="Profile" />
         </FieldSet>
         <FieldSet legend="Editor" className="editorSet">
-          <TextField label="Style" />
-          <TextField label="Theme" />
+          <ComboBox label="Style" />
+          <ComboBox label="Theme" />
         </FieldSet>
       </div>
     );
