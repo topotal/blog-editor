@@ -7,5 +7,16 @@
     .settingSet {
       max-width: 600px;
     }
+
+    .field {
+      .fieldLabel {
+        width: 100px;
+      }
+
+      .textfield,
+      .textarea {
+        width: 300px;
+      }
+    }
   }
 }
