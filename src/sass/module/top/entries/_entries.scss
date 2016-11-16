@@ -1,0 +1,56 @@
+@import "./entriesRow";
+
+@mixin entries {
+  .entries {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .listToolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      border-bottom: 1px solid $BORDER_BLACK;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+
+      .roundButton {
+        width: auto;
+        padding: 0 30px;
+        i {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .list {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      right: 0;
+      bottom: 35px;
+      margin: 0;
+      padding: 0;
+      overflow-y: scroll;
+      cursor: pointer;
+
+      @include entriesRow;
+    }
+
+    .listFooter {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      height: 35px;
+      border-top: 1px solid $BORDER_BLACK;
+      box-sizing: border-box;
+    }
+  }
+}

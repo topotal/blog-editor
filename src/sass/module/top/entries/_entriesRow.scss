@@ -1,0 +1,76 @@
+@mixin entriesRow {
+  $ROW_HEIGHT: 50px;
+
+  .entriesRow {
+    cursor: pointer;
+    width: 100%;
+    height: $ROW_HEIGHT;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #444444;
+    background-color: #535353;
+    position: relative;
+
+    &:hover {
+      background-color: #6b6b6b;
+    }
+
+    .id,
+    .title,
+    .updatedAt,
+    .status {
+      position: absolute;
+    }
+
+    .id {
+      left: 20px;
+      line-height: $ROW_HEIGHT;
+      color: #DDD;
+      font-size: 0.7em;
+    }
+
+    .title {
+      left: 70px;
+      line-height: 80px;
+      line-height: $ROW_HEIGHT;
+      font-size: 0.9em;
+    }
+
+    .updatedAt {
+      right: 150px;
+      line-height: $ROW_HEIGHT;
+      color: #DDD;
+      font-size: 0.7em;
+    }
+
+    .status {
+      top: 0px;
+      right: 20px;
+      bottom: 0px;
+      margin: auto;
+      width: 60px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 0.6em;
+      border-radius: 5px;
+      box-sizing: border-box;
+
+      &.green {
+        border: 1px solid $GREEN;
+        color: $GREEN;
+      }
+
+      &.yellow {
+        border: 1px solid $YELLOW;
+        color: $YELLOW;
+      }
+
+      &.red {
+        border: 1px solid $RED;
+        color: $RED;
+      }
+    }
+  }
+}
