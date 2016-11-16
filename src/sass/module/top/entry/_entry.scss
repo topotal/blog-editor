@@ -3,57 +3,59 @@
 @import "./split";
 @import "./imageList";
 
-.entry {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-
-  .main {
+@mixin entry {
+  .entry {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 35px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: #DDD;
-  }
-
-  .entryFooter {
-    position: absolute;
-    left: 0;
-    right: 0;
     bottom: 0;
-    height: 35px;
-    border-top: 1px solid $BORDER_BLACK;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 5px;
+    width: 100%;
 
-    .public {
-      font-size: 0.7em;
+    .main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 35px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: #DDD;
+    }
 
-      select {
-        height: 25px;
-        appearance: none;
-        -webkit-appearance: none;
-        background-color: $DARK_BLACK;
-        background-image: url(../images/select_arrow.png);
-        background-repeat: no-repeat;
-        background-position: right;
-        background-size: 23px;
-        width: 100px;
-        line-height: 25px;
-        box-sizing: border-box;
-        padding: 0 10px;
+    .entryFooter {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 35px;
+      border-top: 1px solid $BORDER_BLACK;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 5px;
 
-        &:focus {
-          outline: none;
+      .public {
+        font-size: 0.7em;
+
+        select {
+          height: 25px;
+          appearance: none;
+          -webkit-appearance: none;
+          background-color: $DARK_BLACK;
+          background-image: url(../images/select_arrow.png);
+          background-repeat: no-repeat;
+          background-position: right;
+          background-size: 23px;
+          width: 100px;
+          line-height: 25px;
+          box-sizing: border-box;
+          padding: 0 10px;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
