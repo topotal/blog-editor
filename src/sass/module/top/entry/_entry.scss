@@ -21,7 +21,7 @@
       width: 100%;
       display: flex;
       align-items: center;
-      background-color: #DDD;
+      background-color: $DARK_BLACK;
 
       @include editor;
       @include preview;

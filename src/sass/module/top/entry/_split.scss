@@ -1,27 +1,21 @@
 .gutter {
-  background-color: #eee;
-
   background-repeat: no-repeat;
   background-position: 50%;
-}
 
-.gutter.gutter-horizontal {
-  cursor: ew-resize;
-}
+  &.gutter-horizontal {
+    float: left;
+    height: 100%;
+    cursor: ew-resize;
+  }
 
-.gutter.gutter-vertical {
-  cursor: ns-resize;
-}
-
-.split, .gutter.gutter-horizontal {
-  float: left;
-}
-
-.split, .gutter.gutter-horizontal {
-  height: 300px;
+  &.gutter-vertical {
+    cursor: ns-resize;
+  }
 }
 
 .split {
+  float: left;
+  height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
 }
