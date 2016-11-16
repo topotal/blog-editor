@@ -1,7 +1,7 @@
 import React from 'react';
-import FieldSet from '../common/form/FieldSet';
-import TextField from '../common/form/TextField';
-import TextArea from '../common/form/TextArea';
+import FieldSet from '../../common/form/FieldSet';
+import TextField from '../../common/form/TextField';
+import TextArea from '../../common/form/TextArea';
 
 /**
  * アカウント編集画面クラス

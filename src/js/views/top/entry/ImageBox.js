@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import ApiParam from '../../enum/ApiParam';
+import ApiParam from '../../../enum/ApiParam';
 
 /**
  * 画像ボックスクラスです。

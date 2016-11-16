@@ -1,7 +1,7 @@
 import React from 'react';
 import EntriesRow from './EntriesRow';
-import GetEntriesService from '../../services/GetEntriesService';
-import UserModel from '../../models/UserModel';
+import GetEntriesService from '../../../services/GetEntriesService';
+import UserModel from '../../../models/UserModel';
 
 /**
  * 記事一覧クラスです。

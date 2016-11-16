@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import PublishStatusData from '../../models/vo/PublishStatusData';
+import PublishStatusData from '../../../models/vo/PublishStatusData';
 
 /**
  * 記事リストのRowクラスです。

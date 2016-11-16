@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import Split from 'split.js';
 import Editor from './Editor';
 import Preview from './Preview';
-import ArticleModel from '../../models/ArticleModel';
-import CreateEntryService from '../../services/CreateEntryService';
-import UpdateEntryService from '../../services/UpdateEntryService';
-import PublishStatusData from '../../models/vo/PublishStatusData';
+import ArticleModel from '../../../models/ArticleModel';
+import CreateEntryService from '../../../services/CreateEntryService';
+import UpdateEntryService from '../../../services/UpdateEntryService';
+import PublishStatusData from '../../../models/vo/PublishStatusData';
 
 /**
  * 記事クラス

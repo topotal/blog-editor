@@ -1,9 +1,9 @@
 import React from 'react';
-import Entry from '../entry/Entry';
-import Entries from '../entries/Entries';
 import Aside from './Aside';
 import UserIcon from './UserIcon';
-import Setting from '../setting/Setting';
+import Entry from './entry/Entry';
+import Entries from './entries/Entries';
+import Setting from './setting/Setting';
 
 /**
  * トップページクラスです。

@@ -4,7 +4,7 @@ import marked from 'marked';
 import hljs from 'highlight.js';
 import ReactHtmlParser from 'react-html-parser';
 import ImageModal from './ImageModal';
-import ApiPath from '../../enum/ApiParam';
+import ApiPath from '../../../enum/ApiParam';
 
 /**
  * プレビュークラスです。

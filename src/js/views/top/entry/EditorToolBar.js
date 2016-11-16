@@ -1,5 +1,5 @@
 import React from 'react';
-import ApiPath from '../../enum/ApiParam';
+import ApiPath from '../../../enum/ApiParam';
 import ImageModal from './ImageModal';
 
 /**

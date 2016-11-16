@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import Modal from '../common/Modal';
+import Modal from '../../common/Modal';
 import ImageBox from './ImageBox';
-import GetImagesService from '../../services/GetImagesService';
-import UploadImageService from '../../services/UploadImageService';
+import GetImagesService from '../../../services/GetImagesService';
+import UploadImageService from '../../../services/UploadImageService';
 
 /**
  * 画像モーダルクラスです。
