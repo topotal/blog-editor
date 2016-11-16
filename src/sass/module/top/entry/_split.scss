@@ -1,6 +1,8 @@
 .gutter {
   background-repeat: no-repeat;
   background-position: 50%;
+  border-left: 1px solid $BORDER_BLACK;
+  border-right: 1px solid $BORDER_BLACK;
 
   &.gutter-horizontal {
     float: left;
