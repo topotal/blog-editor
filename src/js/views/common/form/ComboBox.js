@@ -23,16 +23,18 @@ export default class ComboBox extends React.Component {
    * 描画します。
    */
   render() {
-    var options = this.props.store.map((data, index) => {
+    let options = this.props.store.map((data, index) => {
       return (
-        <option value={data[this.props.valueField]} key={index}>{data[this.props.displayField]}</option>
+        <option value={data[this.props.valueField]} key={index}>
+          {data[this.props.displayField]}
+        </option>
       );
     });
 
     return (
       <div className="field">
         <span className="fieldLabel">{this.props.label}：</span>
-        <select className="fieldInput combobox mousetrap" onChange={this._onChange}>
+        <select className="fieldInput combobox mousetrap" onChange={this._onChange} value={this.state.value}>
           {options}
         </select>
       </div>
@@ -44,7 +46,6 @@ export default class ComboBox extends React.Component {
    */
   _onChange(event) {
     let value = event.target.value;
-    console.info(value);
     this.setState({
       value: value
     });

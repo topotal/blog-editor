@@ -35,6 +35,7 @@ export default class Setting extends React.Component {
               store={EditorStyleData.LIST}
               displayField="label"
               valueField="value"
+              value="Vim"
             />
           </FieldSet>
         </FieldSet>
