@@ -1,6 +1,6 @@
 import React from 'react';
+import Header from './header/Header';
 import Aside from './aside/Aside';
-import UserIcon from './header/UserIcon';
 import Entry from './entry/Entry';
 import Entries from './entries/Entries';
 import Setting from './setting/Setting';
@@ -43,10 +43,7 @@ export default class Top extends React.Component {
 
     return (
       <div className="top">
-        <div className="header">
-          <img className="logo" src="images/logo.png" alt="topotal" width="104" height="28" />
-          <UserIcon />
-        </div>
+        <Header />
         <Aside onClick={this._onClickAside} />
         <div className="content">
           {getContent()}
