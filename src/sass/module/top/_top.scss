@@ -1,11 +1,12 @@
 @import "./header/header";
-@import "./aside";
+@import "./aside/aside";
 @import "./entry/entry";
 @import "./entries/entries";
 @import "./setting/setting";
 
 @mixin top {
   @include header;
+  @include aside;
 
   .top {
     .content {
