@@ -1,7 +1,7 @@
 import React from 'react';
-import MessageBox from '../common/MessageBox';
 import classNames from 'classnames';
-import UserModel from '../../models/UserModel';
+import MessageBox from '../../common/MessageBox';
+import UserModel from '../../../models/UserModel';
 
 /**
  * ユーザーアイコンクラス

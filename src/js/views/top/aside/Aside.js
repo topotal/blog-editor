@@ -1,5 +1,5 @@
 import React from 'react';
-import AsideItemData from '../../models/vo/AsideItemData';
+import AsideItemData from '../../../models/vo/AsideItemData';
 
 /**
  * サイドバークラスです。
