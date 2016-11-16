@@ -1,0 +1,19 @@
+.field {
+  margin: 0 auto 10px;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  color: $WHITE;
+  display: flex;
+  line-height: 25px;
+  min-height: 25px;
+
+  .fieldLabel {
+    margin-right: 5px;
+    text-align: right;
+    width: 100px;
+  }
+
+  .fieldInput {
+    width: 300px;
+  }
+}
