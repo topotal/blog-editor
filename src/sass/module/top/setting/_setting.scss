@@ -1,28 +1,30 @@
-.setting {
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-
-  .profileSet,
-  .editorSet {
-    max-width: 600px;
-  }
-
-  .field {
-    margin: 0 auto 10px;
+@mixin setting {
+  .setting {
+    height: 100%;
+    padding: 20px;
     box-sizing: border-box;
-    font-size: 0.8em;
-    color: $WHITE;
-    display: flex;
 
-    .fieldLabel {
-      margin-right: 5px;
-      text-align: right;
-      width: 100px;
+    .profileSet,
+    .editorSet {
+      max-width: 600px;
     }
 
-    .fieldInput {
-      width: 300px;
+    .field {
+      margin: 0 auto 10px;
+      box-sizing: border-box;
+      font-size: 0.8em;
+      color: $WHITE;
+      display: flex;
+
+      .fieldLabel {
+        margin-right: 5px;
+        text-align: right;
+        width: 100px;
+      }
+
+      .fieldInput {
+        width: 300px;
+      }
     }
   }
 }
