@@ -1,43 +1,45 @@
-.editor {
-  height: 100%;
-  position: relative;
-  border-right: 1px solid $BORDER_BLACK;
-  box-sizing: border-box;
+@mixin editor {
+  .editor {
+    height: 100%;
+    position: relative;
+    border-right: 1px solid $BORDER_BLACK;
+    box-sizing: border-box;
 
-  .title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    padding: 10px;
-    background-color: $PANEL_BACK_BLACK;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    height: 40px;
-    padding: 0 1px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    background-color: $PANEL_BACK_BLACK;
-    border-top: 1px solid $BORDER_BLACK;
-    border-bottom: 1px solid $BORDER_BLACK;
-
-    li {
-      margin-right: 5px;
+    .title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      padding: 10px;
+      background-color: $PANEL_BACK_BLACK;
     }
-  }
 
-  #ace {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    .toolbar {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      padding: 0 1px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      background-color: $PANEL_BACK_BLACK;
+      border-top: 1px solid $BORDER_BLACK;
+      border-bottom: 1px solid $BORDER_BLACK;
+
+      li {
+        margin-right: 5px;
+      }
+    }
+
+    #ace {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 }
