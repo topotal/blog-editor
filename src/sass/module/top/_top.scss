@@ -1,10 +1,12 @@
-@import "./header";
+@import "./header/header";
 @import "./aside";
 @import "./entry/entry";
 @import "./entries/entries";
 @import "./setting/setting";
 
 @mixin top {
+  @include header;
+
   .top {
     .content {
       position: absolute;
