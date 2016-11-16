@@ -1,105 +1,106 @@
-.preview {
-  height: 100%;
-  background-color: #fff;
-  box-sizing: border-box;
-  padding: 20px 40px;
-  overflow-y: scroll;
-
-  .entryEyeCatch {
-    width: 100%;
-    min-height: 200px;
-    font-size: 1.5em;
+@mixin preview {
+  .preview {
+    height: 100%;
+    background-color: #fff;
     box-sizing: border-box;
-    border: 2px dotted #CCC;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #CCC;
-    position: relative;
+    padding: 20px 40px;
+    overflow-y: scroll;
 
-    .addText {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 60px;
-      line-height: 60px;
-      width: 300px;
-      margin: auto;
-    }
-
-    img {
+    .entryEyeCatch {
       width: 100%;
-      display: none;
-    }
-
-    &:hover {
-      color: $GREEN;
-      border: 2px dotted $GREEN;
-    }
-  }
-
-  .entryContent {
-    color: #000;
-
-    // タイトル1
-    h1 {
-      font-size: 1.9em;
-      font-weight: normal;
-      border-bottom: 3px solid #CCC;
-      margin-top: 2.5em;
-    }
-
-    // タイトル2
-    h2 {
+      min-height: 200px;
       font-size: 1.5em;
-      font-weight: normal;
-      border-bottom: 2px solid #CCC;
-      margin-top: 1.3em;
-    }
+      box-sizing: border-box;
+      border: 2px dotted #CCC;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #CCC;
+      position: relative;
 
-    a {
-      color: #00f;
-    }
-
-    img {
-      width: 100%;
-    }
-
-    pre {
-      font-size: .8em;
-    }
-
-    table {
-      display: block;
-      width: 100%;
-      overflow: auto;
-      word-break: normal;
-      word-break: keep-all;
-
-      th {
-        font-weight: bold;
+      .addText {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60px;
+        line-height: 60px;
+        width: 300px;
+        margin: auto;
       }
 
-      th,
-      td {
-        padding: 6px 13px;
-        border: 1px solid #ddd;
+      img {
+        width: 100%;
+        display: none;
       }
 
-      tr {
-        background-color: #fff;
-        border-top: 1px solid #ccc;
+      &:hover {
+        color: $GREEN;
+        border: 2px dotted $GREEN;
+      }
+    }
+
+    .entryContent {
+      color: #000;
+
+      // タイトル1
+      h1 {
+        font-size: 1.9em;
+        font-weight: normal;
+        border-bottom: 3px solid #CCC;
+        margin-top: 2.5em;
       }
 
-      tr:nth-child(2n) {
-        background-color: #f8f8f8;
+      // タイトル2
+      h2 {
+        font-size: 1.5em;
+        font-weight: normal;
+        border-bottom: 2px solid #CCC;
+        margin-top: 1.3em;
       }
 
+      a {
+        color: #00f;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      pre {
+        font-size: .8em;
+      }
+
+      table {
+        display: block;
+        width: 100%;
+        overflow: auto;
+        word-break: normal;
+        word-break: keep-all;
+
+        th {
+          font-weight: bold;
+        }
+
+        th,
+        td {
+          padding: 6px 13px;
+          border: 1px solid #ddd;
+        }
+
+        tr {
+          background-color: #fff;
+          border-top: 1px solid #ccc;
+        }
+
+        tr:nth-child(2n) {
+          background-color: #f8f8f8;
+        }
+      }
     }
   }
 }
