@@ -1,53 +1,55 @@
-.login {
-  text-align: center;
-  position: relative;
+@mixin login {
+  .login {
+    text-align: center;
+    position: relative;
 
-  .modalWrapper {
-    width: 600px;
-    height: 400px;
-  }
-
-  .logo {
-    position: absolute;
-    display: block;
-    top: 40px;
-    left: 0;
-    right: 0;
-    margin: auto;
-  }
-
-  .username,
-  .password{
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 300px;
-
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
-      -webkit-text-fill-color: #FFF;
+    .modalWrapper {
+      width: 600px;
+      height: 400px;
     }
-    &:-webkit-autofill:focus {
-      -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
-      -webkit-text-fill-color: #FFF;
+
+    .logo {
+      position: absolute;
+      display: block;
+      top: 40px;
+      left: 0;
+      right: 0;
+      margin: auto;
     }
-  }
 
-  .username {
-    top: 180px;
-  }
+    .username,
+    .password {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 300px;
 
-  .password {
-    top: 230px;
-  }
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
+        -webkit-text-fill-color: #FFF;
+      }
+      &:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px $PANEL_BACK_BLACK inset;
+        -webkit-text-fill-color: #FFF;
+      }
+    }
 
-  .submit {
-    width: 200px;
-    position: absolute;
-    top: 310px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    .username {
+      top: 180px;
+    }
+
+    .password {
+      top: 230px;
+    }
+
+    .submit {
+      width: 200px;
+      position: absolute;
+      top: 310px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
   }
 }
