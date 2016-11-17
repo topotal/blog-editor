@@ -6,6 +6,8 @@
     padding: 20px 40px;
     overflow-y: scroll;
 
+    @include imageList;
+
     .entryEyeCatch {
       width: 100%;
       min-height: 200px;
