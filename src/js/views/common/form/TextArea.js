@@ -7,7 +7,7 @@ import Field from './Field';
 export default class TextField extends Field {
 
   /**
-   * 描画します。
+   * 入力フォームを生成します。
    */
   _createInput() {
     return (

@@ -1,27 +1,17 @@
 import React from 'react';
+import Field from './Field';
 
 /**
  * テキストエディタークラス
  */
-export default class TextField extends React.Component {
+export default class TextField extends Field {
 
   /**
-   * コンストラクター
-   * @constructor
+   * 入力フォームを生成します。
    */
-  constructor(props) {
-    super(props);
-  }
-
-  /**
-   * 描画します。
-   */
-  render() {
+  _createInput() {
     return (
-      <div className="field">
-        <span className="fieldLabel">{this.props.label}：</span>
-        <input type="text" className="textfield fieldInput" />
-      </div>
+      <input type="text" className="textfield fieldInput" onChange={this._onChange} />
     );
   }
 }
