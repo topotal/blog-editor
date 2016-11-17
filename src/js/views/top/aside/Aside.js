@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import AsideItemData from '../../../models/vo/AsideItemData';
 
 /**
@@ -13,6 +14,10 @@ export default class Aside extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      current: AsideItemData.ENTRIES.type
+    };
+
     this._onClickItem = this._onClickItem.bind(this);
   }
 
@@ -21,8 +26,16 @@ export default class Aside extends React.Component {
    */
   render() {
     let items = AsideItemData.LIST.map((itemData, index) => {
+      let classes = classNames('toolButton', {
+        selected: itemData.type == this.state.current
+      });
       return (
-        <li className="toolButton" onClick={this._onClickItem} key={index} data-type={itemData.type}>
+        <li
+          className={classes}
+          onClick={this._onClickItem}
+          key={index}
+          data-type={itemData.type}
+        >
           <i title={itemData.title} className={"fa " + itemData.icon + " fa-fw"} ></i>
         </li>
       );
@@ -40,6 +53,11 @@ export default class Aside extends React.Component {
    */
   _onClickItem(event) {
     let target = event.currentTarget;
+
+    this.setState({
+      current: target.dataset.type
+    });
+
     // 変更イベントを発火
     this.props.onClick(target.dataset.type)
   }
