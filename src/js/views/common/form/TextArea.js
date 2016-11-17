@@ -1,27 +1,19 @@
 import React from 'react';
+import Field from './Field';
 
 /**
  * テキストエリアクラス
  */
-export default class TextField extends React.Component {
-
-  /**
-   * コンストラクター
-   * @constructor
-   */
-  constructor(props) {
-    super(props);
-  }
+export default class TextField extends Field {
 
   /**
    * 描画します。
    */
-  render() {
+  _createInput() {
     return (
-      <div className="field">
-        <span className="fieldLabel">{this.props.label}：</span>
-        <textarea className="fieldInput textarea" rows="7"></textarea>
-      </div>
+      <textarea className="fieldInput textarea" rows="7" onChange={this._onChange}>
+        {this.state.value}
+      </textarea>
     );
   }
 }

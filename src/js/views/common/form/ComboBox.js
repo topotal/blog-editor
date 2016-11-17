@@ -7,14 +7,6 @@ import Field from './Field';
 export default class ComboBox extends Field {
 
   /**
-   * コンストラクター
-   * @constructor
-   */
-  constructor(props) {
-    super(props);
-  }
-
-  /**
    * 入力フォームを生成します。
    * @override
    */
