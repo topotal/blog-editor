@@ -22,6 +22,15 @@ export default class Aside extends React.Component {
   }
 
   /**
+   * propが変更された際のハンドラー
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      current: nextProps.current
+    });
+  }
+
+  /**
    * 描画します。
    */
   render() {
@@ -53,11 +62,6 @@ export default class Aside extends React.Component {
    */
   _onClickItem(event) {
     let target = event.currentTarget;
-
-    this.setState({
-      current: target.dataset.type
-    });
-
     // 変更イベントを発火
     this.props.onClick(target.dataset.type)
   }
