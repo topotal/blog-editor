@@ -1,9 +1,10 @@
 import React from 'react';
+import Field from './Field';
 
 /**
  * コンボボックスクラスです。
  */
-export default class ComboBox extends React.Component {
+export default class ComboBox extends Field {
 
   /**
    * コンストラクター
@@ -11,18 +12,13 @@ export default class ComboBox extends React.Component {
    */
   constructor(props) {
     super(props);
-
-    this._onChange = this._onChange.bind(this);
-
-    this.state = {
-      value: this.props.value || null
-    }
   }
 
   /**
-   * 描画します。
+   * 入力フォームを生成します。
+   * @override
    */
-  render() {
+  _createInput() {
     let options = this.props.store.map((data, index) => {
       return (
         <option value={data[this.props.valueField]} key={index}>
@@ -32,27 +28,9 @@ export default class ComboBox extends React.Component {
     });
 
     return (
-      <div className="field">
-        <span className="fieldLabel">{this.props.label}：</span>
-        <select className="fieldInput combobox mousetrap" onChange={this._onChange} value={this.state.value}>
-          {options}
-        </select>
-      </div>
+      <select className="fieldInput combobox mousetrap" onChange={this._onChange} value={this.state.value}>
+        {options}
+      </select>
     );
-  }
-
-  /**
-   * 値の変更時のハンドラーです。
-   */
-  _onChange(event) {
-    let value = event.target.value;
-    this.setState({
-      value: value
-    });
-
-    // 値の変更イベントを発火
-    if(this.props.onChange) {
-      this.props.onChange(value);
-    }
   }
 }
