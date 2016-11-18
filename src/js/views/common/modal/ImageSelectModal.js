@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import Modal from '../../common/Modal';
-import ImageBox from './ImageBox';
+import Modal from './Modal';
+import ImageListCell from '../list/ImageListCell';
 import GetImagesService from '../../../services/GetImagesService';
 import UploadImageService from '../../../services/UploadImageService';
 
 /**
  * 画像モーダルクラスです。
  */
-export default class ImageModal extends React.Component {
+export default class ImageSelectModal extends React.Component {
 
   /**
    * コンストラクター
@@ -76,7 +76,7 @@ export default class ImageModal extends React.Component {
     let imageBoxes = this.state.images.map((imageData, index) => {
       let selected = this.state.selectedData == imageData;
       return (
-        <ImageBox data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
+        <ImageListCell data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
       );
     });
 

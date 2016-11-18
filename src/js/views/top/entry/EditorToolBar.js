@@ -1,6 +1,6 @@
 import React from 'react';
 import ApiPath from '../../../enum/ApiParam';
-import ImageModal from './ImageModal';
+import ImageSelectModal from '../../common/modal/ImageSelectModal';
 
 /**
  * ツールバークラス
@@ -30,7 +30,7 @@ export default class EditorToolBar extends React.Component {
   render() {
     return (
       <div>
-        <ImageModal
+        <ImageSelectModal
           active={this.state.activeImageModal}
           onCancel={this._onCancelImage}
           onDecision={this._onDecisionImage}

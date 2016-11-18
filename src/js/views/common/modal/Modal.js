@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 /**
- * モーダルクラスです。
+ * モーダルのベースクラスです。
  */
 export default class Modal extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../common/Modal';
+import Modal from '../common/modal/Modal';
 import classNames from 'classnames';
 import LoginService from '../../services/LoginService';
 import UserModel from '../../models/UserModel';

@@ -5,7 +5,7 @@ import ApiParam from '../../../enum/ApiParam';
 /**
  * 画像ボックスクラスです。
  */
-export default class ImageBox extends React.Component {
+export default class ImageListCell extends React.Component {
 
   /**
    * コンストラクター

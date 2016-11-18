@@ -3,7 +3,7 @@ import {_} from 'lodash';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import ReactHtmlParser from 'react-html-parser';
-import ImageModal from './ImageModal';
+import ImageSelectModal from '../../common/modal/ImageSelectModal';
 import ApiPath from '../../../enum/ApiParam';
 
 /**
@@ -79,7 +79,7 @@ export default class Preview extends React.Component {
   render() {
     return (
       <div id="preview" className="preview" ref="preview">
-        <ImageModal
+        <ImageSelectModal
           active={this.state.activeEyeCatchModal}
           onCancel={this._onCancelEyeCatch}
           onDecision={this._onDecisionEyeCatch}
