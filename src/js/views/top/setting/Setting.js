@@ -3,6 +3,7 @@ import FieldSet from '../../common/form/FieldSet';
 import TextField from '../../common/form/TextField';
 import TextArea from '../../common/form/TextArea';
 import ComboBox from '../../common/form/ComboBox';
+import ImageSelectField from '../../common/form/ImageSelectField';
 import EditorStyleData from '../../../models/vo/EditorStyleData';
 
 /**
@@ -25,7 +26,7 @@ export default class Setting extends React.Component {
       <div className="setting panel">
         <FieldSet legend="Setting" className="settingSet">
           <FieldSet legend="Profile" className="profileSet">
-            <TextField label="Icon" />
+            <ImageSelectField label="Icon" />
             <TextField label="Name" />
             <TextArea label="Profile" />
           </FieldSet>
