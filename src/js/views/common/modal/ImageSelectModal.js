@@ -1,9 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Modal from './Modal';
-import ImageListCell from '../list/ImageListCell';
-import GetImagesService from '../../../services/GetImagesService';
-import UploadImageService from '../../../services/UploadImageService';
+import ImageList from '../list/ImageList';
 
 /**
  * 画像モーダルクラスです。
@@ -17,27 +15,12 @@ export default class ImageSelectModal extends React.Component {
   constructor(props) {
     super(props);
 
-    this._onDragOut = this._onDragOut.bind(this);
-    this._onClickBox = this._onClickBox.bind(this);
-    this._onDragOver = this._onDragOver.bind(this);
-    this._onDropImage = this._onDropImage.bind(this);
     this._onClickCancel = this._onClickCancel.bind(this);
     this._onClickDecision = this._onClickDecision.bind(this);
-    this._onSuccessGetImage = this._onSuccessGetImage.bind(this);
-    this._onSuccessUploadImage = this._onSuccessUploadImage.bind(this);
-
-    // 画像取得サービス
-    this._getImagesService = new GetImagesService();
-    this._getImagesService.addEventListener('success', this._onSuccessGetImage);
-
-    // 画像アップサービス
-    this._uploadImageService = new UploadImageService();
-    this._uploadImageService.addEventListener('success', this._onSuccessUploadImage);
+    this._onChangeSelect = this._onChangeSelect.bind(this);
 
     this.state = {
       active: this.props.active,
-      dragOver: false,
-      images: [],
       selectedData: null
     };
   }
@@ -51,11 +34,8 @@ export default class ImageSelectModal extends React.Component {
       selectedData: null
     });
 
-    if(nextProps.active) {
-      // アクティブになったら画像リストを取得する
-      this._getImagesService.send();
-    } else {
-      // 非アクティブになったら一覧をクリア
+    // 非アクティブになったら一覧をクリア
+    if(!nextProps.active) {
       this.setState({
         images: []
       });
@@ -72,14 +52,6 @@ export default class ImageSelectModal extends React.Component {
       dragOver: this.state.dragOver
     });
 
-    // 画像ボックスリスト
-    let imageBoxes = this.state.images.map((imageData, index) => {
-      let selected = this.state.selectedData == imageData;
-      return (
-        <ImageListCell data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
-      );
-    });
-
     // 決定ボタンクラス郡
     let devisionClasses = classNames('roundButton', {
       clickDisable: !this.state.selectedData
@@ -88,14 +60,7 @@ export default class ImageSelectModal extends React.Component {
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={modalClasses} ref="imageModal">
-        <div className="listWrapper panel" onDragEnter={this._onDragOver} onDrop={this._onDropImage}>
-          <ul>
-            {imageBoxes}
-          </ul>
-          <div className="dropCover" onDragLeave={this._onDragOut}>
-            <p className="text">画像を追加</p>
-          </div>
-        </div>
+        <ImageList onChange={this._onChangeSelect}/>
         <div className="imageListFooter">
           <a className="roundButton cancel" onClick={this._onClickCancel}>
             キャンセル
@@ -123,61 +88,12 @@ export default class ImageSelectModal extends React.Component {
   }
 
   /**
-   * 画像取得成功時のハンドラーです。
+   * 選択画像が変更された際のハンドラーです。
    */
-  _onSuccessGetImage(event) {
+  _onChangeSelect(selectedData) {
+    console.info("ああああああああ", selectedData);
     this.setState({
-      images: event.data.images
-    });
-  }
-
-  /**
-   * 画像アップ成功時の
-   */
-  _onSuccessUploadImage(event) {
-    // リストを更新
-    this._getImagesService.send();
-  }
-
-  /**
-   * 画像をドラッグ時のハンドラーです。
-   */
-  _onDragOver(event) {
-    // ブラウザのドラッグ動作を制御
-    event.preventDefault();
-    this.setState({
-      dragOver: true
-    });
-  }
-
-  /**
-   * 画像をドラッグし終えた際のハンドラーです。
-   */
-  _onDragOut(event) {
-    event.preventDefault();
-    this.setState({
-      dragOver: false
-    });
-  }
-
-  /**
-   * 画像ドロップ時のハンドラーです。
-   */
-  _onDropImage(event) {
-    event.preventDefault();
-    this.setState({
-      dragOver: false
-    });
-    let file = event.dataTransfer.files[0];
-    this._uploadImageService.send({file: file});
-  }
-
-  /**
-   * 画像クリック時のハンドラーです。
-   */
-  _onClickBox(imageData) {
-    this.setState({
-      selectedData: imageData
+      selectedData: selectedData
     });
   }
 }

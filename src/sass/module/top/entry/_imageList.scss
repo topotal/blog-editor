@@ -25,12 +25,6 @@
       }
     }
 
-    &.dragOver {
-      .dropCover {
-        display: block;
-      }
-    }
-
     .listWrapper {
       position: absolute;
       top: 5px;
@@ -41,6 +35,12 @@
       box-sizing: border-box;
       background-color: $DARK_BLACK;
       overflow-y: scroll;
+
+      &.dragOver {
+        .dropCover {
+          display: block;
+        }
+      }
 
       ul {
         position: absolute;
