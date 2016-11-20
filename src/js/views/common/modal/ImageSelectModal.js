@@ -91,7 +91,6 @@ export default class ImageSelectModal extends React.Component {
    * 選択画像が変更された際のハンドラーです。
    */
   _onChangeSelect(selectedData) {
-    console.info("ああああああああ", selectedData);
     this.setState({
       selectedData: selectedData
     });

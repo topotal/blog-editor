@@ -1,5 +1,3 @@
-@import "./imageList";
-
 @mixin editor {
   .editor {
     height: 100%;
@@ -42,7 +40,5 @@
       right: 0;
       bottom: 0;
     }
-
-    @include imageList;
   }
 }
