@@ -20,26 +20,8 @@ export default class ImageSelectModal extends React.Component {
     this._onChangeSelect = this._onChangeSelect.bind(this);
 
     this.state = {
-      active: this.props.active,
       selectedData: null
     };
-  }
-
-  /**
-   * propが変更された際のハンドラー
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      active: nextProps.active,
-      selectedData: null
-    });
-
-    // 非アクティブになったら一覧をクリア
-    if(!nextProps.active) {
-      this.setState({
-        images: []
-      });
-    }
   }
 
   /**
@@ -48,7 +30,6 @@ export default class ImageSelectModal extends React.Component {
   render() {
     // モーダルのクラス郡
     let modalClasses = classNames('imageList', this.props.className, {
-      active: this.state.active,
       dragOver: this.state.dragOver
     });
 

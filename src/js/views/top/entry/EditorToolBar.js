@@ -28,14 +28,21 @@ export default class EditorToolBar extends React.Component {
    * 描画します。
    */
   render() {
-    return (
-      <div>
+    // 画像選択モーダルの表示非表示
+    let imageModal = null;
+    if(this.state.activeImageModal) {
+      imageModal = (
         <ImageSelectModal
           active={this.state.activeImageModal}
           onCancel={this._onCancelImage}
           onDecision={this._onDecisionImage}
         />
+      );
+    }
 
+    return (
+      <div>
+        {imageModal}
         <ul className="toolbar">
           <li className="toolButton" onClick={this._onClickAddImage}>
             <i title="画像を追加" className="fa fa-picture-o fa-fw"></i>

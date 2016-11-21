@@ -39,7 +39,7 @@ class App extends React.Component {
       if(this.state.alredyLogged) {
         return <Top />
       } else {
-        return <Login active={true} onLogged={this._onLogged}/>
+        return <Login onLogged={this._onLogged}/>
       }
     };
 

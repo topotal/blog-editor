@@ -77,14 +77,21 @@ export default class Preview extends React.Component {
    * 描画します。
    */
   render() {
-    return (
-      <div id="preview" className="preview" ref="preview">
+    // 画像選択モーダルの表示非表示
+    let imageModal = null;
+    if(this.state.activeEyeCatchModal) {
+      imageModal = (
         <ImageSelectModal
           active={this.state.activeEyeCatchModal}
           onCancel={this._onCancelEyeCatch}
           onDecision={this._onDecisionEyeCatch}
         />
+      );
+    }
 
+    return (
+      <div id="preview" className="preview" ref="preview">
+        {imageModal}
         <div className="entryEyeCatch" onClick={this._onClickAddEyeCatch}>
           <p className="addText" ref="addText">
             <i title="アイキャッチを追加" className="fa fa-eye fa-fw"></i> アイキャッチを追加
