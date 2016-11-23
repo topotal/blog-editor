@@ -1,5 +1,7 @@
 import React from 'react';
 import Field from './Field';
+import ApiParam from '../../../enum/ApiParam';
+import ImageSelectModal from '../modal/ImageSelectModal';
 
 /**
  * 画像選択フィールドクラス
@@ -13,7 +15,14 @@ export default class ImageSelectField extends Field {
   constructor(props) {
     super(props);
 
-    this._onClickSelectButton = this._onClickSelectButton.bind(this);
+    this._onClick = this._onClick.bind(this);
+    this._onCancelImage = this._onCancelImage.bind(this);
+    this._onDecisionImage = this._onDecisionImage.bind(this);
+
+    this.state = {
+      value: this.props.value || null,
+      activeImageModal: false
+    };
   }
 
   /**
@@ -21,9 +30,22 @@ export default class ImageSelectField extends Field {
    * @override
    */
   _createInput() {
+    // 画像選択モーダルの表示非表示
+    let imageModal = null;
+    if(this.state.activeImageModal) {
+      imageModal = (
+        <ImageSelectModal
+          active={this.state.activeImageModal}
+          onCancel={this._onCancelImage}
+          onDecision={this._onDecisionImage}
+        />
+      );
+    }
+
     return (
       <div className="fieldInput imageSelectField">
-        <div className="roundButton" onClick={this._onClickSelectButton}>ファイルを選択</div>
+        {imageModal}
+        <img className="valueIcon" src={ApiParam.getImagePath() + this.state.value} onClick={this._onClick}/>
       </div>
     );
   }
@@ -31,7 +53,34 @@ export default class ImageSelectField extends Field {
   /**
    * ファイル選択ボタン押下時のハンドラーです。
    */
-  _onClickSelectButton() {
-    console.info("asdfasd");
+  _onClick() {
+    this.setState({
+      activeImageModal: true
+    });
+  }
+
+  /**
+   * 画像モーダルのキャンセルボタン押下時の
+   * ハンドラーです。
+   */
+  _onCancelImage() {
+    this.setState({
+      activeImageModal: false
+    });
+  }
+
+  /**
+   * 画像モーダルの決定ボタン押下時の
+   * ハンドラーです。
+   */
+  _onDecisionImage(path) {
+    this.setState({
+      activeImageModal: false,
+      value: path
+    });
+    // 値の変更イベントを発火
+    if(this.props.onChange) {
+      this.props.onChange(path);
+    }
   }
 }
