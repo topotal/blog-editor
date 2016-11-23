@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../common/modal/Modal';
 import classNames from 'classnames';
 import LoginService from '../../services/LoginService';
-import UserModel from '../../models/UserModel';
+import AppModel from '../../models/AppModel';
 import Mousetrap from 'mousetrap';
 
 /**
@@ -27,7 +27,7 @@ export default class Login extends React.Component {
     Mousetrap.bind(['enter'], this._onClickSubmit);
 
     // ユーザーモデル
-    this._userModel = UserModel.instance;
+    this._userModel = AppModel.instance;
 
     this.state = {
       active: this.props.active

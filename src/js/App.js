@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Top from './views/top/Top';
 import Login from './views/login/Login';
-import UserModel from './models/UserModel';
+import AppModel from './models/AppModel';
 
 /**
  * メインクラスです。
@@ -22,11 +22,11 @@ class App extends React.Component {
     this._onExpiredToken = this._onExpiredToken.bind(this);
 
     // ユーザーモデル
-    this._userModel = UserModel.instance;
-    this._userModel.addEventListener('expiredToken', this._onExpiredToken);
+    this._appModel = AppModel.instance;
+    this._appModel.addEventListener('expiredToken', this._onExpiredToken);
 
     this.state = {
-      alredyLogged: !!this._userModel.token
+      alredyLogged: !!this._appModel.token
     };
   }
 

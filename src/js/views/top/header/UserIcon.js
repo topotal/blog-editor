@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import MessageBox from '../../common/MessageBox';
-import UserModel from '../../../models/UserModel';
+import AppModel from '../../../models/AppModel';
 
 /**
  * ユーザーアイコンクラス
@@ -73,6 +73,6 @@ export default class UserIcon extends React.Component {
    */
   onClickSignOut() {
     // トークンを破棄してログイン画面へ戻る
-    UserModel.instance.expireToken();
+    AppModel.instance.expireToken();
   }
 }

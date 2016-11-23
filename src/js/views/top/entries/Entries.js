@@ -1,7 +1,7 @@
 import React from 'react';
 import EntriesRow from './EntriesRow';
 import GetEntriesService from '../../../services/GetEntriesService';
-import UserModel from '../../../models/UserModel';
+import AppModel from '../../../models/AppModel';
 
 /**
  * 記事一覧クラスです。
@@ -90,7 +90,7 @@ export default class Entries extends React.Component {
     let res = event.res;
     // トークン切れエラーの場合はtokenを削除する。
     if(res.status == 403 || res.status == 401) {
-      UserModel.instance.expireToken();
+      AppModel.instance.expireToken();
     }
   }
 }

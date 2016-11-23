@@ -1,7 +1,7 @@
 import EventDispatcher from '../core/EventDispatcher';
 import request from 'superagent';
 import ApiParam from '../enum/ApiParam';
-import UserModel from '../models/UserModel';
+import AppModel from '../models/AppModel';
 
 /**
  * サービスのベースクラスです。
@@ -17,7 +17,7 @@ export default class BaseService extends EventDispatcher {
 
     this._method = ApiParam.GET;
     this._path = '';
-    this._userModel = UserModel.instance;
+    this._userModel = AppModel.instance;
 
     this._onComplete = this._onComplete.bind(this);
   }

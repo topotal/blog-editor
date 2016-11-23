@@ -1,42 +1,22 @@
-import EventDispatcher from '../core/EventDispatcher';
-
 /**
- * ユーザーのモデルクラスです。
+ * ユーザーモデルクラスです。
  */
-export default class UserModel extends EventDispatcher {
+export default class UserModel {
 
-  /** トークン */
-  get token() { return this._token; }
-  set token(token) {
-    this._token = token;
-    // ストレージにtokenをセット
-    localStorage.setItem('token', token);
-  }
-
-  /** インスタンス */
-  static get instance() {
-    return UserModel._instance || new UserModel();
-  }
+  /** 名前 */
+  get name() { return this._name; }
+  /** 自己紹介 */
+  get description() { return this._description; }
+  /** アイコンURL */
+  get iconImageUrl() { return this._iconImageUrl; }
 
   /**
    * コンストラクター
    * @constructor
    */
-  constructor() {
-    super();
-
-    // 既にtokenがストレージにあれば取得する
-    this._token = localStorage.getItem('token');
-
-    UserModel._instance = this;
-  }
-
-  /**
-   * トークンを無効にします。
-   */
-  expireToken() {
-    this.token = null;
-    // 無効済みイベントを発火
-    this.dispatchEvent('expiredToken');
+  constructor(name, description, iconImageUrl) {
+    this._name = name;
+    this._description = description;
+    this._iconImageUrl = iconImageUrl;
   }
 }

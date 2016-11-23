@@ -4,7 +4,7 @@ import TextField from '../../common/form/TextField';
 import TextArea from '../../common/form/TextArea';
 import ComboBox from '../../common/form/ComboBox';
 import ImageSelectField from '../../common/form/ImageSelectField';
-import EditorStyleData from '../../../models/vo/EditorStyleData';
+import GetUserService from '../../../services/GetUserService';
 
 /**
  * アカウント編集画面クラス
@@ -16,6 +16,8 @@ export default class Setting extends React.Component {
    */
   constructor(props) {
     super(props);
+
+    this._getUserService = new GetUserService();
   }
 
   /**
@@ -28,18 +30,12 @@ export default class Setting extends React.Component {
           <FieldSet legend="Profile" className="profileSet">
             <ImageSelectField label="Icon" />
             <TextField label="Name" />
-            <TextArea label="Profile" />
-          </FieldSet>
-          <FieldSet legend="Editor" className="editorSet">
-            <ComboBox
-              label="Style"
-              store={EditorStyleData.LIST}
-              displayField="label"
-              valueField="value"
-              value="Vim"
-            />
+            <TextArea label="Description" />
           </FieldSet>
         </FieldSet>
+        <div className="roundButton">
+          <i className="fa fa-floppy-o" aria-hidden="true"></i> 保存
+        </div>
       </div>
     );
   }
