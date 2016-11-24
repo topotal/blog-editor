@@ -78,9 +78,8 @@ export default class ImageSelectField extends Field {
       activeImageModal: false,
       value: path
     });
+
     // 値の変更イベントを発火
-    if(this.props.onChange) {
-      this.props.onChange(path);
-    }
+    this._dispatchChangeEvent(path);
   }
 }

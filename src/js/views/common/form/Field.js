@@ -48,11 +48,19 @@ export default class Field extends React.Component {
       value: value
     });
 
-    console.info(value);
-
     // 値の変更イベントを発火
+    this._dispatchChangeEvent(value);
+  }
+
+  /**
+   * 値の変更イベントを発火します。
+   */
+  _dispatchChangeEvent(value) {
     if(this.props.onChange) {
-      this.props.onChange(value);
+      this.props.onChange({
+        name: this.props.name,
+        value: value
+      });
     }
   }
 }
