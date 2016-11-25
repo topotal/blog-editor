@@ -11,8 +11,7 @@ export default class TextField extends Field {
    */
   _createInput() {
     return (
-      <textarea className="fieldInput textarea" rows="7" onChange={this._onChange}>
-        {this.state.value}
+      <textarea className="fieldInput textarea" rows="7" onChange={this._onChange} value={this.state.value}>
       </textarea>
     );
   }

@@ -8,10 +8,11 @@ export default class TextField extends Field {
 
   /**
    * 入力フォームを生成します。
+   * @override
    */
   _createInput() {
     return (
-      <input type="text" className="textfield fieldInput" onChange={this._onChange} />
+      <input type="text" className="textfield fieldInput" value={this.state.value || ''} onChange={this._onChange} />
     );
   }
 }

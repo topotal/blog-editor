@@ -15,8 +15,17 @@ export default class Field extends React.Component {
     this._onChange = this._onChange.bind(this);
 
     this.state = {
-      value: this.props.value || null
+      value: this.props.value
     }
+  }
+
+  /**
+   * propが変更された際のハンドラー
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      value: nextProps.value
+    });
   }
 
   /**

@@ -5,6 +5,7 @@ import TextArea from '../../common/form/TextArea';
 import ComboBox from '../../common/form/ComboBox';
 import ImageSelectField from '../../common/form/ImageSelectField';
 import GetUserService from '../../../services/GetUserService';
+import UserModel from '../../../models/UserModel';
 
 /**
  * アカウント編集画面クラス
@@ -18,7 +19,7 @@ export default class Setting extends React.Component {
     super(props);
 
     this.state = {
-      name: ''
+      userData: new UserModel()
     };
 
     this._onChangeField = this._onChangeField.bind(this);
@@ -27,7 +28,13 @@ export default class Setting extends React.Component {
 
     this._getUserService = new GetUserService();
     this._getUserService.addEventListener('success', this._onSuccessGetUser);
+  }
 
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    // ユーザーデータ取得を開始
     this._getUserService.send();
   }
 
@@ -35,13 +42,29 @@ export default class Setting extends React.Component {
    * 描画します。
    */
   render() {
+    let userData = this.state.userData;
     return (
       <div className="setting panel">
         <FieldSet legend="Setting" className="settingSet">
           <FieldSet ref="profile" legend="Profile" className="profileSet">
-            <ImageSelectField label="Icon" name="iconImageUrl" onChange={this._onChangeField} />
-            <TextField label="Name" name="name" onChange={this._onChangeField} />
-            <TextArea label="Description" name="description" onChange={this._onChangeField} />
+            <ImageSelectField
+              label="Icon"
+              name="iconImageUrl"
+              value={userData.iconImageUrl}
+              onChange={this._onChangeField}
+            />
+            <TextField
+              label="Name"
+              name="name"
+              value={userData.name}
+              onChange={this._onChangeField}
+            />
+            <TextArea
+              label="Description"
+              name="description"
+              value={userData.description}
+              onChange={this._onChangeField}
+            />
           </FieldSet>
         </FieldSet>
         <div className="roundButton" onClick={this._onClickSaveButton}>
@@ -62,16 +85,19 @@ export default class Setting extends React.Component {
    * ユーザー情報取得成功時のハンドラーです。
    */
   _onSuccessGetUser(event) {
-    console.info(event);
+    this.setState({
+      userData: event.data.userData
+    });
   }
 
   /**
    * フィールドの値が変更された際のハンドラーです。
    */
   _onChangeField(event) {
-    console.info(event);
-    let state = this.state;
-    state[event.name] = event.value;
-    this.setState(state);
+    let userData = this.state.userData;
+    userData[event.name] = event.value;
+    this.setState({
+      userData: userData
+    });
   }
 }
