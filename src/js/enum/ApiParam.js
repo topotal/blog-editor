@@ -9,16 +9,23 @@ export default class ApiParam {
   static get DELETE() { return 'DELETE'; }
 
   /**
+   * ホストを取得します。
+   */
+  static getHost() {
+    return "http://dev.blog.topotal.com";
+  }
+
+  /**
    * APIのパスを取得します。
    */
   static getPath(type) {
-    return "http://dev.blog.topotal.com/api/v1/" + type;
+    return ApiParam.getHost() + '/api/v1/' + type;
   }
 
   /**
    * 画像パス
    */
   static getImagePath() {
-    return "http://dev.blog.topotal.com";
+    return ApiParam.getHost();
   }
 }
