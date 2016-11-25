@@ -19,6 +19,6 @@ export default class ApiParam {
    * 画像パス
    */
   static getImagePath() {
-    return "http://dev.blog.topotal.com/";
+    return "http://dev.blog.topotal.com";
   }
 }

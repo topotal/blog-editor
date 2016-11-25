@@ -26,7 +26,7 @@ export default class GetUserService extends BaseService {
     this._onSuccess({
       body: {
         name: '澤田 嵩善',
-        icon_image_url: 'assets/img/dummy_user_icon.png',
+        icon_image_url: '/assets/img/dummy_user_icon.png',
         description: 'ダミーテキストです。'
       }
     });
