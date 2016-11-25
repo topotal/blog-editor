@@ -4,7 +4,6 @@ import AceEditor from 'react-ace';
 import EditorToolBar from './EditorToolBar';
 import 'brace/mode/markdown';
 import 'brace/theme/Terminal';
-import 'brace/keybinding/vim';
 
 /**
  * エディタークラスです。
@@ -65,7 +64,6 @@ export default class Editor extends React.Component {
           name="ace"
           width="auto"
           height="auto"
-          keyboardHandler="vim"
           value={this.state.entryData.content}
           showPrintMargin={false}
           userWrapMode={true}
