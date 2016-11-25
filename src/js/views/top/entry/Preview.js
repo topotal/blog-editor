@@ -4,7 +4,7 @@ import marked from 'marked';
 import hljs from 'highlight.js';
 import ReactHtmlParser from 'react-html-parser';
 import ImageSelectModal from '../../common/modal/ImageSelectModal';
-import ApiPath from '../../../enum/ApiParam';
+import ApiParam from '../../../enum/ApiParam';
 
 /**
  * プレビュークラスです。
@@ -91,6 +91,7 @@ export default class Preview extends React.Component {
 
     return (
       <div id="preview" className="preview" ref="preview">
+        <link rel="stylesheet" href={ApiParam.getHost() + "/assets/css/markdown.css"} />
         {imageModal}
         <div className="entryEyeCatch" onClick={this._onClickAddEyeCatch}>
           <p className="addText" ref="addText">
@@ -144,7 +145,7 @@ export default class Preview extends React.Component {
    * アイキャッチエリアに画像を設定します。
    */
   _setEyeCatch(path) {
-    let imagePath = ApiPath.getImagePath() + path;
+    let imagePath = ApiParam.getImagePath() + path;
     this.refs.eyeCatchImage.setAttribute('src', imagePath);
     this.refs.eyeCatchImage.style.display = 'block';
     this.refs.addText.style.display = 'none';
