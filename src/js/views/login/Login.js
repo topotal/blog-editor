@@ -24,7 +24,7 @@ export default class Login extends React.Component {
     this._loginService.addEventListener('success', this._onSuccessLogin);
 
     // エンターを押したらサブミット
-    Mousetrap.bind(['enter'], this._onClickSubmit);
+    Mousetrap.bind('enter', this._onClickSubmit);
 
     // ユーザーモデル
     this._userModel = AppModel.instance;
@@ -40,6 +40,14 @@ export default class Login extends React.Component {
   componentDidMount() {
     // nameのフォームにフォーカスを当てる
     this.refs.name.focus();
+  }
+
+  /**
+   * アンマウントされた際のハンドラーです。
+   */
+  componentWillUnmount() {
+    this._loginService.removeEventListener('success', this._onSuccessLogin);
+    Mousetrap.unbind('enter');
   }
 
   /**
