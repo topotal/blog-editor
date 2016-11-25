@@ -16,8 +16,8 @@ export default class SaveUserResponse {
     let user = response.body;
     this._userData = new UserModel(
       user.name,
-      user.disctiption,
-      user.iconImageUrl
+      user.description,
+      user.icon_image_url
     );
   }
 }

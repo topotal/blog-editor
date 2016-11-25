@@ -1,4 +1,5 @@
 import BaseService from './BaseService';
+import ApiParam from '../enum/ApiParam';
 import SaveUserResponse from '../models/vo/SaveUserResponse';
 
 /**
@@ -34,7 +35,13 @@ export default class SaveUserService extends BaseService {
    * @override
    */
   send(data) {
-    this._onSuccess({});
+    this._onSuccess({
+      body: {
+        name: '澤田 嵩善',
+        icon_image_url: 'assets/img/dummy_user_icon.png',
+        description: 'ダミーテキストです。'
+      }
+    });
   }
 
   /**
