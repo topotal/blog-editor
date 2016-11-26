@@ -91,7 +91,17 @@ export default class UserIcon extends React.Component {
    * 設定ボタン押下時のハンドラーです。
    */
   onClickSetting() {
-    this.setState({ activeSettingModal: true });
+    this.setState({
+      activeMessageBox: false,
+      activeSettingModal: true
+    });
+  }
+
+  /**
+   * 設定モーダルキャンセル時のハンドラーです。
+   */
+  onCancelSetting() {
+    this.setState({ activeSettingModal: false });
   }
 
   /**
@@ -100,12 +110,5 @@ export default class UserIcon extends React.Component {
   onClickSignOut() {
     // トークンを破棄してログイン画面へ戻る
     AppModel.instance.expireToken();
-  }
-
-  /**
-   * 設定モーダルキャンセル時のハンドラーです。
-   */
-  onCancelSetting() {
-    this.setState({ activeSettingModal: false });
   }
 }
