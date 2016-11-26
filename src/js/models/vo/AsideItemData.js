@@ -5,13 +5,11 @@ export default class AsideItemData {
 
   /** 各アイテム */
   static get ENTRIES() {  return new AsideItemData('entries', 'fa-list', '記事一覧') }
-  static get ACCOUNT() {  return new AsideItemData('setting', 'fa-cog', '設定') }
 
   /** アイテムリスト */
   static get LIST() {
     return [
-      AsideItemData.ENTRIES,
-      AsideItemData.ACCOUNT
+      AsideItemData.ENTRIES
     ];
   }
 

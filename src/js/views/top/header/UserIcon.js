@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import MessageBox from '../../common/MessageBox';
 import AppModel from '../../../models/AppModel';
+import SettingModal from '../settingModal/SettingModal';
 
 /**
  * ユーザーアイコンクラス
@@ -17,10 +18,13 @@ export default class UserIcon extends React.Component {
 
     this.onCancel = this.onCancel.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
+    this.onClickSetting = this.onClickSetting.bind(this);
     this.onClickSignOut = this.onClickSignOut.bind(this);
+    this.onCancelSetting = this.onCancelSetting.bind(this);
 
     this.state = {
-      activeMessageBox: false
+      activeMessageBox: false,
+      activeSettingModal: false
     };
   }
 
@@ -33,10 +37,15 @@ export default class UserIcon extends React.Component {
     });
     return (
       <div className="userIcon">
+        {this.getSettingModal()}
         <MessageBox className={classes} onCancel={this.onCancel}>
           <ul>
             <li className="userName">
               <i className="fa fa-user-circle"></i>sawa-zen
+            </li>
+            <li className="settingButton" onClick={this.onClickSetting}>
+              <i className="fa fa-cog" aria-hidden="true"></i>
+              Setting
             </li>
             <li className="singOutButton" onClick={this.onClickSignOut}>
               <i className="fa fa-sign-out" aria-hidden="true"></i>
@@ -45,9 +54,19 @@ export default class UserIcon extends React.Component {
           </ul>
         </MessageBox>
 
-        <img src="https://avatars2.githubusercontent.com/u/3971271?v=3&s=466" alt="icon" width="32" height="32" onClick={this.onClickIcon} />
+        <img className="userIconImage" src="https://avatars2.githubusercontent.com/u/3971271?v=3&s=466" alt="icon" width="32" height="32" onClick={this.onClickIcon} />
       </div>
     );
+  }
+
+  /**
+   * 設定モーダルを返します。
+   */
+  getSettingModal() {
+    if(this.state.activeSettingModal) {
+      return (<SettingModal onCancel={this.onCancelSetting}/>);
+    }
+    return;
   }
 
   /**
@@ -66,6 +85,23 @@ export default class UserIcon extends React.Component {
     this.setState({
       activeMessageBox: true
     });
+  }
+
+  /**
+   * 設定ボタン押下時のハンドラーです。
+   */
+  onClickSetting() {
+    this.setState({
+      activeMessageBox: false,
+      activeSettingModal: true
+    });
+  }
+
+  /**
+   * 設定モーダルキャンセル時のハンドラーです。
+   */
+  onCancelSetting() {
+    this.setState({ activeSettingModal: false });
   }
 
   /**

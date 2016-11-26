@@ -9,9 +9,9 @@ import SaveUserService from '../../../services/SaveUserService';
 import UserModel from '../../../models/UserModel';
 
 /**
- * アカウント編集画面クラス
+ * プロフィール編集画面クラス
  */
-export default class Setting extends React.Component {
+export default class Profile extends React.Component {
 
   /**
    * コンストラクター
@@ -27,6 +27,7 @@ export default class Setting extends React.Component {
     this._onSuccessGetUser = this._onSuccessGetUser.bind(this);
     this._onSuccessSaveUser = this._onSuccessSaveUser.bind(this);
     this._onClickSaveButton = this._onClickSaveButton.bind(this);
+    this._onClickCancel = this._onClickCancel.bind(this);
 
     this._getUserService = new GetUserService();
     this._getUserService.addEventListener('success', this._onSuccessGetUser);
@@ -49,31 +50,34 @@ export default class Setting extends React.Component {
   render() {
     let userData = this.state.userData;
     return (
-      <div className="setting panel">
-        <FieldSet legend="Setting" className="settingSet">
-          <FieldSet ref="profile" legend="Profile" className="profileSet">
-            <ImageSelectField
-              label="Icon"
-              name="iconImageUrl"
-              value={userData.iconImageUrl}
-              onChange={this._onChangeField}
-            />
-            <TextField
-              label="Name"
-              name="name"
-              value={userData.name}
-              onChange={this._onChangeField}
-            />
-            <TextArea
-              label="Description"
-              name="description"
-              value={userData.description}
-              onChange={this._onChangeField}
-            />
-          </FieldSet>
+      <div className="profile">
+        <FieldSet ref="profile" legend="Profile" className="profileSet">
+          <ImageSelectField
+            label="Icon"
+            name="iconImageUrl"
+            value={userData.iconImageUrl}
+            onChange={this._onChangeField}
+          />
+          <TextField
+            label="Name"
+            name="name"
+            value={userData.name}
+            onChange={this._onChangeField}
+          />
+          <TextArea
+            label="Description"
+            name="description"
+            value={userData.description}
+            onChange={this._onChangeField}
+          />
         </FieldSet>
-        <div className="roundButton" onClick={this._onClickSaveButton}>
-          <i className="fa fa-floppy-o" aria-hidden="true"></i> 保存
+        <div className="buttons">
+          <div className="roundButton" onClick={this._onClickSaveButton}>
+            OK
+          </div>
+          <div className="roundButton cancel" onClick={this._onClickCancel}>
+            キャンセル
+          </div>
         </div>
       </div>
     );
@@ -84,6 +88,16 @@ export default class Setting extends React.Component {
    */
   _onClickSaveButton() {
     this._saveUserService.send();
+  }
+
+  /**
+   * キャンセル押下時のハンドラーです。
+   */
+  _onClickCancel() {
+    // キャンセル押下イベント発火
+    if(this.props.onClickCancel) {
+      this.props.onClickCancel();
+    }
   }
 
   /**
