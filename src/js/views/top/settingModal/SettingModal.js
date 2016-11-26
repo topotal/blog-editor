@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Modal from '../../common/modal/Modal';
+import Profile from './Profile';
 
 /**
  * 設定モーダルクラスです。
@@ -14,17 +15,17 @@ export default class SettingModal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onClickCancel = this.onClickCancel.bind(this);
+    this._onClickCancel = this._onClickCancel.bind(this);
   }
 
   /**
    * 描画します。
    */
   render() {
-    let classes = classNames('setting', this.props.className);
+    let classes = classNames('settingModal', this.props.className);
     return (
       <Modal title="設定" className={classes}>
-        <div className="roundButton" onClick={this.onClickCancel}>キャンセル</div>
+        <Profile onClickCancel={this._onClickCancel} />
       </Modal>
     );
   }
@@ -32,7 +33,7 @@ export default class SettingModal extends React.Component {
   /**
    * キャンセルボタン押下時のハンドラーです。
    */
-  onClickCancel() {
+  _onClickCancel() {
     // キャンセルイベント発火
     if(this.props.onCancel) {
       this.props.onCancel();

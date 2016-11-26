@@ -1,8 +1,11 @@
-@import './profile'
+@import './profile';
 
 @mixin settingModal {
   .settingModal {
-
-    @include profile;
+    .modalWrapper {
+      width: 700px;
+      height: 400px;
+      @include profile;
+    }
   }
 }

@@ -1,21 +1,36 @@
 @mixin profile {
   .profile {
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
+    display: flex;
 
-    .settingSet {
-      max-width: 600px;
+    .profileSet {
+      width: 750px;
+      height: 100%;
+      margin-right: 10px;
+      .field {
+        .fieldLabel {
+          width: 100px;
+        }
+
+        .textfield,
+        .textarea {
+          width: 300px;
+        }
+      }
     }
 
-    .field {
-      .fieldLabel {
-        width: 100px;
-      }
+    .buttons {
+      .roundButton {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: 5px;
 
-      .textfield,
-      .textarea {
-        width: 300px;
+        &.cancel {
+          border: 1px #777 solid;
+        }
       }
     }
   }
