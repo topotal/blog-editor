@@ -3,7 +3,6 @@ import Header from './header/Header';
 import Aside from './aside/Aside';
 import Entry from './entry/Entry';
 import Entries from './entries/Entries';
-import Setting from './setting/Setting';
 
 /**
  * トップページクラスです。
