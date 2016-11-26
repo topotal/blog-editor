@@ -44,6 +44,16 @@
           border-bottom: 1px #666 solid;
         }
 
+        .settingButton {
+          color: #FFF;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $BLUE;
+          }
+        }
+
         .singOutButton {
           color: #FFF;
           border-radius: 4px;

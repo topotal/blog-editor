@@ -9,9 +9,9 @@ import SaveUserService from '../../../services/SaveUserService';
 import UserModel from '../../../models/UserModel';
 
 /**
- * アカウント編集画面クラス
+ * プロフィール編集画面クラス
  */
-export default class Setting extends React.Component {
+export default class Profile extends React.Component {
 
   /**
    * コンストラクター
@@ -49,28 +49,26 @@ export default class Setting extends React.Component {
   render() {
     let userData = this.state.userData;
     return (
-      <div className="setting panel">
-        <FieldSet legend="Setting" className="settingSet">
-          <FieldSet ref="profile" legend="Profile" className="profileSet">
-            <ImageSelectField
-              label="Icon"
-              name="iconImageUrl"
-              value={userData.iconImageUrl}
-              onChange={this._onChangeField}
-            />
-            <TextField
-              label="Name"
-              name="name"
-              value={userData.name}
-              onChange={this._onChangeField}
-            />
-            <TextArea
-              label="Description"
-              name="description"
-              value={userData.description}
-              onChange={this._onChangeField}
-            />
-          </FieldSet>
+      <div className="profile panel">
+        <FieldSet ref="profile" legend="Profile" className="profileSet">
+          <ImageSelectField
+            label="Icon"
+            name="iconImageUrl"
+            value={userData.iconImageUrl}
+            onChange={this._onChangeField}
+          />
+          <TextField
+            label="Name"
+            name="name"
+            value={userData.name}
+            onChange={this._onChangeField}
+          />
+          <TextArea
+            label="Description"
+            name="description"
+            value={userData.description}
+            onChange={this._onChangeField}
+          />
         </FieldSet>
         <div className="roundButton" onClick={this._onClickSaveButton}>
           <i className="fa fa-floppy-o" aria-hidden="true"></i> 保存

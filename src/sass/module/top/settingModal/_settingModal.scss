@@ -1,0 +1,8 @@
+@import './profile'
+
+@mixin settingModal {
+  .settingModal {
+
+    @include profile;
+  }
+}

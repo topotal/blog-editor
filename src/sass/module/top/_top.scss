@@ -2,7 +2,7 @@
 @import "./aside/aside";
 @import "./entry/entry";
 @import "./entries/entries";
-@import "./setting/setting";
+@import "./settingModal/setting";
 
 @mixin top {
   @include header;
