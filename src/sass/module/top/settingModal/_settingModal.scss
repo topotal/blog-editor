@@ -3,8 +3,6 @@
 @mixin settingModal {
   .settingModal {
     .modalWrapper {
-      width: 700px;
-      height: 400px;
       @include profile;
     }
   }

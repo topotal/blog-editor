@@ -54,7 +54,7 @@ export default class UserIcon extends React.Component {
           </ul>
         </MessageBox>
 
-        <img src="https://avatars2.githubusercontent.com/u/3971271?v=3&s=466" alt="icon" width="32" height="32" onClick={this.onClickIcon} />
+        <img className="userIconImage" src="https://avatars2.githubusercontent.com/u/3971271?v=3&s=466" alt="icon" width="32" height="32" onClick={this.onClickIcon} />
       </div>
     );
   }
