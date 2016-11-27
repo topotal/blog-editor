@@ -2,7 +2,6 @@
 @import "./aside/aside";
 @import "./entry/entry";
 @import "./entries/entries";
-@import "./setting/setting";
 
 @mixin top {
   @include header;
@@ -19,7 +18,6 @@
 
       @include entries;
       @include entry;
-      @include setting;
     }
   }
 }

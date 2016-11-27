@@ -1,0 +1,9 @@
+@import './profile';
+
+@mixin settingModal {
+  .settingModal {
+    .modalWrapper {
+      @include profile;
+    }
+  }
+}
