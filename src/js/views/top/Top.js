@@ -43,7 +43,7 @@ export default class Top extends React.Component {
       <div className="top">
         <Header />
         <Aside current={this.state.currentPage} onClick={this._onClickAside} />
-        <div className="content">
+        <div className="top_content">
           {getContent()}
         </div>
       </div>

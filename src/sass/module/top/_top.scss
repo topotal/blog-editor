@@ -8,7 +8,7 @@
   @include aside;
 
   .top {
-    .content {
+    &_content {
       position: absolute;
       top: 45px;
       left: 40px + $PANEL_MARGIN;

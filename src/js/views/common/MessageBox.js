@@ -13,7 +13,7 @@ export default class MessageBox extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onClickBack = this.onClickBack.bind(this);
+    this._onClickBack = this._onClickBack.bind(this);
   }
 
   /**
@@ -23,7 +23,7 @@ export default class MessageBox extends React.Component {
     let classes = classNames('messageBox', this.props.className);
     return (
       <div className={classes}>
-        <div className="messageBoxBack" onClick={this.onClickBack}/>
+        <div className="messageBoxBack" onClick={this._onClickBack}/>
         <div className="messageBoxWrapper">
           {this.props.children}
         </div>
@@ -34,7 +34,9 @@ export default class MessageBox extends React.Component {
   /**
    * 背景をクリック
    */
-  onClickBack(event) {
-    this.props.onCancel();
+  _onClickBack(event) {
+    if(this.props.onClickBack) {
+      this.props.onClickBack();
+    }
   }
 }
