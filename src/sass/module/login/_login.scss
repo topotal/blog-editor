@@ -1,7 +1,9 @@
 @mixin login {
   .login {
+    width: 600px;
+    height: 400px;
+
     text-align: center;
-    position: relative;
 
     .modalWrapper {
       width: 600px;
