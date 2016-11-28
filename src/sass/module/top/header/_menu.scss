@@ -1,10 +1,8 @@
 @mixin menu {
   .menu {
-    .messageBoxWrapper {
-      top: 50px;
-      right: 5px;
-      width: 150px;
-    }
+    top: 50px;
+    right: 5px;
+    width: 150px;
 
     &_items {
       margin: 0;

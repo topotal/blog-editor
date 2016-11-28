@@ -18,12 +18,12 @@ export default class Modal extends React.Component {
    * 描画します。
    */
   render() {
-    let classes = classNames('modal', this.props.className);
+    let classes = classNames('modal_wrapper', this.props.className);
     return (
-      <div className={classes} ref="main">
-        <div className="modalWrapper">
-          <div className="modalHeader">{this.props.title || モーダルウィンドウ}</div>
-          <div className="modalContent">
+      <div className="modal" ref="main">
+        <div className={classes}>
+          <div className="modal_header">{this.props.title || モーダルウィンドウ}</div>
+          <div className="modal_content">
             {this.props.children}
           </div>
         </div>

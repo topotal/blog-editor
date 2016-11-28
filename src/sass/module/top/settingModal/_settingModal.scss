@@ -2,8 +2,9 @@
 
 @mixin settingModal {
   .settingModal {
-    .modalWrapper {
-      @include profile;
-    }
+    width: 600px;
+    height: 400px;
+
+    @include profile;
   }
 }

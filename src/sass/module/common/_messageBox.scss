@@ -8,17 +8,13 @@
   height: 100%;
   width: 100%;
 
-  &.active {
-    display: block;
-  }
-
-  .messageBoxBack {
+  &_back {
     position: absolute;
     height: 100%;
     width: 100%;
   }
 
-  .messageBoxWrapper {
+  &_wrapper {
     position: absolute;
     min-width: 100px;
     min-height: 40px;

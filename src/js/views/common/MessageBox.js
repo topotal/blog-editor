@@ -20,11 +20,11 @@ export default class MessageBox extends React.Component {
    * 描画します。
    */
   render() {
-    let classes = classNames('messageBox', this.props.className);
+    let classes = classNames('messageBox_wrapper', this.props.className);
     return (
-      <div className={classes}>
-        <div className="messageBoxBack" onClick={this._onClickBack}/>
-        <div className="messageBoxWrapper">
+      <div className="messageBox">
+        <div className="messageBox_back" onClick={this._onClickBack}/>
+        <div className={classes}>
           {this.props.children}
         </div>
       </div>
