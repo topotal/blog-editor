@@ -64,9 +64,7 @@ export default class Menu extends React.Component {
    * バッククリック時のハンドラーです。
    */
   _onClickBack() {
-    if(this.props.onCancel) {
-      this.props.onCancel();
-    }
+    this._dispatchCancelEvent();
   }
 
   /**
@@ -82,6 +80,7 @@ export default class Menu extends React.Component {
   _onClickSignOut() {
     // トークンを破棄してログイン画面へ戻る
     AppModel.instance.expireToken();
+    this._dispatchCancelEvent();
   }
 
   /**
@@ -89,5 +88,15 @@ export default class Menu extends React.Component {
    */
   _onCancelSetting() {
     this.setState({ activeSettingModal: false });
+    this._dispatchCancelEvent();
+  }
+
+  /**
+   * キャンセルイベントを発火します。
+   */
+  _dispatchCancelEvent() {
+    if(this.props.onCancel) {
+      this.props.onCancel();
+    }
   }
 }
