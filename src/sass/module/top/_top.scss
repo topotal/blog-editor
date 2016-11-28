@@ -4,10 +4,10 @@
 @import "./entries/entries";
 
 @mixin top {
-  @include header;
-  @include aside;
-
   .top {
+    @include header;
+    @include aside;
+
     &_content {
       position: absolute;
       top: 45px;

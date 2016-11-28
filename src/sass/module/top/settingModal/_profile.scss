@@ -5,22 +5,23 @@
     box-sizing: border-box;
     display: flex;
 
-    .profileSet {
+    &_fieldSet {
       height: 100%;
       margin-right: 10px;
-      .field {
-        .fieldLabel {
-          width: 100px;
-        }
+    }
 
-        .textfield,
-        .textarea {
-          width: 300px;
-        }
+    &_field {
+      .fieldLabel {
+        width: 100px;
+      }
+
+      .textfield,
+      .textarea {
+        width: 300px;
       }
     }
 
-    .buttons {
+    &_buttons {
       .roundButton {
         width: 100%;
         margin-bottom: 5px;
