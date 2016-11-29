@@ -33,10 +33,10 @@ export default class EntriesRow extends React.Component {
     let publishData = PublishStatusData.getDataByType(data.publishStatus);
     return (
       <li className="entriesRow" ref="row">
-        <div className="id">{data.id}</div>
-        <div className="title">{data.title || "未タイトル"}</div>
-        <div className="updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
-        <div className={"status " + publishData.color}>{publishData.text}</div>
+        <div className="entriesRow_id">{data.id}</div>
+        <div className="entriesRow_title">{data.title || "未タイトル"}</div>
+        <div className="entriesRow_updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
+        <div className={"entriesRow_status " + publishData.color}>{publishData.text}</div>
       </li>
     );
   }

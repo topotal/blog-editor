@@ -16,35 +16,35 @@
       background-color: #6b6b6b;
     }
 
-    .id,
-    .title,
-    .updatedAt,
-    .status {
+    &_id,
+    &_title,
+    &_updatedAt,
+    &_status {
       position: absolute;
     }
 
-    .id {
+    &_id {
       left: 20px;
       line-height: $ROW_HEIGHT;
       color: #DDD;
       font-size: 0.7em;
     }
 
-    .title {
+    &_title {
       left: 70px;
       line-height: 80px;
       line-height: $ROW_HEIGHT;
       font-size: 0.9em;
     }
 
-    .updatedAt {
+    &_updatedAt {
       right: 150px;
       line-height: $ROW_HEIGHT;
       color: #DDD;
       font-size: 0.7em;
     }
 
-    .status {
+    &_status {
       top: 0px;
       right: 20px;
       bottom: 0px;
