@@ -29,6 +29,12 @@ export default class Entries extends React.Component {
     this._service.addEventListener('success', this._onSuccessGetList);
     this._service.addEventListener('error',   this._onErrorGetList);
 
+  }
+
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
     // 初回の一覧取得
     this._service.send();
   }
