@@ -36,7 +36,7 @@ export default class Field extends React.Component {
     let classes = classNames('field', this.props.className);
     return (
       <div className={classes}>
-        <span className="fieldLabel">{this.props.label}：</span>
+        <span className="field_label">{this.props.label}：</span>
         {this._createInput()}
       </div>
     );
