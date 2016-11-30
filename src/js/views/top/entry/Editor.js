@@ -1,7 +1,7 @@
 import React from 'react';
 import brace from 'brace';
 import AceEditor from 'react-ace';
-import EditorToolBar from './EditorToolBar';
+import EditorToolbar from './EditorToolbar';
 import 'brace/mode/markdown';
 import 'brace/theme/Terminal';
 
@@ -20,7 +20,7 @@ export default class Editor extends React.Component {
     this._onChangeTitle = this._onChangeTitle.bind(this);
     this._onChangeEditor = this._onChangeEditor.bind(this);
     this._onLoadAceEditor = this._onLoadAceEditor.bind(this);
-    this._onToolBarOutput = this._onToolBarOutput.bind(this);
+    this._onToolbarOutput = this._onToolbarOutput.bind(this);
 
     this.state = {
       entryData: this.props.entryData
@@ -43,21 +43,20 @@ export default class Editor extends React.Component {
     return (
       <div id="editor" className="editor">
 
-        <div className="titleBar">
-          <div className="title">
-            <input
-              type="text"
-              placeholder="タイトル"
-              className="textField mousetrap"
-              value={this.state.entryData.title || ""}
-              onChange={this._onChangeTitle}
-            />
-          </div>
+        <div className="editor_title">
+          <input
+            type="text"
+            placeholder="タイトル"
+            className="textField mousetrap"
+            value={this.state.entryData.title || ""}
+            onChange={this._onChangeTitle}
+          />
         </div>
 
-        <EditorToolBar onOutput={this._onToolBarOutput}/>
+        <EditorToolbar onOutput={this._onToolbarOutput}/>
 
         <AceEditor
+          className="editor_ace"
           mode="markdown"
           theme="terminal"
           onChange={this._onChangeEditor}
@@ -112,7 +111,7 @@ export default class Editor extends React.Component {
   /**
    * ツールバーからアウトプットされた際のハンドラーです。
    */
-  _onToolBarOutput(text) {
+  _onToolbarOutput(text) {
     this._editor.insert(text);
   }
 }

@@ -93,7 +93,7 @@ export default class Preview extends React.Component {
       <div id="preview" className="preview" ref="preview">
         <link rel="stylesheet" href={ApiParam.getHost() + "/assets/css/markdown.css"} />
         {imageModal}
-        <div className="entryEyeCatch" onClick={this._onClickAddEyeCatch}>
+        <div className="preview_eyeCatch" onClick={this._onClickAddEyeCatch}>
           <p className="addText" ref="addText">
             <i title="アイキャッチを追加" className="fa fa-eye fa-fw"></i> アイキャッチを追加
           </p>

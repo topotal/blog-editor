@@ -1,14 +1,23 @@
+@import "./imageListCell";
+
 $LI_WIDTH: 143px;
 
 .imageList {
+  box-sizing: border-box;
+  background-color: $DARK_BLACK;
+  overflow-y: scroll;
 
-  .dropCover {
+  &_dropArea {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     font-size: 3em;
     display: none;
+
+    &.dragOver {
+      display: block;
+    }
 
     .text {
       position: absolute;
@@ -24,93 +33,19 @@ $LI_WIDTH: 143px;
     }
   }
 
-  .listWrapper {
+  &_items {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 65px;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: $DARK_BLACK;
-    overflow-y: scroll;
-
-    &.dragOver {
-      .dropCover {
-        display: block;
-      }
-    }
-
-    ul {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-      padding: 10px 0 0 10px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      align-content: flex-start;
-
-      li {
-        display: block;
-        width: $LI_WIDTH;
-        height: $LI_WIDTH;
-        line-height: $LI_WIDTH;
-        background-image: url(../images/transparent_bg.png);
-        border: 1px solid $BORDER_BLACK;
-        margin: 0 10px 10px 0;
-        position: relative;
-        cursor: pointer;
-
-        img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          margin: auto;
-          max-width: $LI_WIDTH;
-          max-height: $LI_WIDTH;
-        }
-
-        .check {
-          position: absolute;
-          right: 10px;
-          bottom: 10px;
-          color: #2ecc71;
-          font-size: 1.7em;
-          display: none;
-        }
-
-        &:hover {
-          border: 1px solid #FFF;
-        }
-
-        &.selected {
-          border: 1px solid #2ecc71;
-          .check {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-
-  .imageListFooter {
-    position: absolute;
-    left: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    height: 60px;
+    margin: 0;
+    padding: 10px 0 0 10px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
 
-    .roundButton {
-      margin-left: 10px;
-    }
+    @include imageListCell;
   }
 }

@@ -29,7 +29,7 @@ export default class ImageSelectModal extends React.Component {
    */
   render() {
     // モーダルのクラス郡
-    let modalClasses = classNames('imageList', this.props.className, {
+    let modalClasses = classNames('imageSelectModal', this.props.className, {
       dragOver: this.state.dragOver
     });
 
@@ -41,8 +41,8 @@ export default class ImageSelectModal extends React.Component {
     return (
       // 画像選択ウィンドウ
       <Modal title="画像選択" className={modalClasses} ref="imageModal">
-        <ImageList onChange={this._onChangeSelect}/>
-        <div className="imageListFooter">
+        <ImageList className="imageSelectModal_list" onChange={this._onChangeSelect}/>
+        <div className="imageSelectModal_footer">
           <a className="roundButton cancel" onClick={this._onClickCancel}>
             キャンセル
           </a>

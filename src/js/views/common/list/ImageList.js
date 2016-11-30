@@ -45,29 +45,37 @@ export default class ImageList extends React.Component {
    * 描画します。
    */
   render() {
-    // モーダルのクラス郡
-    let classes = classNames('listWrapper panel', this.props.className, {
+    // コンポーネントのクラス郡
+    let classes = classNames('imageList panel', this.props.className);
+
+    // ドロップエリアのクラス郡
+    let dropAreaClasses = classNames('imageList_dropArea', {
       dragOver: this.state.dragOver
     });
 
-    // 画像ボックスリスト
-    let imageBoxes = this.state.images.map((imageData, index) => {
+    return (
+      <div className={classes} onDragEnter={this._onDragOver} onDrop={this._onDropImage}>
+        <ul className="imageList_items">
+          {this._getListCells()}
+        </ul>
+        <div className={dropAreaClasses} onDragLeave={this._onDragOut}>
+          <p className="text">画像を追加</p>
+        </div>
+      </div>
+    );
+  }
+
+  /**
+   * リストのセルを取得します。
+   */
+  _getListCells() {
+    let cells = this.state.images.map((imageData, index) => {
       let selected = this.state.selectedData == imageData;
       return (
         <ImageListCell data={imageData} selected={selected} key={index} onClick={this._onClickBox} />
       );
     });
-
-    return (
-      <div className={classes} onDragEnter={this._onDragOver} onDrop={this._onDropImage}>
-        <ul>
-          {imageBoxes}
-        </ul>
-        <div className="dropCover" onDragLeave={this._onDragOut}>
-          <p className="text">画像を追加</p>
-        </div>
-      </div>
-    );
+    return cells;
   }
 
   /**

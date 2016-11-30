@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 /**
  * フィールドのベースクラスです。
@@ -32,9 +33,10 @@ export default class Field extends React.Component {
    * 描画します。
    */
   render() {
+    let classes = classNames('field', this.props.className);
     return (
-      <div className="field">
-        <span className="fieldLabel">{this.props.label}：</span>
+      <div className={classes}>
+        <span className="field_label">{this.props.label}：</span>
         {this._createInput()}
       </div>
     );

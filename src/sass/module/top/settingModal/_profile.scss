@@ -5,28 +5,27 @@
     box-sizing: border-box;
     display: flex;
 
-    .profileSet {
-      width: 750px;
+    &_fieldSet {
       height: 100%;
       margin-right: 10px;
-      .field {
-        .fieldLabel {
-          width: 100px;
-        }
+    }
 
-        .textfield,
-        .textarea {
-          width: 300px;
-        }
+    &_field {
+      .field_label {
+        width: 100px;
+      }
+
+      .textfield,
+      .textarea {
+        width: 300px;
       }
     }
 
-    .buttons {
+    &_buttons {
       .roundButton {
         width: 100%;
-        box-sizing: border-box;
-        text-align: center;
         margin-bottom: 5px;
+        display: inline-block;
 
         &.cancel {
           border: 1px #777 solid;

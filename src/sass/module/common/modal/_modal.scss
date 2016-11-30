@@ -1,4 +1,4 @@
-@import "./imageSelectModal";
+@import './imageSelectModal';
 
 .modal {
   position: fixed;
@@ -11,7 +11,7 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
-  .modalWrapper {
+  &_wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,27 +25,27 @@
     border: 1px solid $BORDER_BLACK;
     background-color: $PANEL_BACK_BLACK;
     overflow: hidden;
+  }
 
-    .modalHeader {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 20px;
-      line-height: 20px;
-      font-size: 0.7em;
-      text-align: center;
-      border-bottom: 1px solid $BORDER_BLACK;
-      background-color: $PANEL_BACK_BLACK;
-      box-sizing: border-box;
-    }
+  &_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.7em;
+    text-align: center;
+    border-bottom: 1px solid $BORDER_BLACK;
+    background-color: $PANEL_BACK_BLACK;
+    box-sizing: border-box;
+  }
 
-    .modalContent {
-      position: absolute;
-      top: 20px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
+  &_content {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }

@@ -5,7 +5,7 @@ import ImageSelectModal from '../../common/modal/ImageSelectModal';
 /**
  * ツールバークラス
  */
-export default class EditorToolBar extends React.Component {
+export default class EditorToolbar extends React.Component {
 
   /**
    * コンストラクター
@@ -41,9 +41,9 @@ export default class EditorToolBar extends React.Component {
     }
 
     return (
-      <div>
+      <div className="editorToolbar">
         {imageModal}
-        <ul className="toolbar">
+        <ul className="editorToolbar_items">
           <li className="toolButton" onClick={this._onClickAddImage}>
             <i title="画像を追加" className="fa fa-picture-o fa-fw"></i>
           </li>

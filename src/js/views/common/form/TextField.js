@@ -12,7 +12,7 @@ export default class TextField extends Field {
    */
   _createInput() {
     return (
-      <input type="text" className="textfield fieldInput" value={this.state.value || ''} onChange={this._onChange} />
+      <input type="text" className="textfield field_input" value={this.state.value || ''} onChange={this._onChange} />
     );
   }
 }

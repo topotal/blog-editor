@@ -29,6 +29,12 @@ export default class Entries extends React.Component {
     this._service.addEventListener('success', this._onSuccessGetList);
     this._service.addEventListener('error',   this._onErrorGetList);
 
+  }
+
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
     // 初回の一覧取得
     this._service.send();
   }
@@ -45,15 +51,13 @@ export default class Entries extends React.Component {
 
     return (
       <div className="entries panel">
-        <div className="listToolbar">
-          <div className="roundButton" onClick={this._onClickNew}><i className="fa fa-file-text"/>新規作成</div>
+        <div className="entries_toolbar">
+          <div className="roundButton entries_newButton" onClick={this._onClickNew}><i className="fa fa-file-text"/>新規作成</div>
         </div>
-        <div className="listHeader">
-        </div>
-        <ul className="list">
+        <ul className="entries_list">
           {entryRows}
         </ul>
-        <div className="listFooter">
+        <div className="entries_footer">
         </div>
       </div>
     );

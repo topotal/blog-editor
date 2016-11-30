@@ -4,11 +4,11 @@
 @import "./entries/entries";
 
 @mixin top {
-  @include header;
-  @include aside;
-
   .top {
-    .content {
+    @include header;
+    @include aside;
+
+    &_content {
       position: absolute;
       top: 45px;
       left: 40px + $PANEL_MARGIN;

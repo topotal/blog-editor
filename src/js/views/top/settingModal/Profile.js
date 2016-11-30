@@ -29,9 +29,11 @@ export default class Profile extends React.Component {
     this._onClickSaveButton = this._onClickSaveButton.bind(this);
     this._onClickCancel = this._onClickCancel.bind(this);
 
+    // ユーザー情報取得サービス
     this._getUserService = new GetUserService();
     this._getUserService.addEventListener('success', this._onSuccessGetUser);
 
+    // ユーザー情報更新サービス
     this._saveUserService = new SaveUserService();
     this._saveUserService.addEventListener('success', this._onSuccessSaveUser);
   }
@@ -51,27 +53,30 @@ export default class Profile extends React.Component {
     let userData = this.state.userData;
     return (
       <div className="profile">
-        <FieldSet ref="profile" legend="Profile" className="profileSet">
+        <FieldSet ref="profile" legend="Profile" className="profile_fieldSet">
           <ImageSelectField
+            className="profile_field"
             label="Icon"
             name="iconImageUrl"
             value={userData.iconImageUrl}
             onChange={this._onChangeField}
           />
           <TextField
+            className="profile_field"
             label="Name"
             name="name"
             value={userData.name}
             onChange={this._onChangeField}
           />
           <TextArea
+            className="profile_field"
             label="Description"
             name="description"
             value={userData.description}
             onChange={this._onChangeField}
           />
         </FieldSet>
-        <div className="buttons">
+        <div className="profile_buttons">
           <div className="roundButton" onClick={this._onClickSaveButton}>
             OK
           </div>

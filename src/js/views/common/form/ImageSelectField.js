@@ -43,7 +43,7 @@ export default class ImageSelectField extends Field {
     }
 
     return (
-      <div className="fieldInput imageSelectField">
+      <div className="field_input imageSelectField">
         {imageModal}
         <img className="valueIcon" src={ApiParam.getImagePath() + this.state.value} onClick={this._onClick}/>
       </div>

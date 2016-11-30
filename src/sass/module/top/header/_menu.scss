@@ -1,0 +1,50 @@
+@mixin menu {
+  .menu {
+    top: 50px;
+    right: 5px;
+    width: 150px;
+
+    &_items {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &_item {
+      box-sizing: border-box;
+      line-height: 30px;
+      padding: 0 5px;
+      margin: 0 10px 10px;
+
+      i {
+        margin-right: 5px;
+      }
+
+      &.name {
+        color: #CCC;
+        font-size: 0.8em;
+        border-bottom: 1px #666 solid;
+      }
+
+      &.settingButton {
+        color: #FFF;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $BLUE;
+        }
+      }
+
+      &.singOutButton {
+        color: #FFF;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $RED;
+        }
+      }
+    }
+  }
+}
