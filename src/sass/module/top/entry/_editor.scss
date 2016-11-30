@@ -1,4 +1,4 @@
-@import './editorToolBar';
+@import './editorToolbar';
 
 @mixin editor {
   .editor {
@@ -16,7 +16,7 @@
       background-color: $PANEL_BACK_BLACK;
     }
 
-    @include editorToolBar;
+    @include editorToolbar;
 
     &_ace {
       position: absolute;
