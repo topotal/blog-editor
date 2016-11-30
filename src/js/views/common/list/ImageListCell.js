@@ -34,15 +34,27 @@ export default class ImageListCell extends React.Component {
    * 描画します。
    */
   render() {
-    let classes = classNames('imageBox', {
+    let classes = classNames('imageListCell', {
       selected: this.state.selected
     });
     return (
       <li className={classes} onClick={this._onClick}>
-        <img src={ApiParam.getImagePath() + this.props.data.url} alt=""/>
-        <i className="check fa fa-check-circle fa-fw"></i>
+        <img className="imageListCell_icon" src={ApiParam.getImagePath() + this.props.data.url} alt=""/>
+        {this._getCheck()}
       </li>
     );
+  }
+
+  /**
+   * チェックマークを取得します。
+   */
+  _getCheck() {
+    if(this.state.selected) {
+      return (
+        <i className="imageListCell_check fa fa-check-circle fa-fw"></i>
+      );
+    }
+    return null;
   }
 
   /**

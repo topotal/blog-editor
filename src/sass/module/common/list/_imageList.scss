@@ -1,3 +1,5 @@
+@import "./imageListCell";
+
 $LI_WIDTH: 143px;
 
 .imageList {
@@ -44,47 +46,6 @@ $LI_WIDTH: 143px;
     align-items: flex-start;
     align-content: flex-start;
 
-    li {
-      display: block;
-      width: $LI_WIDTH;
-      height: $LI_WIDTH;
-      line-height: $LI_WIDTH;
-      background-image: url(../images/transparent_bg.png);
-      border: 1px solid $BORDER_BLACK;
-      margin: 0 10px 10px 0;
-      position: relative;
-      cursor: pointer;
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        max-width: $LI_WIDTH;
-        max-height: $LI_WIDTH;
-      }
-
-      .check {
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-        color: #2ecc71;
-        font-size: 1.7em;
-        display: none;
-      }
-
-      &:hover {
-        border: 1px solid #FFF;
-      }
-
-      &.selected {
-        border: 1px solid #2ecc71;
-        .check {
-          display: block;
-        }
-      }
-    }
+    @include imageListCell;
   }
 }
