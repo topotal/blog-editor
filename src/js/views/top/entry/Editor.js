@@ -43,21 +43,20 @@ export default class Editor extends React.Component {
     return (
       <div id="editor" className="editor">
 
-        <div className="titleBar">
-          <div className="title">
-            <input
-              type="text"
-              placeholder="タイトル"
-              className="textField mousetrap"
-              value={this.state.entryData.title || ""}
-              onChange={this._onChangeTitle}
-            />
-          </div>
+        <div className="editor_title">
+          <input
+            type="text"
+            placeholder="タイトル"
+            className="textField mousetrap"
+            value={this.state.entryData.title || ""}
+            onChange={this._onChangeTitle}
+          />
         </div>
 
         <EditorToolBar onOutput={this._onToolBarOutput}/>
 
         <AceEditor
+          className="editor_ace"
           mode="markdown"
           theme="terminal"
           onChange={this._onChangeEditor}

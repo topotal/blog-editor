@@ -4,7 +4,7 @@
     position: relative;
     box-sizing: border-box;
 
-    .title {
+    &_title {
       position: absolute;
       top: 0;
       left: 0;
@@ -33,7 +33,7 @@
       }
     }
 
-    #ace {
+    &_ace {
       position: absolute;
       top: 100px;
       left: 0;
