@@ -1,0 +1,22 @@
+@mixin editorToolBar {
+  .editorToolBar {
+    &_items {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      padding: 0 1px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      background-color: $PANEL_BACK_BLACK;
+      border-top: 1px solid $BORDER_BLACK;
+      border-bottom: 1px solid $BORDER_BLACK;
+
+      li {
+        margin-right: 5px;
+      }
+    }
+  }
+}

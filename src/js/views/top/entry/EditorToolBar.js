@@ -41,9 +41,9 @@ export default class EditorToolBar extends React.Component {
     }
 
     return (
-      <div>
+      <div className="editorToolBar">
         {imageModal}
-        <ul className="toolbar">
+        <ul className="editorToolBar_items">
           <li className="toolButton" onClick={this._onClickAddImage}>
             <i title="画像を追加" className="fa fa-picture-o fa-fw"></i>
           </li>
