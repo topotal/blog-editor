@@ -67,7 +67,7 @@ export default class Preview extends React.Component {
   _onChangeContent() {
     let dom = this.refs.entryContent;
     dom.innerHTML = marked(this.state.entryData.content);
-    let codeItems = dom.getElementsByTagName('code');
+    let codeItems = dom.querySelectorAll('pre code');
     _.each(codeItems, (item) => {
       hljs.highlightBlock(item);
     });
