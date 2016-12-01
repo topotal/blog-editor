@@ -2,6 +2,7 @@ import EventDispatcher from '../core/EventDispatcher';
 import request from 'superagent';
 import ApiParam from '../enum/ApiParam';
 import AppModel from '../models/AppModel';
+import LoadUtil from '../core/LoadUtil';
 
 /**
  * サービスのベースクラスです。
@@ -33,6 +34,9 @@ export default class BaseService extends EventDispatcher {
       case ApiParam.POST:   this._post(formattedData); break;
       case ApiParam.DELETE: this._delete(formattedData); break;
     }
+
+    // ロードバーを表示
+    LoadUtil.instance.start();
   }
 
   /**
@@ -73,6 +77,9 @@ export default class BaseService extends EventDispatcher {
    * レスポンス取得時のハンドラーです。
    */
   _onComplete(err, res) {
+    // ロードバーを非表示にする
+    LoadUtil.instance.done();
+
     // エラーの場合
     if(err) {
       this._onError(err, res);
