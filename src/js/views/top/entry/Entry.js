@@ -30,6 +30,7 @@ export default class Entry extends React.Component {
     this._onClickSave = this._onClickSave.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
+    this._onChangePublished = this._onChangePublished.bind(this);
 
     // 記事作成サービス
     this._createService = new CreateEntryService();
@@ -61,20 +62,23 @@ export default class Entry extends React.Component {
    * 描画します。
    */
   render() {
+    let entryData = this.state.entryData;
     return (
       <div className="entry panel">
         <div className="entry_content">
-          <Editor ref="editor" entryData={this.state.entryData} onChange={this._onChange} />
-          <Preview entryData={this.state.entryData}/>
+          <Editor ref="editor" entryData={entryData} onChange={this._onChange} />
+          <Preview entryData={entryData}/>
         </div>
         <div className="entry_footer">
           <ComboBox
             className="published"
             label="公開設定"
             name="published"
+            value={entryData.published ? "true" : "false"}
             valueField="value"
             displayField="text"
             store={PublishStatusData.LIST}
+            onChange={this._onChangePublished}
           />
           <div className="saveButton roundButton" onClick={this._onClickSave}>
             <i className="fa fa-floppy-o" aria-hidden="true"></i>保存
@@ -137,6 +141,17 @@ export default class Entry extends React.Component {
     let data = event.data;
     this.setState({
       entryData: data.entryData
+    });
+  }
+
+  /**
+   * 公開設定を変更した際のハンドラーです。
+   */
+  _onChangePublished(event) {
+    let entryData = this.state.entryData;
+    entryData.published = event.value == "true" ? true : false;
+    this.setState({
+      entryData: entryData
     });
   }
 }

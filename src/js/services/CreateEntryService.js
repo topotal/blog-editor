@@ -27,7 +27,8 @@ export default class CreateEntryService extends BaseService {
       title: data.title || "未タイトル",
       eye_catch_image_url: data.eyeCatchImageUrl || "dummy.png",
       content: data.content || "ダミーテキスト",
-      publish_date: "2012-07-26T01:00:00+09:00"
+      publish_date: "2012-07-26T01:00:00+09:00",
+      published: data.published
     };
   }
 

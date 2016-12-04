@@ -12,6 +12,7 @@ export default class ComboBox extends Field {
    */
   _createInput() {
     let options = this.props.store.map((data, index) => {
+      console.info(data[this.props.valueField]);
       return (
         <option value={data[this.props.valueField]} key={index}>
           {data[this.props.displayField]}
