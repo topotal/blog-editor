@@ -68,7 +68,6 @@ export default class Field extends React.Component {
    */
   _dispatchChangeEvent(value) {
     if(this.props.onChange) {
-      console.info(value);
       this.props.onChange({
         name: this.props.name,
         value: value
