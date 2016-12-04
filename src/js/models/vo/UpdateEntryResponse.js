@@ -23,8 +23,7 @@ export default class UpdateEntryResponse {
       entry.title,
       entry.content,
       entry.eye_catch_image_url,
-      entry.created_at,
-      entry.updated_at
+      entry.published
     );
   }
 }
