@@ -10,12 +10,42 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: $DARK_BLACK;
 
-    @include editor;
-    @include split;
-    @include preview;
+    &_content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 42px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: $DARK_BLACK;
+
+      @include editor;
+      @include split;
+      @include preview;
+    }
+
+    &_footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 40px;
+      border-top: 1px solid $BORDER_BLACK;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .published {
+        margin-right: 10px;
+      }
+
+      .saveButton {
+        width: 150px;
+        margin-right: 10px;
+      }
+    }
   }
 }

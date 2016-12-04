@@ -28,6 +28,15 @@
     opacity: 0.2;
     pointer-events: none;
   }
+
+  i {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: $WHITE;
+    color: $PANEL_BACK_BLACK;
+  }
 }
 
 .toolButton {

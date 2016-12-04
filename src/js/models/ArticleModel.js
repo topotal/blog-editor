@@ -16,18 +16,18 @@ export default class ArticleModel {
   get eyeCatchImageUrl() { return this._eyeCatchImageUrl; }
   set eyeCatchImageUrl(url) { this._eyeCatchImageUrl = url; }
   /** 公開設定 */
-  get publishStatus() { return this._publishStatus; }
-  set publishStatus(status) { this._publishStatus = status; }
+  get published() { return this._published; }
+  set published(published) { this._published = published; }
 
   /**
    * コンストラクター
    * @constructor
    */
-  constructor(id, title, content, eyeCatchImageUrl, publishStatus) {
+  constructor(id, title, content, eyeCatchImageUrl, published) {
     this._id = id;
     this._title = title || '';
     this._content = content || '';
     this._eyeCatchImageUrl = eyeCatchImageUrl;
-    this._publishStatus = publishStatus || 'draft';
+    this._published = published;
   }
 }
