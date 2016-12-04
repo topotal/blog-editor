@@ -30,7 +30,7 @@ export default class EntriesRow extends React.Component {
    */
   render() {
     let data = this.props.entryData;
-    let publishData = PublishStatusData.getDataByType(data.publishStatus);
+    let publishData = PublishStatusData.getDataByType(data.published);
     return (
       <li className="entriesRow" ref="row">
         <div className="entriesRow_id">{data.id}</div>

@@ -27,7 +27,7 @@ export default class GetEntriesResponse {
         entry.title,
         entry.content,
         entry.eye_catch_image_url,
-        entry.publish_status
+        entry.published
       ));
     });
   }

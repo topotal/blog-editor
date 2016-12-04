@@ -7,6 +7,8 @@ import Preview from './Preview';
 import ArticleModel from '../../../models/ArticleModel';
 import CreateEntryService from '../../../services/CreateEntryService';
 import UpdateEntryService from '../../../services/UpdateEntryService';
+import ComboBox from '../../common/form/ComboBox';
+import PublishStatusData from '../../../models/vo/PublishStatusData';
 
 /**
  * 記事クラス
@@ -66,6 +68,14 @@ export default class Entry extends React.Component {
           <Preview entryData={this.state.entryData}/>
         </div>
         <div className="entry_footer">
+          <ComboBox
+            className="published"
+            label="公開設定"
+            name="published"
+            valueField="value"
+            displayField="text"
+            store={PublishStatusData.LIST}
+          />
           <div className="saveButton roundButton" onClick={this._onClickSave}>
             <i className="fa fa-floppy-o" aria-hidden="true"></i>保存
           </div>
