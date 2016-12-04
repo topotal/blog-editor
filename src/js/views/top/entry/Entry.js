@@ -25,6 +25,7 @@ export default class Entry extends React.Component {
     };
 
     this._onChange = this._onChange.bind(this);
+    this._onClickSave = this._onClickSave.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
 
@@ -60,8 +61,15 @@ export default class Entry extends React.Component {
   render() {
     return (
       <div className="entry panel">
-        <Editor ref="editor" entryData={this.state.entryData} onChange={this._onChange} />
-        <Preview entryData={this.state.entryData}/>
+        <div className="entry_content">
+          <Editor ref="editor" entryData={this.state.entryData} onChange={this._onChange} />
+          <Preview entryData={this.state.entryData}/>
+        </div>
+        <div className="entry_footer">
+          <div className="saveButton roundButton" onClick={this._onClickSave}>
+            <i className="fa fa-floppy-o" aria-hidden="true"></i>保存
+          </div>
+        </div>
       </div>
     );
   }
@@ -71,6 +79,13 @@ export default class Entry extends React.Component {
    */
   _onChange(entryData) {
     this.setState({ entryData: entryData });
+  }
+
+  /**
+   * 保存ボタン押下時のハンドラーです。
+   */
+  _onClickSave() {
+    this._save();
   }
 
   /**
@@ -114,4 +129,4 @@ export default class Entry extends React.Component {
       entryData: data.entryData
     });
   }
- }
+}
