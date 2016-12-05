@@ -64,12 +64,12 @@ export default class Entry extends React.Component {
   render() {
     let entryData = this.state.entryData;
     return (
-      <div className="entry panel">
-        <div className="entry_content">
+      <div className="entry">
+        <div className="entry_content panel">
           <Editor ref="editor" entryData={entryData} onChange={this._onChange} />
           <Preview entryData={entryData}/>
         </div>
-        <div className="entry_footer">
+        <div className="entry_footer panel">
           <ComboBox
             className="published"
             label="公開設定"

@@ -5,6 +5,7 @@ $LI_WIDTH: 143px;
 .imageList {
   box-sizing: border-box;
   background-color: $DARK_BLACK;
+  border: 1px solid $BORDER_BLACK;
   overflow-y: scroll;
 
   &_dropArea {

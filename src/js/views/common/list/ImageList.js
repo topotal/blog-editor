@@ -46,7 +46,7 @@ export default class ImageList extends React.Component {
    */
   render() {
     // コンポーネントのクラス郡
-    let classes = classNames('imageList panel', this.props.className);
+    let classes = classNames('imageList', this.props.className);
 
     // ドロップエリアのクラス郡
     let dropAreaClasses = classNames('imageList_dropArea', {
