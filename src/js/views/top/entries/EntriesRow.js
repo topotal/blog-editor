@@ -18,21 +18,13 @@ export default class EntriesRow extends React.Component {
   }
 
   /**
-   * マウントされた際のハンドラーです。
-   */
-  componentDidMount() {
-    let li = this.refs.row;
-    li.addEventListener('click', this._onClick);
-  }
-
-  /**
    * 描画します。
    */
   render() {
     let data = this.props.entryData;
     let publishData = PublishStatusData.getDataByType(data.published);
     return (
-      <li className="entriesRow" ref="row">
+      <li className="entriesRow" ref="row" onClick={this._onClick}>
         <div className="entriesRow_id">{data.id}</div>
         <div className="entriesRow_title">{data.title || "未タイトル"}</div>
         <div className="entriesRow_updatedAt">{moment(data.updatedAt).format("YYYY/MM/DD HH:mm")}</div>
