@@ -2,6 +2,7 @@ import React from 'react';
 import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
 import Split from 'split.js';
+import notie from 'notie';
 import Editor from './Editor';
 import Preview from './Preview';
 import ArticleModel from '../../../models/ArticleModel';
@@ -29,16 +30,19 @@ export default class Entry extends React.Component {
     this._onChange = this._onChange.bind(this);
     this._onClickSave = this._onClickSave.bind(this);
     this._onSuccessSave = this._onSuccessSave.bind(this);
+    this._onErrorSave = this._onErrorSave.bind(this);
     this._onPressCommandS = this._onPressCommandS.bind(this);
     this._onChangePublished = this._onChangePublished.bind(this);
 
     // 記事作成サービス
     this._createService = new CreateEntryService();
     this._createService.addEventListener('success', this._onSuccessSave);
+    this._createService.addEventListener('error', this._onErrorSave);
 
     // 記事保存サービス
     this._updateService = new UpdateEntryService(this.state.entryData.id);
     this._updateService.addEventListener('success', this._onSuccessSave);
+    this._updateService.addEventListener('error', this._onErrorSave);
 
     Mousetrap.bind(['ctrl+s', 'command+s'], this._onPressCommandS);
   }
@@ -128,6 +132,7 @@ export default class Entry extends React.Component {
    * 記事作成成功時のハンドラーです。
    */
   _onSuccessSave(event) {
+    notie.alert('success', 'Success!', 1.5);
     let data = event.data;
     this.setState({
       entryData: data.entryData
@@ -135,13 +140,10 @@ export default class Entry extends React.Component {
   }
 
   /**
-   * 記事更新成功時のハンドラーです。
+   * 記事保存失敗時のハンドラーです。
    */
-  _onSuccessUpdate(event) {
-    let data = event.data;
-    this.setState({
-      entryData: data.entryData
-    });
+  _onErrorSave() {
+    notie.alert('error', 'Oops!', 1.5);
   }
 
   /**
