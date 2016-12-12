@@ -10,6 +10,9 @@ import 'brace/theme/Terminal';
  */
 export default class Editor extends React.Component {
 
+  static get SELECT_TITLE() { return 'editor_select_title'; }
+  static get SELECT_ACE() { return 'editor_select_ace'; }
+
   /**
    * コンストラクター
    * @constructor
@@ -21,6 +24,11 @@ export default class Editor extends React.Component {
     this._onChangeEditor = this._onChangeEditor.bind(this);
     this._onLoadAceEditor = this._onLoadAceEditor.bind(this);
     this._onToolbarOutput = this._onToolbarOutput.bind(this);
+    this._onFocusTitle = this._onFocusTitle.bind(this);
+    this._onFocusAce = this._onFocusAce.bind(this);
+
+    // フォーカスがあったているフォーム
+    this._currentSelect = null;
 
     this.state = {
       entryData: this.props.entryData
@@ -45,11 +53,13 @@ export default class Editor extends React.Component {
 
         <div className="editor_title">
           <input
+            ref="title"
             type="text"
             placeholder="タイトル"
             className="textField mousetrap"
             value={this.state.entryData.title || ""}
             onChange={this._onChangeTitle}
+            onFocus={this._onFocusTitle}
           />
         </div>
 
@@ -59,7 +69,6 @@ export default class Editor extends React.Component {
           className="editor_ace"
           mode="markdown"
           theme="terminal"
-          onChange={this._onChangeEditor}
           name="ace"
           width="auto"
           height="auto"
@@ -67,6 +76,8 @@ export default class Editor extends React.Component {
           showPrintMargin={false}
           userWrapMode={true}
           editorProps={{$blockScrolling: true}}
+          onChange={this._onChangeEditor}
+          onFocus={this._onFocusAce}
           onLoad={this._onLoadAceEditor}
         />
       </div>
@@ -77,7 +88,14 @@ export default class Editor extends React.Component {
    * エディターにフォーカスを当てます。
    */
   focus() {
-    this._editor.focus();
+    switch(this._currentSelect) {
+      case Editor.SELECT_TITLE:
+        this.refs.title.focus();
+        break;
+      case Editor.SELECT_ACE:
+        this._editor.focus();
+        break;
+    }
   }
 
   /**
@@ -120,5 +138,19 @@ export default class Editor extends React.Component {
    */
   _onToolbarOutput(text) {
     this._editor.insert(text);
+  }
+
+  /**
+   * タイトルにフォーカスが当たった際のハンドラーです。
+   */
+  _onFocusTitle() {
+    this._currentSelect = Editor.SELECT_TITLE;
+  }
+
+  /**
+   * AceEditorにフォーカスが当たった際のハンドラーです。
+   */
+  _onFocusAce() {
+    this._currentSelect = Editor.SELECT_ACE;
   }
 }
