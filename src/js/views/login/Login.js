@@ -1,9 +1,10 @@
 import React from 'react';
+import Mousetrap from 'mousetrap';
+import notie from 'notie';
 import Modal from '../common/modal/Modal';
 import classNames from 'classnames';
 import LoginService from '../../services/LoginService';
 import AppModel from '../../models/AppModel';
-import Mousetrap from 'mousetrap';
 
 /**
  * ログイン画面クラス
@@ -18,10 +19,12 @@ export default class Login extends React.Component {
 
     this._onClickSubmit = this._onClickSubmit.bind(this);
     this._onSuccessLogin = this._onSuccessLogin.bind(this);
+    this._onErrorLogin = this._onErrorLogin.bind(this);
 
     // ログインサービス
     this._loginService = new LoginService();
     this._loginService.addEventListener('success', this._onSuccessLogin);
+    this._loginService.addEventListener('error', this._onErrorLogin);
 
     // エンターを押したらサブミット
     Mousetrap.bind('enter', this._onClickSubmit);
@@ -107,5 +110,12 @@ export default class Login extends React.Component {
   _onSuccessLogin(event) {
     this._userModel.token = event.data.token;
     this.props.onLogged();
+  }
+
+  /**
+   * ログイン失敗時のハンドラーです。
+   */
+  _onErrorLogin(event) {
+    notie.alert('error', 'Oops!', 1.5);
   }
 }
