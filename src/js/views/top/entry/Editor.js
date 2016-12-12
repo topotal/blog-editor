@@ -74,6 +74,13 @@ export default class Editor extends React.Component {
   }
 
   /**
+   * エディターにフォーカスを当てます。
+   */
+  focus() {
+    this._editor.focus();
+  }
+
+  /**
    * タイトル変更時のハンドラーです。
    */
   _onChangeTitle(event) {

@@ -133,6 +133,7 @@ export default class Entry extends React.Component {
    */
   _onSuccessSave(event) {
     notie.alert('success', 'Success!', 1.5);
+    this.refs.editor.focus();
     let data = event.data;
     this.setState({
       entryData: data.entryData
@@ -144,6 +145,7 @@ export default class Entry extends React.Component {
    */
   _onErrorSave() {
     notie.alert('error', 'Oops!', 1.5);
+    this.refs.editor.focus();
   }
 
   /**
