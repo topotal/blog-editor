@@ -15,7 +15,7 @@ export default class SaveUserService extends BaseService {
     super();
 
     this._method = ApiParam.POST;
-    this._path = ApiParam.getPath('users/' + id);
+    this._path = ApiParam.getPath('user_profiles/register');
   }
 
   /**
@@ -24,24 +24,10 @@ export default class SaveUserService extends BaseService {
    */
   _formatData(data) {
     return {
-      name: data.name,
-      icon_image_url: data.iconImageUrl,
-      description: data.description
+      screen_name: data.name,
+      description: data.description,
+      content: data.content
     };
-  }
-
-  /**
-   * リクエストを送信します。
-   * @override
-   */
-  send(data) {
-    this._onSuccess({
-      body: {
-        name: '澤田 嵩善',
-        icon_image_url: '/assets/img/dummy_user_icon.png',
-        description: 'ダミーテキストです。'
-      }
-    });
   }
 
   /**

@@ -20,9 +20,9 @@ export default class GetUserResponse {
   constructor(response) {
     let body = response.body;
     this._userData = new UserModel(
-      body.name,
+      body.screen_name,
       body.description,
-      body.icon_image_url
+      body.image_url
     );
   };
 }

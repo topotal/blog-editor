@@ -7,6 +7,8 @@ import ImageSelectField from '../../common/form/ImageSelectField';
 import GetUserService from '../../../services/GetUserService';
 import SaveUserService from '../../../services/SaveUserService';
 import UserModel from '../../../models/UserModel';
+import ApiParam from '../../../enum/ApiParam';
+import IconFieldSet from './IconFieldSet';
 
 /**
  * プロフィール編集画面クラス
@@ -53,14 +55,7 @@ export default class Profile extends React.Component {
     let userData = this.state.userData;
     return (
       <div className="profile">
-        <FieldSet ref="profile" legend="Profile" className="profile_fieldSet">
-          <ImageSelectField
-            className="profile_field"
-            label="Icon"
-            name="iconImageUrl"
-            value={userData.iconImageUrl}
-            onChange={this._onChangeField}
-          />
+        <FieldSet legend="Profile" className="profile_fieldSet">
           <TextField
             className="profile_field"
             label="Name"
@@ -75,15 +70,14 @@ export default class Profile extends React.Component {
             value={userData.description}
             onChange={this._onChangeField}
           />
+          <div className="profile_buttons">
+            <img src="" alt="" />
+            <div className="roundButton" onClick={this._onClickSaveButton}>
+              更新
+            </div>
+          </div>
         </FieldSet>
-        <div className="profile_buttons">
-          <div className="roundButton" onClick={this._onClickSaveButton}>
-            OK
-          </div>
-          <div className="roundButton cancel" onClick={this._onClickCancel}>
-            キャンセル
-          </div>
-        </div>
+        <IconFieldSet userData={this.state.userData}/>
       </div>
     );
   }

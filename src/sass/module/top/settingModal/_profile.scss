@@ -1,12 +1,10 @@
 @mixin profile {
   .profile {
-    height: 100%;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
 
     &_fieldSet {
-      height: 100%;
       margin-right: 10px;
     }
 

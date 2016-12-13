@@ -25,7 +25,8 @@ export default class SettingModal extends React.Component {
     let classes = classNames('settingModal', this.props.className);
     return (
       <Modal title="設定" className={classes}>
-        <Profile onClickCancel={this._onClickCancel} />
+        <Profile />
+        <div className="roundButton" onClick={this._onClickCancel}>キャンセル</div>
       </Modal>
     );
   }

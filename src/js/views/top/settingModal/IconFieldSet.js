@@ -1,11 +1,12 @@
 import React from 'react';
-import Field from './Field';
-import ImageSelectModal from '../modal/ImageSelectModal';
+import FieldSet from '../../common/form/FieldSet';
+import ApiParam from '../../../enum/ApiParam';
+import SaveUserService from '../../../services/SaveUserService';
 
 /**
- * 画像選択フィールドクラス
+ * アイコン変更フィールドセット
  */
-export default class ImageSelectField extends Field {
+export default class IconFieldSet extends React.Component {
 
   /**
    * コンストラクター
@@ -17,6 +18,7 @@ export default class ImageSelectField extends Field {
     this._onClick = this._onClick.bind(this);
     this._onLoadFile = this._onLoadFile.bind(this);
     this._onChangeFile = this._onChangeFile.bind(this);
+    this._onSuccessSaveUser = this._onSuccessSaveUser.bind(this);
 
     // 見えないファイル選択inputを作成
     this._inputFile = document.createElement('input');
@@ -27,34 +29,36 @@ export default class ImageSelectField extends Field {
     this._fileReader = new FileReader();
     this._fileReader.addEventListener('load', this._onLoadFile);
 
+    // ユーザー情報更新サービス
+    this._saveUserService = new SaveUserService();
+    this._saveUserService.addEventListener('success', this._onSuccessSaveUser);
+
     this.state = {
-      value: this.props.value,
-      displayValue: this.props.displayValue
+      userData: this.props.userData
     };
   }
 
   /**
    * propが変更された際のハンドラー
-   * @override
    */
   componentWillReceiveProps(nextProps) {
-    if(!nextProps.displayValue) {
-      return;
-    }
     this.setState({
-      displayValue: nextProps.displayValue
+      userData: nextProps.userData
     });
   }
 
   /**
-   * 入力フォームを生成します。
-   * @override
+   * 描画します。
    */
-  _createInput() {
+  render() {
+    let iconUrl = ApiParam.getImagePath() + this.state.userData.iconImageUrl;
     return (
-      <div className="field_input imageSelectField">
-        <img className="valueIcon" src={this.state.displayValue} onClick={this._onClick} />
-      </div>
+      <FieldSet legend="Icon" className="iconFieldSet">
+        <img src={iconUrl} width="106" height="106" />
+        <div className="roundButton" onClick={this._onClick}>
+          画像を選択
+        </div>
+      </FieldSet>
     );
   }
 
@@ -73,21 +77,25 @@ export default class ImageSelectField extends Field {
    */
   _onChangeFile(event) {
     // ファイルリストを取得
-		let fileList = this._inputFile.files;
-		// ファイルをデータURIとして読み込む
-		this._fileReader.readAsDataURL(fileList[0]) ;
+    let fileList = this._inputFile.files;
+    // ファイルをデータURIとして読み込む
+    this._fileReader.readAsDataURL(fileList[0]) ;
   }
 
   /**
    * ファイルのロード完了時のハンドラーです。
    */
   _onLoadFile(event) {
-    var result = this._fileReader.result;
-    this.setState({
-      value: result,
-      displayValue: result
-    });
-    // 値の変更イベントを発火
-    this._dispatchChangeEvent(result);
+    let result = this._fileReader.result;
+    let userData = this.state.userData;
+    userData.content = result;
+    this._saveUserService.send(userData);
+  }
+
+  /**
+   * 保存完了時のハンドラーです。
+   */
+  _onSuccessSaveUser() {
+    console.info("success");
   }
 }

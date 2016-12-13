@@ -15,21 +15,7 @@ export default class GetUserService extends BaseService {
     super();
 
     this._method = ApiParam.GET;
-    this._path = ApiParam.getPath('user');
-  }
-
-  /**
-   * リクエストを送信します。
-   * @override
-   */
-  send(data) {
-    this._onSuccess({
-      body: {
-        name: '澤田 嵩善',
-        icon_image_url: '/assets/img/dummy_user_icon.png',
-        description: 'ダミーテキストです。'
-      }
-    });
+    this._path = ApiParam.getPath('user_profiles');
   }
 
   /**
