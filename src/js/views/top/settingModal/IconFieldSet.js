@@ -54,7 +54,7 @@ export default class IconFieldSet extends React.Component {
     let iconUrl = ApiParam.getImagePath() + this.state.userData.iconImageUrl;
     return (
       <FieldSet legend="Icon" className="iconFieldSet">
-        <img src={iconUrl} width="106" height="106" />
+        <img className="iconFieldSet_img" src={iconUrl} width="50" height="50" />
         <div className="roundButton" onClick={this._onClick}>
           画像を選択
         </div>

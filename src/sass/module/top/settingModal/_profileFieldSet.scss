@@ -1,0 +1,18 @@
+@mixin profileFieldSet {
+  .profileFieldSet {
+    flex-grow: 3;
+    margin-left: 0;
+    margin-right: 10px;
+
+    &_field {
+      .field_label {
+        width: 100px;
+      }
+
+      .textfield,
+      .textarea {
+        width: 300px;
+      }
+    }
+  }
+}

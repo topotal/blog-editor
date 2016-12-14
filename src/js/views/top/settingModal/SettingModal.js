@@ -1,7 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import Modal from '../../common/modal/Modal';
-import Profile from './Profile';
+import ProfileFieldSet from './ProfileFieldSet';
+import IconFieldSet from './IconFieldSet';
+import GetUserService from '../../../services/GetUserService';
+import UserModel from '../../../models/UserModel';
 
 /**
  * 設定モーダルクラスです。
@@ -16,6 +19,23 @@ export default class SettingModal extends React.Component {
     super(props);
 
     this._onClickCancel = this._onClickCancel.bind(this);
+    this._onSuccessGetUser = this._onSuccessGetUser.bind(this);
+
+    // ユーザー情報取得サービス
+    this._getUserService = new GetUserService();
+    this._getUserService.addEventListener('success', this._onSuccessGetUser);
+
+    this.state = {
+      userData: new UserModel()
+    };
+  }
+
+  /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    // ユーザーデータ取得を開始
+    this._getUserService.send();
   }
 
   /**
@@ -25,10 +45,25 @@ export default class SettingModal extends React.Component {
     let classes = classNames('settingModal', this.props.className);
     return (
       <Modal title="設定" className={classes}>
-        <Profile />
-        <div className="roundButton" onClick={this._onClickCancel}>キャンセル</div>
+        <div className="settingModal_form">
+          <ProfileFieldSet userData={this.state.userData} />
+          <IconFieldSet userData={this.state.userData} />
+        </div>
+        <div className="settingModal_buttons">
+          <div className="roundButton" onClick={this._onClickCancel}>キャンセル</div>
+          <div className="roundButton" onClick={this._onClickCancel}>更新</div>
+        </div>
       </Modal>
     );
+  }
+
+  /**
+   * ユーザー情報取得成功時のハンドラーです。
+   */
+  _onSuccessGetUser(event) {
+    this.setState({
+      userData: event.data.userData
+    });
   }
 
   /**
