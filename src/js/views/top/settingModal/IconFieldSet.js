@@ -95,7 +95,13 @@ export default class IconFieldSet extends React.Component {
   /**
    * 保存完了時のハンドラーです。
    */
-  _onSuccessSaveUser() {
-    console.info("success");
+  _onSuccessSaveUser(event) {
+    this.setState({
+      userData: event.data.userData
+    });
+
+    if(this.props.onChange) {
+      this.props.onChange(this.state.userData);
+    }
   }
 }
