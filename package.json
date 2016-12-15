@@ -12,7 +12,8 @@
     "watch": "npm run watch:sass & npm run watch:js",
     "watch:js": "watchify src/js/App.js -t babelify --outfile public/js/bundle.js -d",
     "watch:sass": "node-sass src/sass --output public/css -w",
-    "test": "jest src/js/"
+    "test": "jest src/js/",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
