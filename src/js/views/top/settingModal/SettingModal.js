@@ -19,6 +19,7 @@ export default class SettingModal extends React.Component {
     super(props);
 
     this._onClickCancel = this._onClickCancel.bind(this);
+    this._onClickSave = this._onClickSave.bind(this);
     this._onSuccessGetUser = this._onSuccessGetUser.bind(this);
 
     // ユーザー情報取得サービス
@@ -51,7 +52,7 @@ export default class SettingModal extends React.Component {
         </div>
         <div className="settingModal_buttons">
           <div className="roundButton" onClick={this._onClickCancel}>キャンセル</div>
-          <div className="roundButton" onClick={this._onClickCancel}>更新</div>
+          <div className="roundButton" onClick={this._onClickSave}>更新</div>
         </div>
       </Modal>
     );
@@ -74,5 +75,12 @@ export default class SettingModal extends React.Component {
     if(this.props.onCancel) {
       this.props.onCancel();
     }
+  }
+
+  /**
+   * 更新ボタン押下時のハンドラーです。
+   */
+  _onClickSave() {
+    console.info("save");
   }
 }
