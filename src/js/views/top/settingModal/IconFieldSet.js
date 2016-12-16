@@ -1,4 +1,5 @@
 import React from 'react';
+import notie from 'notie';
 import FieldSet from '../../common/form/FieldSet';
 import ApiParam from '../../../enum/ApiParam';
 import SaveUserService from '../../../services/SaveUserService';
@@ -19,6 +20,7 @@ export default class IconFieldSet extends React.Component {
     this._onLoadFile = this._onLoadFile.bind(this);
     this._onChangeFile = this._onChangeFile.bind(this);
     this._onSuccessSaveUser = this._onSuccessSaveUser.bind(this);
+    this._onErrorSaveUser = this._onErrorSaveUser.bind(this);
 
     // 見えないファイル選択inputを作成
     this._inputFile = document.createElement('input');
@@ -32,6 +34,7 @@ export default class IconFieldSet extends React.Component {
     // ユーザー情報更新サービス
     this._saveUserService = new SaveUserService();
     this._saveUserService.addEventListener('success', this._onSuccessSaveUser);
+    this._saveUserService.addEventListener('error', this._onErrorSaveUser);
 
     this.state = {
       userData: this.props.userData
@@ -96,6 +99,9 @@ export default class IconFieldSet extends React.Component {
    * 保存完了時のハンドラーです。
    */
   _onSuccessSaveUser(event) {
+    // 成功表示
+    notie.alert('success', 'Success!', 1.5);
+
     this.setState({
       userData: event.data.userData
     });
@@ -103,5 +109,12 @@ export default class IconFieldSet extends React.Component {
     if(this.props.onChange) {
       this.props.onChange(this.state.userData);
     }
+  }
+
+  /**
+   * 保存失敗時のハンドラーです。
+   */
+  _onErrorSaveUser() {
+    notie.alert('error', 'Oops!', 1.5);
   }
 }

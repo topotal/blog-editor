@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import notie from 'notie';
 import Modal from '../../common/modal/Modal';
 import ProfileFieldSet from './ProfileFieldSet';
 import IconFieldSet from './IconFieldSet';
@@ -23,6 +24,7 @@ export default class SettingModal extends React.Component {
     this._onClickSave = this._onClickSave.bind(this);
     this._onChangeIcon = this._onChangeIcon.bind(this);
     this._onSuccessGetUser = this._onSuccessGetUser.bind(this);
+    this._onErrorSaveUser = this._onErrorSaveUser.bind(this);
 
     // ユーザー情報取得サービス
     this._getUserService = new GetUserService();
@@ -31,6 +33,7 @@ export default class SettingModal extends React.Component {
     // ユーザー情報更新サービス
     this._saveUserService = new SaveUserService();
     this._saveUserService.addEventListener('success', this._onSuccessSaveUser);
+    this._saveUserService.addEventListener('error', this._onErrorSaveUser);
 
     this.state = {
       userData: new UserModel()
@@ -77,7 +80,15 @@ export default class SettingModal extends React.Component {
    * ユーザー情報更新成功時のハンドラーです。
    */
   _onSuccessSaveUser(event) {
-    console.info(save);
+    // 成功表示
+    notie.alert('success', 'Success!', 1.5);
+  }
+
+  /**
+   * ユーザー情報更新失敗時のハンドラーです。
+   */
+  _onErrorSaveUser() {
+    notie.alert('error', 'Oops!', 1.5);
   }
 
   /**
