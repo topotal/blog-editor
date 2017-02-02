@@ -1,5 +1,6 @@
 {
   "port": 9291,
-  "files": ["./public/**/*.{html,htm,css,js}"],
-  "server": { "baseDir": "./public" }
+  "files": ["./public/**/*.{html,css,js}"],
+  "server": { "baseDir": "./public" },
+  "reloadDelay": 1000
 }
