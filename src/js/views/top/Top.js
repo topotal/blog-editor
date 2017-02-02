@@ -3,6 +3,8 @@ import Header from './header/Header';
 import Aside from './aside/Aside';
 import Entry from './entry/Entry';
 import Entries from './entries/Entries';
+import GetUserService from '../../services/GetUserService';
+import AppModel from '../../models/AppModel';
 
 /**
  * トップページクラスです。
@@ -20,17 +22,34 @@ export default class Top extends React.Component {
     this._onSelectRow = this._onSelectRow.bind(this);
     this._onClickAside = this._onClickAside.bind(this);
     this._onClickBackTop = this._onClickBackTop.bind(this);
+    this._onSuccessGetUserData = this._onSuccessGetUserData.bind(this);
+
+    // ユーザー取得サービスクラス
+    this._getUserService = new GetUserService();
+    this._getUserService.addEventListener('success', this._onSuccessGetUserData);
 
     this.state = {
+      gotUserData: false,
       entryData: null,
       currentPage: 'entries'
     };
   }
 
   /**
+   * コンポーネントがマウントされた際のハンドラーです。
+   */
+  componentDidMount() {
+    this._getUserService.send();
+  }
+
+  /**
    * 描画します。
    */
   render() {
+    if(!this.state.gotUserData) {
+      return (<div>ローディング</div>);
+    }
+
     // ステートに応じた中身を取得します。
     let getContent = () => {
       switch (this.state.currentPage) {
@@ -85,6 +104,18 @@ export default class Top extends React.Component {
   _onClickAside(type) {
     this.setState({
       currentPage: type
+    });
+  }
+
+  /**
+   * ユーザーデータ取得完了時のハンドラーです。
+   */
+  _onSuccessGetUserData(event) {
+    // ユーザーデータを保存
+    AppModel.instance.userData = event.data.userData;
+
+    this.setState({
+      gotUserData: true
     });
   }
 }

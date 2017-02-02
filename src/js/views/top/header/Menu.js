@@ -21,6 +21,9 @@ export default class Menu extends React.Component {
     this._onClickSignOut = this._onClickSignOut.bind(this);
     this._onCancelSetting = this._onCancelSetting.bind(this);
 
+    // ユーザー情報
+    this._userData = AppModel.instance.userData;
+
     this.state = {
       activeSettingModal: false
     };
@@ -35,7 +38,7 @@ export default class Menu extends React.Component {
         {this.getSettingModal()}
         <ul className="menu_items">
           <li className="menu_item name">
-            <i className="fa fa-user-circle"></i>sawa-zen
+            <i className="fa fa-user-circle"></i>{this._userData.name}
           </li>
           <li className="menu_item settingButton" onClick={this._onClickSetting}>
             <i className="fa fa-cog" aria-hidden="true"></i>

@@ -18,6 +18,10 @@ export default class AppModel extends EventDispatcher {
     return AppModel._instance || new AppModel();
   }
 
+  /** ユーザーデータ */
+  get userData() { return this._userData; }
+  set userData(data) { this._userData = data; }
+
   /**
    * コンストラクター
    * @constructor
