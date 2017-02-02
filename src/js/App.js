@@ -83,10 +83,8 @@ class App extends React.Component {
   }
 }
 
-window.addEventListener('load', () => {
-  // メインクラスを描画
-  ReactDOM.render(
-    <App />,
-    document.getElementById('main')
-  );
-});
+// メインクラスを描画
+ReactDOM.render(
+  <App />,
+  document.getElementById('main')
+);
