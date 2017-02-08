@@ -4,7 +4,7 @@
   "description": "sawa-zen.comの記事投稿ページ",
   "main": "index.js",
   "scripts": {
-    "start": "npm run lite & npm run watch",
+    "start": "npm run build & npm run lite & npm run watch",
     "lite": "lite-server",
     "build": "npm run build:sass & npm run build:js",
     "build:js": "browserify src/js/App.js -t babelify --outfile public/js/bundle.js",
