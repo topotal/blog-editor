@@ -6,6 +6,7 @@ export default class ApiParam {
   /** メソッド */
   static get GET() { return 'GET'; }
   static get POST() { return 'POST'; }
+  static get PATCH() { return 'PATCH'; }
   static get DELETE() { return 'DELETE'; }
 
   /**

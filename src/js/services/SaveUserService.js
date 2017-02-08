@@ -14,7 +14,7 @@ export default class SaveUserService extends BaseService {
   constructor(id) {
     super();
 
-    this._method = ApiParam.POST;
+    this._method = ApiParam.PATCH;
     this._path = ApiParam.getPath('user_profiles');
   }
 

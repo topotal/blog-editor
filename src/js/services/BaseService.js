@@ -32,6 +32,7 @@ export default class BaseService extends EventDispatcher {
     switch(this._method) {
       case ApiParam.GET:    this._get(formattedData); break;
       case ApiParam.POST:   this._post(formattedData); break;
+      case ApiParam.PATCH:  this._patch(formattedData); break;
       case ApiParam.DELETE: this._delete(formattedData); break;
     }
 
@@ -61,6 +62,18 @@ export default class BaseService extends EventDispatcher {
   _post(data) {
     request
       .post(this._path)
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer ' + this._userModel.token)
+      .send(JSON.stringify(data))
+      .end(this._onComplete);
+  }
+
+  /**
+   * PATCH通信
+   */
+  _patch(data) {
+    request
+      .patch(this._path)
       .set('Content-Type', 'application/json')
       .set('Authorization', 'Bearer ' + this._userModel.token)
       .send(JSON.stringify(data))
