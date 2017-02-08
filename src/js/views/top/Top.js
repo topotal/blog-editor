@@ -22,11 +22,13 @@ export default class Top extends React.Component {
     this._onSelectRow = this._onSelectRow.bind(this);
     this._onClickAside = this._onClickAside.bind(this);
     this._onClickBackTop = this._onClickBackTop.bind(this);
+    this._onErrorGetUserData = this._onErrorGetUserData.bind(this);
     this._onSuccessGetUserData = this._onSuccessGetUserData.bind(this);
 
     // ユーザー取得サービスクラス
     this._getUserService = new GetUserService();
     this._getUserService.addEventListener('success', this._onSuccessGetUserData);
+    this._getUserService.addEventListener('error', this._onErrorGetUserData);
 
     this.state = {
       gotUserData: false,
@@ -117,5 +119,16 @@ export default class Top extends React.Component {
     this.setState({
       gotUserData: true
     });
+  }
+
+  /**
+   * 記事一覧取得失敗時のハンドラーです。
+   */
+  _onErrorGetUserData(event) {
+    let res = event.res;
+    // トークン切れエラーの場合はtokenを削除する。
+    if(res.status == 403 || res.status == 401) {
+      AppModel.instance.expireToken();
+    }
   }
 }

@@ -28,7 +28,6 @@ export default class Entries extends React.Component {
     this._service = new GetEntriesService();
     this._service.addEventListener('success', this._onSuccessGetList);
     this._service.addEventListener('error',   this._onErrorGetList);
-
   }
 
   /**
