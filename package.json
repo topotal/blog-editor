@@ -7,13 +7,15 @@
     "start": "npm run build & npm run lite & npm run watch",
     "lite": "lite-server",
     "build": "npm run build:sass & npm run build:js",
-    "build:js": "browserify src/js/App.js -t babelify --outfile public/js/bundle.js",
+    "build:js": "NODE_ENV=development browserify src/js/App.js -t babelify -t envify --outfile public/js/bundle.js -d",
     "build:sass": "node-sass src/sass --output public/css",
-    "watch": "npm run watch:sass & npm run watch:js",
-    "watch:js": "watchify src/js/App.js -t babelify --outfile public/js/bundle.js -d",
+    "watch": "npm run watch:sass & NODE_ENV=development npm run watch:js",
+    "watch:js": "watch 'npm run build:js' src/js/ --ignoreDotFiles",
     "watch:sass": "node-sass src/sass --output public/css -w",
     "test": "jest src/js/",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "production-build": "npm run build:sass && npm run production-build:js",
+    "production-build:js": "NODE_ENV=production browserify src/js/App.js -t babelify -t envify --outfile public/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "brace": "^0.9.1",
     "browserify": "^11.0.0",
     "classnames": "^2.2.5",
+    "envify": "^4.0.0",
     "enzyme": "^2.7.1",
     "highlight.js": "^9.9.0",
     "jest": "^16.0.2",
@@ -48,6 +51,6 @@
     "react-html-parser": "^1.0.3",
     "split.js": "^1.2.0",
     "superagent": "^2.3.0",
-    "watchify": "^3.9.0"
+    "watch": "^1.0.1"
   }
 }
