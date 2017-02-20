@@ -13,7 +13,11 @@ export default class ApiParam {
    * ホストを取得します。
    */
   static getHost() {
-    return "http://dev.blog.topotal.com";
+    if(process.env.NODE_ENV == 'development') {
+      return "http://dev.blog.topotal.com";
+    }
+
+    return "http://blog.topotal.com";
   }
 
   /**
