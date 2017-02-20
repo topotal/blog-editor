@@ -1,5 +1,5 @@
 import BaseService from './BaseService';
-import ApiParam from '../enum/ApiParam';
+import ApiParam from '../config/ApiParam';
 import CreateEntryResponse from '../models/vo/CreateEntryResponse';
 
 /**

@@ -1,7 +1,7 @@
 import React from 'react';
 import notie from 'notie';
 import FieldSet from '../../common/form/FieldSet';
-import ApiParam from '../../../enum/ApiParam';
+import ApiParam from '../../../config/ApiParam';
 import SaveUserService from '../../../services/SaveUserService';
 
 /**

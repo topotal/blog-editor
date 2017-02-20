@@ -1,4 +1,4 @@
-import ApiParam from '../enum/ApiParam';
+import ApiParam from '../config/ApiParam';
 import BaseService from './BaseService';
 import GetEntriesResponse from '../models/vo/GetEntriesResponse';
 

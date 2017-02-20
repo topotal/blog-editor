@@ -4,7 +4,7 @@ import marked from 'marked';
 import hljs from 'highlight.js';
 import ReactHtmlParser from 'react-html-parser';
 import ImageSelectModal from '../../common/modal/ImageSelectModal';
-import ApiParam from '../../../enum/ApiParam';
+import ApiParam from '../../../config/ApiParam';
 
 /**
  * プレビュークラスです。

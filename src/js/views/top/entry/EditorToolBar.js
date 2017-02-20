@@ -1,5 +1,5 @@
 import React from 'react';
-import ApiPath from '../../../enum/ApiParam';
+import ApiPath from '../../../config/ApiParam';
 import ImageSelectModal from '../../common/modal/ImageSelectModal';
 
 /**

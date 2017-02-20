@@ -3,7 +3,7 @@ import FieldSet from '../../common/form/FieldSet';
 import TextField from '../../common/form/TextField';
 import TextArea from '../../common/form/TextArea';
 import SaveUserService from '../../../services/SaveUserService';
-import ApiParam from '../../../enum/ApiParam';
+import ApiParam from '../../../config/ApiParam';
 
 /**
  * プロフィールフィールドセットクラス

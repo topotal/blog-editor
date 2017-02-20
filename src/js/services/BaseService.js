@@ -1,6 +1,6 @@
 import EventDispatcher from '../core/EventDispatcher';
 import request from 'superagent';
-import ApiParam from '../enum/ApiParam';
+import ApiParam from '../config/ApiParam';
 import AppModel from '../models/AppModel';
 import LoadUtil from '../core/LoadUtil';
 

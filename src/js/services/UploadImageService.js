@@ -1,5 +1,5 @@
 import BaseService from './BaseService';
-import ApiParam from '../enum/ApiParam';
+import ApiParam from '../config/ApiParam';
 import UploadImageResponse from '../models/vo/UploadImageResponse';
 import ImageUtil from '../core/ImageUtil';
 

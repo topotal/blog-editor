@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Menu from './Menu';
-import ApiParam from '../../../enum/ApiParam';
+import ApiParam from '../../../config/ApiParam';
 import AppModel from '../../../models/AppModel';
 
 /**
