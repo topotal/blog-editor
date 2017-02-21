@@ -49,7 +49,7 @@ export default class Top extends React.Component {
    */
   render() {
     if(!this.state.gotUserData) {
-      return (<div>ローディング</div>);
+      return (<div></div>);
     }
 
     // ステートに応じた中身を取得します。

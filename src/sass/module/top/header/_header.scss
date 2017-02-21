@@ -14,6 +14,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    -webkit-app-region: drag;
+    .toolbar-window-controls {
+      -webkit-app-region: no-drag;
+    }
 
     &_logo {
       margin-left: 10px;

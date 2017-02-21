@@ -5,7 +5,7 @@ const {BrowserWindow} = electron;
 let win;
 
 function createWindow() {
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({width: 1280, height: 960, titleBarStyle: 'hidden'});
   win.loadURL(`file://${__dirname}/public/index.html`);
 
   win.on('closed', () => {
