@@ -5,7 +5,12 @@ const {BrowserWindow} = electron;
 let win;
 
 function createWindow() {
-  win = new BrowserWindow({width: 1280, height: 960, titleBarStyle: 'hidden'});
+  win = new BrowserWindow({
+    width: 1280,
+    height: 960,
+    titleBarStyle: 'hidden',
+    backgroundColor: '#292929'
+  });
   win.loadURL(`file://${__dirname}/public/index.html`);
 
   win.on('closed', () => {
