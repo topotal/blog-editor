@@ -15,7 +15,9 @@
     "test": "jest src/js/",
     "postinstall": "npm run build",
     "production-build": "npm run build:sass && npm run production-build:js",
-    "production-build:js": "NODE_ENV=production browserify src/js/App.js -t babelify -t envify --outfile public/js/bundle.js"
+    "production-build:js": "NODE_ENV=production browserify src/js/App.js -t babelify -t envify --outfile public/js/bundle.js",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "brace": "^0.9.1",
     "browserify": "^11.0.0",
     "classnames": "^2.2.5",
+    "electron-builder": "^13.11.1",
     "envify": "^4.0.0",
     "enzyme": "^2.7.1",
     "highlight.js": "^9.9.0",
@@ -52,5 +55,9 @@
     "split.js": "^1.2.0",
     "superagent": "^2.3.0",
     "watch": "^1.0.1"
+  },
+  "build": {
+    "appId": "com.topotal.blog-editor",
+    "electronVersion": "1.4.10"
   }
 }
