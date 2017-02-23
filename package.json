@@ -1,7 +1,7 @@
 {
   "name": "blog-editor",
-  "version": "1.0.0",
-  "description": "sawa-zen.comの記事投稿ページ",
+  "version": "0.1.0",
+  "description": "Topotalブログ記事編集アプリ",
   "main": "index.js",
   "scripts": {
     "start": "npm run build & npm run lite & npm run watch",
