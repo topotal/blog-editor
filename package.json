@@ -16,8 +16,8 @@
     "postinstall": "npm run build",
     "production-build": "npm run build:sass && npm run production-build:js",
     "production-build:js": "NODE_ENV=production browserify src/js/App.js -t babelify -t envify --outfile public/js/bundle.js",
-    "pack": "build --dir",
-    "dist": "build"
+    "pack": "npm run production-build && build --dir",
+    "dist": "npm run production-build && build"
   },
   "repository": {
     "type": "git",
