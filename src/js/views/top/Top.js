@@ -125,10 +125,6 @@ export default class Top extends React.Component {
    * 記事一覧取得失敗時のハンドラーです。
    */
   _onErrorGetUserData(event) {
-    let res = event.res;
-    // トークン切れエラーの場合はtokenを削除する。
-    if(res.status == 403 || res.status == 401) {
-      AppModel.instance.expireToken();
-    }
+    AppModel.instance.expireToken();
   }
 }
