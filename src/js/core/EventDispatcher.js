@@ -31,10 +31,10 @@ export default class EventDispatcher {
    * @param listener
    */
   removeEventListener(type, listener) {
-    let length = this._listeners.length;
+    let length = this._listeners[type].length;
     for(let i = 0; i < length; i++) {
-      if(this._listeners[i] === listener) {
-        this._listeners.splice(i, 1);
+      if(this._listeners[type][i] === listener) {
+        this._listeners[type].splice(i, 1);
       }
     }
   }
