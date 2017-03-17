@@ -14,10 +14,10 @@ export default class ApiParam {
    */
   static getHost() {
     if(process.env.NODE_ENV == 'development') {
-      return "http://dev.blog.topotal.com";
+      return "https://staging.blog.topotal.com";
     }
 
-    return "http://blog.topotal.com";
+    return "https://blog.topotal.com";
   }
 
   /**
