@@ -81,14 +81,14 @@ export default class SettingModal extends React.Component {
    */
   _onSuccessSaveUser(event) {
     // 成功表示
-    notie.alert('success', 'Success!', 1.5);
+    notie.alert({ type: 'success', text: 'Success!', time: 1.5 });
   }
 
   /**
    * ユーザー情報更新失敗時のハンドラーです。
    */
   _onErrorSaveUser() {
-    notie.alert('error', 'Oops!', 1.5);
+    notie.alert({ type: 'error', text: 'Oops!', time: 1.5 });
   }
 
   /**

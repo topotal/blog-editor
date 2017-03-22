@@ -116,6 +116,6 @@ export default class Login extends React.Component {
    * ログイン失敗時のハンドラーです。
    */
   _onErrorLogin(event) {
-    notie.alert('error', 'Oops!', 1.5);
+    notie.alert({ type: 'error', text: 'Oops!', time: 1.5 });
   }
 }

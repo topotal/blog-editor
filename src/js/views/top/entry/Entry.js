@@ -132,7 +132,7 @@ export default class Entry extends React.Component {
    * 記事作成成功時のハンドラーです。
    */
   _onSuccessSave(event) {
-    notie.alert('success', 'Success!', 1.5);
+    notie.alert({ type: 'success', text: 'Success!', time: 1.5 });
     this.refs.editor.focus();
     let data = event.data;
     this.setState({
@@ -144,7 +144,7 @@ export default class Entry extends React.Component {
    * 記事保存失敗時のハンドラーです。
    */
   _onErrorSave() {
-    notie.alert('error', 'Oops!', 1.5);
+    notie.alert({ type: 'error', text: 'Oops!', time: 1.5 });
     this.refs.editor.focus();
   }
 
