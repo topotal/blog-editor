@@ -18,6 +18,7 @@ body {
   -webkit-app-region: drag;
 
   .app {
+    -webkit-app-region: no-drag;
     position: absolute;
     top: 21px;
     left: 0;
