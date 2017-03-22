@@ -1,7 +1,8 @@
-#notie-alert-outer,
-#notie-alert-inner {
+.notie-container {
   padding: 0;
-  font-size: 1em;
   height: 65px;
-  line-height: 65px;
+  padding-top: 20px;
+  line-height: 45px;
+  box-sizing: border-box;
+  font-size: 1em;
 }
