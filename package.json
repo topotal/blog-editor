@@ -1,6 +1,6 @@
 {
   "name": "blog-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Topotalブログ記事編集アプリ",
   "main": "index.js",
   "scripts": {
@@ -19,12 +19,8 @@
     "pack": "npm run production-build && build --dir",
     "dist": "npm run production-build && build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sawa-zen/sawa-zen.com.git"
-  },
   "author": "Takayoshi Sawada",
-  "homepage": "sawa-zen.com",
+  "homepage": "https://topotal.com",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.0",
