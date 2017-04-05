@@ -1,6 +1,7 @@
 import BaseService from './BaseService';
 import ApiParam from '../config/ApiParam';
 import UpdateEntryResponse from '../models/vo/UpdateEntryResponse';
+import moment from 'moment';
 
 /**
  * 記事更新サービスクラスです。
@@ -27,7 +28,7 @@ export default class UpdateEntryService extends BaseService {
       title: data.title,
       eye_catch_image_url: data.eyeCatchImageUrl,
       content: data.content,
-      publish_date: "2012-07-26T01:00:00+09:00",
+      publish_date: moment().format(),
       published: data.published
     };
   }
